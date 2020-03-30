@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,231 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TFM_Botanica" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Itinerarios Botanicos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJn-OS-2Xh">
+                                <rect key="frame" x="20" y="205" width="374" height="160"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="47"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NZ-HF-Q6K">
+                                <rect key="frame" x="164" y="434" width="90" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="MMX-85-9Xk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Comenzar"/>
+                                <connections>
+                                    <segue destination="y5X-Fg-LMc" kind="presentation" id="S3c-uw-e7G"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6NZ-HF-Q6K" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="164" id="8Lc-Fd-MqA"/>
+                            <constraint firstItem="ZJn-OS-2Xh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="ZJ3-ed-Jcb"/>
+                            <constraint firstItem="6NZ-HF-Q6K" firstAttribute="top" secondItem="ZJn-OS-2Xh" secondAttribute="bottom" constant="69" id="dS9-H9-Enh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6NZ-HF-Q6K" secondAttribute="bottom" constant="392" id="mpy-Ft-1e1"/>
+                            <constraint firstItem="ZJn-OS-2Xh" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="qnH-7R-yD2"/>
+                            <constraint firstItem="ZJn-OS-2Xh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="161" id="uVG-1l-OlD"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="137.94642857142856"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="VZB-rk-ave">
+            <objects>
+                <tabBarController modalPresentationStyle="fullScreen" id="y5X-Fg-LMc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="x2d-Ni-RF6"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vvy-l8-KfC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="byJ-6N-lSw" kind="relationship" relationship="viewControllers" id="9cX-zD-Mlt"/>
+                        <segue destination="G7n-IM-EBP" kind="relationship" relationship="viewControllers" id="S09-G2-MAe"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GQp-rZ-Ldz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1314" y="138"/>
+        </scene>
+        <!--Plantas-->
+        <scene sceneID="Esi-kj-9mW">
+            <objects>
+                <tableViewController id="VKq-Aq-VFh" customClass="PlantasTableViewController" customModule="TFM_Botanica" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BE1-s9-Ls5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="plantasCell" textLabel="ADZ-q9-T01" style="IBUITableViewCellStyleDefault" id="c76-Mj-Rix">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c76-Mj-Rix" id="QSW-sT-xZ3">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ADZ-q9-T01">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VKq-Aq-VFh" id="hLc-ma-z7Z"/>
+                            <outlet property="delegate" destination="VKq-Aq-VFh" id="cf2-Lg-pFF"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Plantas" image="list.bullet" catalog="system" id="jcV-iT-f2P"/>
+                    <navigationItem key="navigationItem" title="Plantas" id="kOb-O2-Lmb"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gh9-RX-4EG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3312" y="562"/>
+        </scene>
+        <!--Plantas-->
+        <scene sceneID="5G8-E0-ZlD">
+            <objects>
+                <navigationController id="G7n-IM-EBP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Plantas" image="list.bullet" catalog="system" id="o7y-Tb-fQe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vQ4-te-XlT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VKq-Aq-VFh" kind="relationship" relationship="rootViewController" id="Bfi-g2-l2Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gmX-3K-A5D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2374" y="562"/>
+        </scene>
+        <!--Rutas-->
+        <scene sceneID="I3h-yk-Nk7">
+            <objects>
+                <tableViewController id="Q7F-oD-Rve" customClass="RutasTableViewController" customModule="TFM_Botanica" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="gTU-Xb-1hO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rutasCell" rowHeight="40" id="gld-hx-gZX" customClass="RutasTableViewCell" customModule="TFM_Botanica" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gld-hx-gZX" id="BPr-x1-7dy">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Primera ruta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-zU-8Me">
+                                            <rect key="frame" x="20" y="10" width="94" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1/12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2M-vN-3vc">
+                                            <rect key="frame" x="363" y="10" width="31" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="B2M-vN-3vc" firstAttribute="trailing" secondItem="BPr-x1-7dy" secondAttribute="trailingMargin" id="571-Fq-dw4"/>
+                                        <constraint firstItem="CwU-zU-8Me" firstAttribute="baseline" secondItem="B2M-vN-3vc" secondAttribute="baseline" id="KJO-bH-Fg7"/>
+                                        <constraint firstItem="CwU-zU-8Me" firstAttribute="leading" secondItem="BPr-x1-7dy" secondAttribute="leadingMargin" id="Kea-hE-luc"/>
+                                        <constraint firstItem="CwU-zU-8Me" firstAttribute="firstBaseline" secondItem="B2M-vN-3vc" secondAttribute="firstBaseline" id="oco-XZ-XXv"/>
+                                        <constraint firstItem="CwU-zU-8Me" firstAttribute="top" secondItem="BPr-x1-7dy" secondAttribute="topMargin" constant="-1" id="uha-NH-8Mw"/>
+                                        <constraint firstItem="CwU-zU-8Me" firstAttribute="centerY" secondItem="BPr-x1-7dy" secondAttribute="centerY" id="w1I-go-kgJ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="CwU-zU-8Me" id="pOA-Vw-Qev"/>
+                                    <outlet property="progressLabel" destination="B2M-vN-3vc" id="qZW-hE-qLP"/>
+                                    <segue destination="v62-SF-KyA" kind="show" id="3VR-PE-JaP"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Q7F-oD-Rve" id="shQ-xS-chD"/>
+                            <outlet property="delegate" destination="Q7F-oD-Rve" id="jHR-9N-nFl"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Rutas" image="map" catalog="system" id="LNT-WN-XIw"/>
+                    <navigationItem key="navigationItem" title="Rutas" id="yyn-pV-KwY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qnk-D1-Dcw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3313" y="-224"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="fkJ-B6-Saj">
+            <objects>
+                <viewController id="v62-SF-KyA" customClass="MapViewController" customModule="TFM_Botanica" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6Gq-z6-UBr" customClass="GMSMapView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="C3b-Ri-TM2"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LbQ-L4-ujW"/>
+                    <connections>
+                        <outlet property="mapView" destination="6Gq-z6-UBr" id="bud-KO-uNZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EHM-PX-laF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4295.652173913044" y="-224.33035714285714"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="lOj-1s-6YY">
+            <objects>
+                <viewController storyboardIdentifier="activityController" id="nuK-kl-fLy" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5wB-VJ-YPF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="b1X-fU-qTv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4Y-Lk-LzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5645" y="-224"/>
+        </scene>
+        <!--Rutas-->
+        <scene sceneID="Fbh-xA-riv">
+            <objects>
+                <navigationController id="byJ-6N-lSw" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Rutas" image="map" catalog="system" id="efH-ju-Vg7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p4G-ob-2YT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Q7F-oD-Rve" kind="relationship" relationship="rootViewController" id="lqa-CE-1LA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RgN-b1-R4Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2375" y="-224"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="list.bullet" catalog="system" width="64" height="44"/>
+        <image name="map" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
