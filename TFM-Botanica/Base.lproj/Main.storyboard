@@ -119,7 +119,7 @@
             </objects>
             <point key="canvasLocation" x="2374" y="562"/>
         </scene>
-        <!--Rutas-->
+        <!--Itinerarios-->
         <scene sceneID="I3h-yk-Nk7">
             <objects>
                 <tableViewController id="Q7F-oD-Rve" customClass="RutasTableViewController" customModule="TFM_Botanica" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,11 +128,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="rutasCell" rowHeight="40" id="gld-hx-gZX" customClass="RutasTableViewCell" customModule="TFM_Botanica" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="rutasCell" rowHeight="40" id="gld-hx-gZX" customClass="RutasTableViewCell" customModule="TFM_Botanica" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gld-hx-gZX" id="BPr-x1-7dy">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="383" height="40"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Primera ruta" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CwU-zU-8Me">
@@ -169,8 +169,10 @@
                             <outlet property="delegate" destination="Q7F-oD-Rve" id="jHR-9N-nFl"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Rutas" image="map" catalog="system" id="LNT-WN-XIw"/>
-                    <navigationItem key="navigationItem" title="Rutas" id="yyn-pV-KwY"/>
+                    <tabBarItem key="tabBarItem" title="Itinerarios" image="map" catalog="system" id="LNT-WN-XIw"/>
+                    <navigationItem key="navigationItem" title="Itinerarios" id="yyn-pV-KwY">
+                        <barButtonItem key="backBarButtonItem" title="Itinerarios" id="cem-2l-qvC"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qnk-D1-Dcw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -179,7 +181,7 @@
         <!--Map View Controller-->
         <scene sceneID="fkJ-B6-Saj">
             <objects>
-                <viewController id="v62-SF-KyA" customClass="MapViewController" customModule="TFM_Botanica" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="v62-SF-KyA" customClass="MapViewController" customModule="TFM_Botanica" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6Gq-z6-UBr" customClass="GMSMapView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -195,59 +197,82 @@
             </objects>
             <point key="canvasLocation" x="4295.652173913044" y="-224.33035714285714"/>
         </scene>
-        <!--Activity View Controller-->
+        <!--Actividad-->
         <scene sceneID="lOj-1s-6YY">
             <objects>
-                <viewController storyboardIdentifier="activityController" id="nuK-kl-fLy" customClass="ActivityViewController" customModule="UAPlant" sceneMemberID="viewController">
+                <viewController id="nuK-kl-fLy" customClass="ActivityViewController" customModule="UAPlant" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5wB-VJ-YPF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TmE-7v-axC">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TmE-7v-axC">
                                 <rect key="frame" x="20" y="99" width="374" height="348"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="348" id="kM9-7D-jnQ"/>
+                                </constraints>
                                 <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Estado: En Proceso" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-rE-PdF">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Estado: En Proceso" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGg-rE-PdF">
                                 <rect key="frame" x="129" y="588" width="157" height="22"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="T0f-pA-xTH">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="T0f-pA-xTH">
                                 <rect key="frame" x="77" y="576.5" width="44" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="Oeo-wJ-Hhr"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7l-sI-iQw">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7l-sI-iQw">
                                 <rect key="frame" x="259" y="759" width="108" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="108" id="LNp-nR-u9C"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <state key="normal" title="Captura"/>
                                 <connections>
                                     <action selector="captureAction:" destination="nuK-kl-fLy" eventType="touchUpInside" id="T8S-VZ-bIk"/>
-                                    <segue destination="wav-oi-CsJ" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="cFq-hS-wis"/>
+                                    <segue destination="wav-oi-CsJ" kind="show" identifier="cameraSegue" id="6dh-Dw-Wi6"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Klb-EO-GdE">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Klb-EO-GdE">
                                 <rect key="frame" x="45" y="758" width="108" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                 <state key="normal" title="Preguntas"/>
                                 <connections>
                                     <action selector="questionAction:" destination="nuK-kl-fLy" eventType="touchUpInside" id="FOp-Wv-Vkq"/>
-                                    <segue destination="iXQ-9b-aip" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="uma-mF-5dj"/>
+                                    <segue destination="iXQ-9b-aip" kind="show" id="mjx-9x-X3N"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TmE-7v-axC" firstAttribute="leading" secondItem="5wB-VJ-YPF" secondAttribute="leadingMargin" id="2SF-aS-pXw"/>
+                            <constraint firstItem="T0f-pA-xTH" firstAttribute="leading" secondItem="b1X-fU-qTv" secondAttribute="leading" constant="77" id="8aC-dL-3Yf"/>
+                            <constraint firstAttribute="bottom" secondItem="T0f-pA-xTH" secondAttribute="bottom" constant="274" id="Hi3-lt-sYR"/>
+                            <constraint firstItem="T0f-pA-xTH" firstAttribute="centerX" secondItem="Klb-EO-GdE" secondAttribute="centerX" id="JQz-qr-s9u"/>
+                            <constraint firstItem="b1X-fU-qTv" firstAttribute="bottom" secondItem="F7l-sI-iQw" secondAttribute="bottom" constant="69" id="LNy-eD-7h3"/>
+                            <constraint firstItem="T0f-pA-xTH" firstAttribute="centerY" secondItem="mGg-rE-PdF" secondAttribute="centerY" id="Rbf-xv-qgh"/>
+                            <constraint firstItem="TmE-7v-axC" firstAttribute="centerX" secondItem="mGg-rE-PdF" secondAttribute="centerX" id="YS3-52-9OD"/>
+                            <constraint firstItem="Klb-EO-GdE" firstAttribute="leading" secondItem="b1X-fU-qTv" secondAttribute="leading" constant="45" id="cG1-JA-qP8"/>
+                            <constraint firstItem="b1X-fU-qTv" firstAttribute="trailing" secondItem="mGg-rE-PdF" secondAttribute="trailing" constant="128" id="cz2-Y9-YyV"/>
+                            <constraint firstItem="b1X-fU-qTv" firstAttribute="trailing" secondItem="F7l-sI-iQw" secondAttribute="trailing" constant="47" id="erk-be-KzM"/>
+                            <constraint firstItem="b1X-fU-qTv" firstAttribute="bottom" secondItem="Klb-EO-GdE" secondAttribute="bottom" constant="70" id="oZ5-Fq-RMe"/>
+                            <constraint firstItem="TmE-7v-axC" firstAttribute="top" secondItem="b1X-fU-qTv" secondAttribute="top" constant="11" id="rTJ-vB-bg1"/>
+                            <constraint firstItem="TmE-7v-axC" firstAttribute="trailing" secondItem="5wB-VJ-YPF" secondAttribute="trailingMargin" id="uEO-W3-jMR"/>
+                            <constraint firstItem="mGg-rE-PdF" firstAttribute="leading" secondItem="T0f-pA-xTH" secondAttribute="trailing" constant="8" id="xi8-3z-QA4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="b1X-fU-qTv"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Actividad" id="9kr-0X-7A4">
+                        <barButtonItem key="backBarButtonItem" title="Actividad" id="QEG-6M-9dO"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="captureButton" destination="F7l-sI-iQw" id="k2P-AJ-Ncf"/>
                         <outlet property="descriptionTextField" destination="TmE-7v-axC" id="KFi-7Y-8Dr"/>
@@ -258,7 +283,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4Y-Lk-LzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5644.9275362318849" y="-224.33035714285714"/>
+            <point key="canvasLocation" x="6746" y="-224"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Xms-8U-e0I">
+            <objects>
+                <navigationController storyboardIdentifier="activityNavigation" id="MVH-vj-FIg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OEg-xN-8Z9">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="nuK-kl-fLy" kind="relationship" relationship="rootViewController" id="1IP-WW-b4u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="euy-q8-jth" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5704" y="-224"/>
         </scene>
         <!--Camera View Controller-->
         <scene sceneID="uEm-Q5-ksS">
@@ -268,28 +309,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RUH-LN-RNi">
-                                <rect key="frame" x="0.0" y="44" width="413" height="735"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RUH-LN-RNi">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHO-54-Er1">
-                                <rect key="frame" x="167" y="787" width="80" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="RUH-LN-RNi" firstAttribute="centerX" secondItem="Z5h-3x-x4z" secondAttribute="centerX" id="OH5-fr-xGf"/>
+                            <constraint firstItem="RUH-LN-RNi" firstAttribute="bottom" secondItem="SIG-e6-NQD" secondAttribute="bottom" id="bLN-5Q-Adi"/>
+                            <constraint firstItem="RUH-LN-RNi" firstAttribute="top" secondItem="SIG-e6-NQD" secondAttribute="top" id="nFs-uq-jZI"/>
+                            <constraint firstItem="RUH-LN-RNi" firstAttribute="leading" secondItem="SIG-e6-NQD" secondAttribute="leading" id="p3d-cO-3sj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="SIG-e6-NQD"/>
                     </view>
+                    <navigationItem key="navigationItem" id="VjW-b7-ezG"/>
                     <connections>
                         <outlet property="cameraImage" destination="RUH-LN-RNi" id="MUT-WR-qfd"/>
-                        <outlet property="photoButton" destination="AHO-54-Er1" id="Rfg-lh-l7W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Ap-ln-wHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6957.971014492754" y="160.71428571428569"/>
+            <point key="canvasLocation" x="8086.9565217391309" y="137.94642857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="w6y-9U-3mF">
@@ -305,13 +346,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HXi-pc-hjK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6959" y="-586"/>
+            <point key="canvasLocation" x="8088" y="-538"/>
         </scene>
-        <!--Rutas-->
+        <!--Itinerarios-->
         <scene sceneID="Fbh-xA-riv">
             <objects>
                 <navigationController id="byJ-6N-lSw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rutas" image="map" catalog="system" id="efH-ju-Vg7"/>
+                    <tabBarItem key="tabBarItem" title="Itinerarios" image="map" catalog="system" id="efH-ju-Vg7"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p4G-ob-2YT">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

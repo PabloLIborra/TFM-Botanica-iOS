@@ -11,14 +11,17 @@ import UIKit
 class CameraViewController: UIViewController {
 
     @IBOutlet weak var cameraImage: UIImageView!
-    @IBOutlet weak var photoButton: UIButton!
+    var imageFromCamera: UIImage!
+    var imagePicker: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.photoButton.layer.cornerRadius = 40
+        if(self.imageFromCamera != nil) {
+            self.cameraImage.image = self.imageFromCamera
+            self.cameraImage.contentMode = .scaleAspectFill
+        }
         
     }
-    
 
 }

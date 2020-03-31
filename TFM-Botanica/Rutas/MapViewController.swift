@@ -79,7 +79,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
 //    MARK: Functions
     
     @objc func buttonAction() {
-        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "activityController")
+        let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "activityNavigation") as! UINavigationController
         viewController.modalPresentationStyle = .automatic
         self.present(viewController, animated: true, completion: nil)
     }
