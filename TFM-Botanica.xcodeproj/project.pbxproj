@@ -20,6 +20,9 @@
 		1A5723AB24323F5000ADDEBB /* CustomInfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1A5723AA24323F5000ADDEBB /* CustomInfoWindow.xib */; };
 		1A5723AD2432400200ADDEBB /* CustomInfoWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723AC2432400200ADDEBB /* CustomInfoWindow.swift */; };
 		1A5723B02432570700ADDEBB /* PlantasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723AF2432570700ADDEBB /* PlantasTableViewController.swift */; };
+		1A5723B22433419E00ADDEBB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B12433419E00ADDEBB /* ActivityViewController.swift */; };
+		1A5723B42433487000ADDEBB /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B32433487000ADDEBB /* InitViewController.swift */; };
+		1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B52433522C00ADDEBB /* CameraViewController.swift */; };
 		BD375F031EF417E5784B1CF9 /* Pods_TFM_Botanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096AA9B0A70D68542C996141 /* Pods_TFM_Botanica.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +43,9 @@
 		1A5723AA24323F5000ADDEBB /* CustomInfoWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomInfoWindow.xib; sourceTree = "<group>"; };
 		1A5723AC2432400200ADDEBB /* CustomInfoWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInfoWindow.swift; sourceTree = "<group>"; };
 		1A5723AF2432570700ADDEBB /* PlantasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantasTableViewController.swift; sourceTree = "<group>"; };
+		1A5723B12433419E00ADDEBB /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		1A5723B32433487000ADDEBB /* InitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewController.swift; sourceTree = "<group>"; };
+		1A5723B52433522C00ADDEBB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		49B57BB4BC93C8C5A404B45C /* Pods-TFM-Botanica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.debug.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.debug.xcconfig"; sourceTree = "<group>"; };
 		C0A4CA91A12F1BF741A538B5 /* Pods-TFM-Botanica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.release.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +87,7 @@
 				1A5723862432008B00ADDEBB /* SceneDelegate.swift */,
 				1A5723882432008B00ADDEBB /* ViewController.swift */,
 				1A57238A2432008B00ADDEBB /* Main.storyboard */,
+				1A5723B32433487000ADDEBB /* InitViewController.swift */,
 				1A57239F24320A7000ADDEBB /* Rutas */,
 				1A5723AE2432566A00ADDEBB /* Plantas */,
 				1A5723902432008D00ADDEBB /* Assets.xcassets */,
@@ -99,6 +106,8 @@
 				1A5723A224321F3A00ADDEBB /* MapViewController.swift */,
 				1A5723AA24323F5000ADDEBB /* CustomInfoWindow.xib */,
 				1A5723AC2432400200ADDEBB /* CustomInfoWindow.swift */,
+				1A5723B12433419E00ADDEBB /* ActivityViewController.swift */,
+				1A5723B52433522C00ADDEBB /* CameraViewController.swift */,
 			);
 			path = Rutas;
 			sourceTree = "<group>";
@@ -247,7 +256,10 @@
 				1A5723AD2432400200ADDEBB /* CustomInfoWindow.swift in Sources */,
 				1A57239C243204B000ADDEBB /* RutasTableViewController.swift in Sources */,
 				1A57238F2432008B00ADDEBB /* TFM_Botanica.xcdatamodeld in Sources */,
+				1A5723B22433419E00ADDEBB /* ActivityViewController.swift in Sources */,
 				1A5723892432008B00ADDEBB /* ViewController.swift in Sources */,
+				1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */,
+				1A5723B42433487000ADDEBB /* InitViewController.swift in Sources */,
 				1A5723B02432570700ADDEBB /* PlantasTableViewController.swift in Sources */,
 				1A5723852432008B00ADDEBB /* AppDelegate.swift in Sources */,
 				1A5723872432008B00ADDEBB /* SceneDelegate.swift in Sources */,

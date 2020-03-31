@@ -42,11 +42,22 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         self.customInfoWindow?.titleLabel.text = self.tappedMarker?.title
         self.customInfoWindow?.subtitleLabel.text = self.tappedMarker?.snippet
+        
         self.customInfoWindow?.button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        self.customInfoWindow?.button.layer.cornerRadius = 8
+        self.customInfoWindow?.button.layer.borderWidth = 1
+        self.customInfoWindow?.button.layer.borderColor = UIColor.black.cgColor
+        self.customInfoWindow?.button.layer.backgroundColor = UIColor.systemBlue.cgColor
+        self.customInfoWindow?.button.setTitleColor(UIColor.white, for: .normal)
+        
         self.customInfoWindow?.center = self.mapView.projection.point(for: self.tappedMarker!.position)
         self.customInfoWindow?.center.y -= 100
-        self.customInfoWindow?.layer.backgroundColor = UIColor(red: 0.5, green: 1, blue: 1, alpha: 1).cgColor
-        self.customInfoWindow?.layer.cornerRadius = 10
+        
+        self.customInfoWindow?.layer.backgroundColor = UIColor.white.cgColor
+        self.customInfoWindow?.layer.borderColor = UIColor.black.cgColor
+        self.customInfoWindow?.layer.borderWidth = 1
+        self.customInfoWindow?.layer.cornerRadius = 8
+        
         self.mapView.addSubview(self.customInfoWindow!)
         return false
     }
@@ -69,7 +80,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     @objc func buttonAction() {
         let viewController:UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "activityController")
-        viewController.modalPresentationStyle = .fullScreen
+        viewController.modalPresentationStyle = .automatic
         self.present(viewController, animated: true, completion: nil)
     }
 }
