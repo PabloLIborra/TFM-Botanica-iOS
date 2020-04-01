@@ -21,7 +21,6 @@ class CameraViewController: UIViewController {
             self.cameraImage.image = self.imageFromCamera
             self.cameraImage.contentMode = .scaleAspectFill
         }
-        
     }
 
 }

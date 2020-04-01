@@ -32,15 +32,14 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         self.captureButton.layer.borderColor = UIColor.black.cgColor
         self.captureButton.layer.backgroundColor = UIColor.systemBlue.cgColor
         self.captureButton.setTitleColor(UIColor.white, for: .normal)
-        
-        self.imagePicker.sourceType = .camera
-        self.imagePicker.delegate = self
     }
     
     @IBAction func questionAction(_ sender: Any) {
     }
     
     @IBAction func captureAction(_ sender: Any) {
+        self.imagePicker.sourceType = .camera
+        self.imagePicker.delegate = self
         present(imagePicker, animated: true, completion: nil)
     }
     
