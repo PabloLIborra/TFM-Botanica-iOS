@@ -1,5 +1,5 @@
 //
-//  RutasTableViewCell.swift
+//  RouteTableViewCell.swift
 //  TFM-Botanica
 //
 //  Created by Pablo López Iborra on 30/03/2020.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class RutasTableViewCell: UITableViewCell {
+class RouteTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     
 }
