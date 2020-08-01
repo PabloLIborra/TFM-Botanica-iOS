@@ -29,6 +29,8 @@
 		1A84BC8A246AA9AC00E92EE6 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */; };
 		1A84BC8C246AB42A00E92EE6 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A84BC8B246AB42A00E92EE6 /* iOSDropDown.framework */; };
 		1AB2DB0324D593D800A2AB91 /* PlantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0224D593D800A2AB91 /* PlantsViewController.swift */; };
+		1AB2DB0824D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */; };
+		1AB2DB0924D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */; };
 		BD375F031EF417E5784B1CF9 /* Pods_TFM_Botanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096AA9B0A70D68542C996141 /* Pods_TFM_Botanica.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +60,8 @@
 		1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1A84BC8B246AB42A00E92EE6 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AB2DB0224D593D800A2AB91 /* PlantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsViewController.swift; sourceTree = "<group>"; };
+		1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderViewRoutesTableViewCell.swift; sourceTree = "<group>"; };
+		1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderViewRoutesTableViewCell.xib; sourceTree = "<group>"; };
 		49B57BB4BC93C8C5A404B45C /* Pods-TFM-Botanica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.debug.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.debug.xcconfig"; sourceTree = "<group>"; };
 		C0A4CA91A12F1BF741A538B5 /* Pods-TFM-Botanica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.release.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -133,6 +137,8 @@
 				1A5723B52433522C00ADDEBB /* CameraViewController.swift */,
 				1A175D242443292C0073181C /* QuestionTableViewController.swift */,
 				1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */,
+				1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */,
+				1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */,
 			);
 			path = Routes;
 			sourceTree = "<group>";
@@ -226,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A5723AB24323F5000ADDEBB /* CustomInfoWindow.xib in Resources */,
+				1AB2DB0924D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib in Resources */,
 				1A5723942432008D00ADDEBB /* LaunchScreen.storyboard in Resources */,
 				1A5723912432008D00ADDEBB /* Assets.xcassets in Resources */,
 				1A57238C2432008B00ADDEBB /* Main.storyboard in Resources */,
@@ -314,6 +321,7 @@
 				1AB2DB0324D593D800A2AB91 /* PlantsViewController.swift in Sources */,
 				1A84BC842469915D00E92EE6 /* TFM_Botanica.xcdatamodeld in Sources */,
 				1A5723A124320BC800ADDEBB /* RouteTableViewCell.swift in Sources */,
+				1AB2DB0824D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift in Sources */,
 				1A5723A324321F3A00ADDEBB /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

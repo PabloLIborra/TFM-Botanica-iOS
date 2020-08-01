@@ -10,8 +10,21 @@ import UIKit
 
 class RouteTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var informationLabel: UILabel!
     @IBOutlet weak var progressLabel: UILabel!
     
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.cardView.layer.cornerRadius = 8
+        
+        let contactRect = CGRect(x: 0, y: 0, width: self.cardView.bounds.width, height: self.cardView.bounds.height)
+        self.cardView.layer.shadowPath = UIBezierPath(rect: contactRect).cgPath
+        self.cardView.layer.shadowRadius = 5
+        self.cardView.layer.shadowOffset = .zero
+        self.cardView.layer.shadowOpacity = 1
+        self.cardView.layer.shadowColor = UIColor.black.cgColor
+    }
 }

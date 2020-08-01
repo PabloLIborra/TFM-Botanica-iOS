@@ -13,7 +13,7 @@ class RouteTableViewController: UITableViewController {
 
     let sections = ["En proceso", "Nuevas", "Completadas"]
     var routesAvailables: [Route] = []
-    var routesOnProgress: [Route] = []
+    var routesInProgress: [Route] = []
     var routesComplete: [Route] = []
     
     private let customRefreshControl = UIRefreshControl()
@@ -23,6 +23,8 @@ class RouteTableViewController: UITableViewController {
         
         // This will remove extra separators from tableview
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background-routes.jpeg"))
+        self.tableView.backgroundView?.alpha = 0.3
         
         self.addRefreshControl()
 
@@ -51,7 +53,7 @@ class RouteTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
             case State.ON_PROGRESS:
-                return self.routesOnProgress.count
+                return self.routesInProgress.count
             case State.AVAILABLE:
                 return self.routesAvailables.count
             case State.COMPLETE:
@@ -70,7 +72,7 @@ class RouteTableViewController: UITableViewController {
 
         var route: Route = Route()
         if(indexPath.section == State.ON_PROGRESS) {
-            route = routesOnProgress[indexPath.row]
+            route = routesInProgress[indexPath.row]
         } else if(indexPath.section == State.AVAILABLE) {
             route = routesAvailables[indexPath.row]
         } else if(indexPath.section == State.COMPLETE) {
@@ -91,8 +93,35 @@ class RouteTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 80.0
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = Bundle.main.loadNibNamed("CustomHeaderViewRoutesTableViewCell", owner: self, options: nil)?.first as! CustomHeaderViewRoutesTableViewCell
+        
+        switch section {
+            case 0:
+                headerView.headerImage.image = UIImage(named: "inProcess-route-icon.png")
+                headerView.headerLabel.text = sections[section]
+            case 1:
+                headerView.headerImage.image = UIImage(named: "new-route-icon.png")
+                headerView.headerLabel.text = sections[section]
+            case 2:
+                headerView.headerImage.image = UIImage(named: "completed-route-icon.png")
+                headerView.headerLabel.text = sections[section]
+            default:
+                break
+        }
+        
+        return headerView
+    }
+    
+    /*override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor.red
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.textColor = UIColor.black
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 18.0)
+    }*/
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -102,7 +131,7 @@ class RouteTableViewController: UITableViewController {
                 
                 var route: Route = Route()
                 if(indexPath.section == State.ON_PROGRESS) {
-                    route = routesOnProgress[indexPath.row]
+                    route = routesInProgress[indexPath.row]
                 } else if(indexPath.section == State.AVAILABLE) {
                     route = routesAvailables[indexPath.row]
                 } else if(indexPath.section == State.COMPLETE) {
@@ -123,7 +152,7 @@ class RouteTableViewController: UITableViewController {
     }
     
     func updateData() {
-        self.routesOnProgress = []
+        self.routesInProgress = []
         self.routesAvailables = []
         self.routesComplete = []
         
@@ -162,7 +191,7 @@ class RouteTableViewController: UITableViewController {
         
         for route in routes! {
             if(route.state == State.ON_PROGRESS) {
-                self.routesOnProgress.append(route)
+                self.routesInProgress.append(route)
             } else if(route.state == State.AVAILABLE) {
                 self.routesAvailables.append(route)
             } else if(route.state == State.COMPLETE) {

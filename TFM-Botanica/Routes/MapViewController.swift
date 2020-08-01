@@ -35,7 +35,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.updateRouteData()
         self.updateMarkers()
         
-        let camera = GMSCameraPosition.camera(withLatitude: activities[0].latitude, longitude: activities[0].longitude, zoom: 15)
+        var camera: GMSCameraPosition
+        if activities.count > 0 {
+            camera = GMSCameraPosition.camera(withLatitude: activities[0].latitude, longitude: activities[0].longitude, zoom: 15)
+        }
+        else
+        {
+            camera = GMSCameraPosition.camera(withLatitude: 38.385750, longitude: -0.514250, zoom: 15)
+        }
         self.mapView.camera = camera
         
         if(self.stateRoute == State.AVAILABLE) {
