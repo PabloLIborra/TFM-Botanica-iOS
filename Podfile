@@ -8,5 +8,6 @@ target 'TFM-Botanica' do
   # Pods for TFM-Botanica
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'iOSDropDown' 
 
 end

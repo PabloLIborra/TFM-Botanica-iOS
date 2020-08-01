@@ -21,6 +21,9 @@ class RouteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // This will remove extra separators from tableview
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
         self.addRefreshControl()
 
         self.updateInterface()

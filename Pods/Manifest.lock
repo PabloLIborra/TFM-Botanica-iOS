@@ -6,20 +6,24 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.8.0):
     - GoogleMaps/Base (= 3.8.0)
+  - iOSDropDown (0.3.4)
 
 DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
+  - iOSDropDown
 
 SPEC REPOS:
   trunk:
     - GoogleMaps
     - GooglePlaces
+    - iOSDropDown
 
 SPEC CHECKSUMS:
   GoogleMaps: 7c8d66d70e4e8c300f43a7219d8fdaad7b325a9a
   GooglePlaces: d5f70c3e9e427964fdeca1301a665d276ccd8754
+  iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
 
-PODFILE CHECKSUM: f941074277ccc0602f8ca6d562f5450e65e16aca
+PODFILE CHECKSUM: 81e6a4b339bcd86382c0fa01f74c25f0f027914c
 
 COCOAPODS: 1.9.1

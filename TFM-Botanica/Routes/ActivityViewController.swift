@@ -124,47 +124,49 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     func updateActivityStateFromCoreData(state: Int) {
-        guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let miContexto = miDelegate.persistentContainer.viewContext
-        
-        let requestRoutes : NSFetchRequest<Route> = NSFetchRequest(entityName:"Route")
-        let routes = try? miContexto.fetch(requestRoutes)
-        
-        if(routes!.count > 0) {
-            for route in routes! {
-                if(self.activity?.route == route) {
-                    let activities = route.activities?.allObjects as! [Activity]
-                    for activity in activities {
-                        if self.activity == activity {
-                            activity.state = Int16(state)
-                            self.activity? = activity
+        if(self.activity?.state != Int16(State.COMPLETE)) {
+            guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let miContexto = miDelegate.persistentContainer.viewContext
+            
+            let requestRoutes : NSFetchRequest<Route> = NSFetchRequest(entityName:"Route")
+            let routes = try? miContexto.fetch(requestRoutes)
+            
+            if(routes!.count > 0) {
+                for route in routes! {
+                    if(self.activity?.route == route) {
+                        let activities = route.activities?.allObjects as! [Activity]
+                        for activity in activities {
+                            if self.activity == activity {
+                                activity.state = Int16(state)
+                                self.activity? = activity
 
-                            var updateRoute = false
-                            if(route.state == State.AVAILABLE) {
-                                route.state = Int16(State.ON_PROGRESS)
-                                updateRoute = true
-                            }
-                            
-                            if(route.state == State.ON_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
-                                route.state = Int16(State.COMPLETE)
-                                updateRoute = true
-                            }
-                            
-                            if (updateRoute == true) {
-                                self.mapViewController?.route = route
-                                self.mapViewController?.updateFromActivityChange()
+                                var updateRoute = false
+                                if(route.state == State.AVAILABLE) {
+                                    route.state = Int16(State.ON_PROGRESS)
+                                    updateRoute = true
+                                }
+                                
+                                if(route.state == State.ON_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
+                                    route.state = Int16(State.COMPLETE)
+                                    updateRoute = true
+                                }
+                                
+                                if (updateRoute == true) {
+                                    self.mapViewController?.route = route
+                                    self.mapViewController?.updateFromActivityChange()
+                                }
                             }
                         }
                     }
                 }
-            }
 
-            do {
-                try miContexto.save()
-            } catch let error as NSError  {
-                print("Error al guardar el contexto: \(error)")
+                do {
+                    try miContexto.save()
+                } catch let error as NSError  {
+                    print("Error al guardar el contexto: \(error)")
+                }
             }
         }
     }
