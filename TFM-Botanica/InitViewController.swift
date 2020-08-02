@@ -74,7 +74,7 @@ class InitViewController: UIViewController {
             
             let route2 = Route(context:miContexto)
             route2.name = "Ruta Palmeras"
-            route2.information = "Ruta destinada a la vista de Palmeras. Podremos ver los diferentes tipos."
+            route2.information = "Ruta destinada a la vista de Palmeras. Podremos ver los diferentes tipos. Cada actividad de esta sección esta compuesta por unas preguntas de prueba."
             route2.state = Int16(State.ON_PROGRESS)
             
             let activity4 = Activity(context: miContexto)

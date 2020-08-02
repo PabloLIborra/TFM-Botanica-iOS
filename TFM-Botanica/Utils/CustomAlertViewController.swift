@@ -15,7 +15,7 @@ class CustomAlertViewController: UIViewController {
     //Principal
     @IBOutlet weak var name: UILabel!
     var nameText:String = ""
-    @IBOutlet weak var information: UILabel!
+    @IBOutlet weak var information: UITextView!
     var informationText:String = ""
     
     //Legend
@@ -51,15 +51,21 @@ class CustomAlertViewController: UIViewController {
         self.alertBox?.layer.cornerRadius = 30
         
         self.name.text = self.nameText
+        
         self.information.text = self.informationText
+        
         self.inactiveImage.image = self.imageInactive
         self.inactiveText.text = self.textInactive
+        
         self.availableImage.image = self.imageAvailable
         self.availableText.text = self.textAvailable
+        
         self.onProgressImage.image = self.imageOnProgress
         self.onProgressText.text = self.textOnProgress
+        
         self.completeImage.image = self.imageComplete
         self.completeText.text = self.textComplete
+        
         self.closeButton.setTitle(self.textButton, for: .normal)
     }
     

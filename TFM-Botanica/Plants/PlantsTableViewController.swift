@@ -17,22 +17,16 @@ class PlantsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        for plant in plants {
-            let plantKey = String(plant.prefix(1))
-                if var plantValues = plantsDictionary[plantKey] {
-                    plantValues.append(plant)
-                    plantsDictionary[plantKey] = plantValues
-                } else {
-                    plantsDictionary[plantKey] = [plant]
-                }
-        }
         
-        // 2
-        plantSectionTitles = [String](plantsDictionary.keys)
-        plantSectionTitles = plantSectionTitles.sorted(by: { $0 < $1 })
+        self.tableView.tableFooterView = UIView(frame: CGRect.zero)
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background-plants.jpeg"))
+        self.tableView.backgroundView?.contentMode = .scaleAspectFill
+        self.tableView.backgroundView?.alpha = 0.3
+        
+        self.tableView.contentInset.top = 10.0
         
         self.updateInterface()
+        self.loadPlantsCoreData()
     }
 
     // MARK: - Table view data source
@@ -57,28 +51,34 @@ class PlantsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "plantasCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "plantasCell", for: indexPath) as! PlantsTableViewCell
         
         let plantKey = plantSectionTitles[indexPath.section]
         if let plantValues = plantsDictionary[plantKey] {
-            cell.textLabel?.text = plantValues[indexPath.row]
+            cell.nameLabel.text = plantValues[indexPath.row]
+            cell.plantImage.image = UIImage(named: "background-plants.jpeg")
         }
 
         return cell
     }
     
-    // MARK: Functions
-    func updateInterface() {
-        //Create report button
-        let reportButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(reportActionButton))
-        reportButton.image = UIImage(systemName: "exclamationmark.triangle")
-        self.navigationItem.rightBarButtonItems = [reportButton]
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70.0
     }
     
-    @objc func reportActionButton() {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = Bundle.main.loadNibNamed("CustomHeaderViewPlantsTableViewCell", owner: self, options: nil)?.first as! CustomHeaderViewPlantsTableViewCell
         
+        headerView.titleLabel.text = self.plantSectionTitles[section]
+        
+        return headerView
     }
     
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "plantSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
@@ -104,5 +104,33 @@ class PlantsTableViewController: UITableViewController {
         }
         return true
     }
-
+    
+    // MARK: Functions
+    func updateInterface() {
+        //Create report button
+        let reportButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(reportActionButton))
+        reportButton.image = UIImage(systemName: "exclamationmark.triangle")
+        self.navigationItem.rightBarButtonItems = [reportButton]
+    }
+    
+    @objc func reportActionButton() {
+        
+    }
+    
+    // MARK: ToDo: Cambiar a core data y no datos fijos
+    func loadPlantsCoreData() {
+        for plant in plants {
+            let plantKey = String(plant.prefix(1))
+                if var plantValues = plantsDictionary[plantKey] {
+                    plantValues.append(plant)
+                    plantsDictionary[plantKey] = plantValues
+                } else {
+                    plantsDictionary[plantKey] = [plant]
+                }
+        }
+        
+        // 2
+        plantSectionTitles = [String](plantsDictionary.keys)
+        plantSectionTitles = plantSectionTitles.sorted(by: { $0 < $1 })
+    }
 }

@@ -31,6 +31,9 @@
 		1AB2DB0324D593D800A2AB91 /* PlantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0224D593D800A2AB91 /* PlantsViewController.swift */; };
 		1AB2DB0824D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */; };
 		1AB2DB0924D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */; };
+		1AB2DB0B24D6D13500A2AB91 /* PlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0A24D6D13500A2AB91 /* PlantsTableViewCell.swift */; };
+		1AB2DB0E24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0C24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.swift */; };
+		1AB2DB0F24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0D24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.xib */; };
 		BD375F031EF417E5784B1CF9 /* Pods_TFM_Botanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096AA9B0A70D68542C996141 /* Pods_TFM_Botanica.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,9 @@
 		1AB2DB0224D593D800A2AB91 /* PlantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsViewController.swift; sourceTree = "<group>"; };
 		1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderViewRoutesTableViewCell.swift; sourceTree = "<group>"; };
 		1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderViewRoutesTableViewCell.xib; sourceTree = "<group>"; };
+		1AB2DB0A24D6D13500A2AB91 /* PlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsTableViewCell.swift; sourceTree = "<group>"; };
+		1AB2DB0C24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderViewPlantsTableViewCell.swift; sourceTree = "<group>"; };
+		1AB2DB0D24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderViewPlantsTableViewCell.xib; sourceTree = "<group>"; };
 		49B57BB4BC93C8C5A404B45C /* Pods-TFM-Botanica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.debug.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.debug.xcconfig"; sourceTree = "<group>"; };
 		C0A4CA91A12F1BF741A538B5 /* Pods-TFM-Botanica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.release.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,7 +153,10 @@
 			isa = PBXGroup;
 			children = (
 				1A5723AF2432570700ADDEBB /* PlantsTableViewController.swift */,
+				1AB2DB0A24D6D13500A2AB91 /* PlantsTableViewCell.swift */,
 				1AB2DB0224D593D800A2AB91 /* PlantsViewController.swift */,
+				1AB2DB0C24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.swift */,
+				1AB2DB0D24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.xib */,
 			);
 			path = Plants;
 			sourceTree = "<group>";
@@ -231,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AB2DB0F24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.xib in Resources */,
 				1A5723AB24323F5000ADDEBB /* CustomInfoWindow.xib in Resources */,
 				1AB2DB0924D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib in Resources */,
 				1A5723942432008D00ADDEBB /* LaunchScreen.storyboard in Resources */,
@@ -311,7 +321,9 @@
 				1A5723892432008B00ADDEBB /* ViewController.swift in Sources */,
 				1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */,
 				1A175D29244467020073181C /* CustomMarker.swift in Sources */,
+				1AB2DB0B24D6D13500A2AB91 /* PlantsTableViewCell.swift in Sources */,
 				1A175D252443292C0073181C /* QuestionTableViewController.swift in Sources */,
+				1AB2DB0E24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.swift in Sources */,
 				1A5723B42433487000ADDEBB /* InitViewController.swift in Sources */,
 				1A84BC8A246AA9AC00E92EE6 /* QuestionTableViewCell.swift in Sources */,
 				1A5723B02432570700ADDEBB /* PlantsTableViewController.swift in Sources */,

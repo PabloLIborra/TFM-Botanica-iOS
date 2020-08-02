@@ -24,6 +24,7 @@ class RouteTableViewController: UITableViewController {
         // This will remove extra separators from tableview
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "background-routes.jpeg"))
+        self.tableView.backgroundView?.contentMode = .scaleAspectFill
         self.tableView.backgroundView?.alpha = 0.3
         
         self.tableView.contentInset.top = 10.0
@@ -108,16 +109,14 @@ class RouteTableViewController: UITableViewController {
         switch section {
             case 0:
                 headerView.headerImage.image = UIImage(named: "inProcess-route-icon.png")
-                headerView.headerLabel.text = sections[section]
             case 1:
                 headerView.headerImage.image = UIImage(named: "new-route-icon.png")
-                headerView.headerLabel.text = sections[section]
             case 2:
                 headerView.headerImage.image = UIImage(named: "completed-route-icon.png")
-                headerView.headerLabel.text = sections[section]
             default:
                 break
         }
+        headerView.headerLabel.text = self.sections[section]
         
         return headerView
     }
