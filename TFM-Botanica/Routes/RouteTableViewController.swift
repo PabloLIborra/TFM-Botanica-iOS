@@ -26,6 +26,8 @@ class RouteTableViewController: UITableViewController {
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "background-routes.jpeg"))
         self.tableView.backgroundView?.alpha = 0.3
         
+        self.tableView.contentInset.top = 10.0
+        
         self.addRefreshControl()
 
         self.updateInterface()
@@ -94,6 +96,10 @@ class RouteTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -165,8 +171,8 @@ class RouteTableViewController: UITableViewController {
     }
     
     func addRefreshControl() {
-        self.customRefreshControl.tintColor = UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)
-        let attributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0.25, green:0.72, blue:0.85, alpha:1.0)]
+        self.customRefreshControl.tintColor = UIColor(red:0, green:0, blue:0, alpha:1.0)
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0, green:0, blue:0, alpha:1.0)]
         self.customRefreshControl.attributedTitle = NSAttributedString(string: "Actualizando Rutas ...", attributes: attributes)
 
         if #available(iOS 10.0, *) {
