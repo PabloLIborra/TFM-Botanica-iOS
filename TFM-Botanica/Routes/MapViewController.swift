@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import CoreData
 
 class MapViewController: UIViewController, GMSMapViewDelegate {
     
@@ -24,6 +25,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     var information: String = "Información de la ruta"
     var stateRoute: Int = -1
     
+    //Check to complete route
+    var numCompletedActivities = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +35,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.tappedMarker = CustomMarker(state: 0)
         self.customInfoWindow = CustomInfoWindow().loadView()
         
-        self.updateInteface()
+        self.updateInterface()
         self.updateRouteData()
         self.updateMarkers()
         
@@ -65,13 +69,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.customInfoWindow?.button.layer.cornerRadius = 8
         self.customInfoWindow?.button.layer.borderWidth = 1
         self.customInfoWindow?.button.layer.borderColor = UIColor.black.cgColor
-        self.customInfoWindow?.button.layer.backgroundColor = UIColor.systemBlue.cgColor
+        self.customInfoWindow?.button.layer.backgroundColor = UIColor.init(red: 45/255, green: 118/255, blue: 79/255, alpha: 1.0).cgColor
         self.customInfoWindow?.button.setTitleColor(UIColor.white, for: .normal)
         
         self.customInfoWindow?.center = self.mapView.projection.point(for: self.tappedMarker!.position)
         self.customInfoWindow?.center.y -= 100
         
-        self.customInfoWindow?.layer.backgroundColor = UIColor.white.cgColor
+        self.customInfoWindow?.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
         self.customInfoWindow?.layer.borderColor = UIColor.black.cgColor
         self.customInfoWindow?.layer.borderWidth = 1
         self.customInfoWindow?.layer.cornerRadius = 8
@@ -114,10 +118,47 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.markers = []
         for activity in activities {
             self.addMapMarker(latitude: activity.latitude, longitude: activity.longitude, title: activity.title!, subtitle: activity.subtitle!, state: Int(activity.state))
+            
+            if activity.state == State.COMPLETE {
+                self.numCompletedActivities += 1
+            }
+        }
+        
+        if self.activities.count == self.numCompletedActivities {
+            self.route?.state = Int16(State.COMPLETE)
+            self.updateRouteFromCoreData()
+        } else if self.activities.count >= self.numCompletedActivities && self.activities[0].state != State.AVAILABLE {
+            self.route?.state = Int16(State.IN_PROGRESS)
+            self.updateRouteFromCoreData()
         }
     }
     
-    func updateInteface() {
+    func updateRouteFromCoreData() {
+        guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let miContexto = miDelegate.persistentContainer.viewContext
+        
+        let requestRoutes : NSFetchRequest<Route> = NSFetchRequest(entityName:"Route")
+        let routes = try? miContexto.fetch(requestRoutes)
+        
+        if(routes!.count > 0) {
+            for route in routes! {
+                if route == self.route {
+                    route.state = Int16(self.route!.state)
+                }
+            }
+
+            do {
+                try miContexto.save()
+            } catch let error as NSError  {
+                print("Error al guardar el contexto: \(error)")
+            }
+        }
+        
+    }
+    
+    func updateInterface() {
         //Create report button
         let reportButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(reportActionButton))
         reportButton.image = UIImage(systemName: "exclamationmark.triangle")

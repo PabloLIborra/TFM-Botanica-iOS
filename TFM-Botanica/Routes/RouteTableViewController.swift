@@ -55,7 +55,7 @@ class RouteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-            case State.ON_PROGRESS:
+            case State.IN_PROGRESS:
                 return self.routesInProgress.count
             case State.AVAILABLE:
                 return self.routesAvailables.count
@@ -74,7 +74,7 @@ class RouteTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell", for: indexPath) as! RouteTableViewCell
 
         var route: Route = Route()
-        if(indexPath.section == State.ON_PROGRESS) {
+        if(indexPath.section == State.IN_PROGRESS) {
             route = routesInProgress[indexPath.row]
         } else if(indexPath.section == State.AVAILABLE) {
             route = routesAvailables[indexPath.row]
@@ -135,7 +135,7 @@ class RouteTableViewController: UITableViewController {
                 let destiny = segue.destination as! MapViewController
                 
                 var route: Route = Route()
-                if(indexPath.section == State.ON_PROGRESS) {
+                if(indexPath.section == State.IN_PROGRESS) {
                     route = routesInProgress[indexPath.row]
                 } else if(indexPath.section == State.AVAILABLE) {
                     route = routesAvailables[indexPath.row]
@@ -195,7 +195,7 @@ class RouteTableViewController: UITableViewController {
         routes!.sort(by: {$0.name!.lowercased() < $1.name!.lowercased()})
         
         for route in routes! {
-            if(route.state == State.ON_PROGRESS) {
+            if(route.state == State.IN_PROGRESS) {
                 self.routesInProgress.append(route)
             } else if(route.state == State.AVAILABLE) {
                 self.routesAvailables.append(route)

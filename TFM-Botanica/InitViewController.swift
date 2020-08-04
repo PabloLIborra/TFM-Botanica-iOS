@@ -11,6 +11,7 @@ import CoreData
 
 class InitViewController: UIViewController {
 
+    @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var initButton: UIButton!
     
@@ -20,8 +21,18 @@ class InitViewController: UIViewController {
         self.initButton.layer.cornerRadius = 8
         self.initButton.layer.borderWidth = 1
         self.initButton.layer.borderColor = UIColor.black.cgColor
-        self.initButton.layer.backgroundColor = UIColor.systemBlue.cgColor
-        self.initButton.setTitleColor(UIColor.white, for: .normal)
+        self.initButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
+        self.initButton.setTitleColor(UIColor.black, for: .normal)
+        
+        self.backgroundImage.image = UIImage(named: "background-init.jpg")
+        self.backgroundImage.contentMode = .scaleAspectFill
+        self.backgroundImage.alpha = 0.3
+        
+        nameLabel.layer.shadowColor = UIColor.black.cgColor
+        nameLabel.layer.shadowRadius = 5.0
+        nameLabel.layer.shadowOpacity = 1.0
+        nameLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
+        nameLabel.layer.masksToBounds = false
         
         loadExampleRoutes()
     }
@@ -57,7 +68,7 @@ class InitViewController: UIViewController {
             activity2.longitude = -0.516452
             activity2.title = "Aulario 1"
             activity2.subtitle = "Aulario"
-            activity2.state = Int16(State.ON_PROGRESS)
+            activity2.state = Int16(State.IN_PROGRESS)
             activity2.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             activity2.route = route3
             route3.addToActivities(activity2)
@@ -75,7 +86,7 @@ class InitViewController: UIViewController {
             let route2 = Route(context:miContexto)
             route2.name = "Ruta Palmeras"
             route2.information = "Ruta destinada a la vista de Palmeras. Podremos ver los diferentes tipos. Cada actividad de esta sección esta compuesta por unas preguntas de prueba."
-            route2.state = Int16(State.ON_PROGRESS)
+            route2.state = Int16(State.IN_PROGRESS)
             
             let activity4 = Activity(context: miContexto)
             activity4.latitude = 38.383827

@@ -18,6 +18,10 @@ class RouteTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+    }
+    
+    override func layoutSubviews() {
         self.cardView.layer.cornerRadius = 8
         
         let shadowRect = CGRect(x: 0, y: 0, width: self.cardView.bounds.width, height: self.cardView.bounds.height)
@@ -26,5 +30,7 @@ class RouteTableViewCell: UITableViewCell {
         self.cardView.layer.shadowOffset = .zero
         self.cardView.layer.shadowOpacity = 1
         self.cardView.layer.shadowColor = UIColor.black.cgColor
+        self.cardView.layer.shouldRasterize = true
+        self.cardView.layer.rasterizationScale = UIScreen.main.scale
     }
 }

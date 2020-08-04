@@ -14,6 +14,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     var mapViewController: MapViewController?
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var photoImage: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextView!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var stateImageColor: UIImageView!
@@ -44,23 +45,25 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         self.startButton.layer.cornerRadius = 8
         self.startButton.layer.borderWidth = 1
         self.startButton.layer.borderColor = UIColor.black.cgColor
-        self.startButton.layer.backgroundColor = UIColor.systemBlue.cgColor
-        self.startButton.setTitleColor(UIColor.white, for: .normal)
+        self.startButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
+        self.startButton.setTitleColor(UIColor.black, for: .normal)
         
         self.questionButton.layer.cornerRadius = 8
         self.questionButton.layer.borderWidth = 1
         self.questionButton.layer.borderColor = UIColor.black.cgColor
-        self.questionButton.layer.backgroundColor = UIColor.systemBlue.cgColor
-        self.questionButton.setTitleColor(UIColor.white, for: .normal)
+        self.questionButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
+        self.questionButton.setTitleColor(UIColor.black, for: .normal)
+        
         self.captureButton.layer.cornerRadius = 8
         self.captureButton.layer.borderWidth = 1
         self.captureButton.layer.borderColor = UIColor.black.cgColor
-        self.captureButton.layer.backgroundColor = UIColor.systemBlue.cgColor
-        self.captureButton.setTitleColor(UIColor.white, for: .normal)
+        self.captureButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
+        self.captureButton.setTitleColor(UIColor.black, for: .normal)
         
         //Update data inteface
         self.updateActivityState()
         self.titleLabel.text = self.activity?.title
+        self.photoImage.image = UIImage(named: "background-routes.jpeg")
         self.descriptionTextField.text = self.activity?.information
         
         self.updateButtonState()
@@ -72,7 +75,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         switch self.activity?.state {
             case Int16(State.INACTIVE):
                 break;
-            case Int16(State.ON_PROGRESS):
+            case Int16(State.IN_PROGRESS):
                 self.startButton.isEnabled = false
                 self.startButton.alpha = 0.3
                 self.captureButton.isEnabled = true
@@ -103,7 +106,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
             case Int16(State.INACTIVE):
                 self.stateImageColor.tintColor = UIColor.gray
                 self.stateLabel.text = "Estado: Inactiva"
-            case Int16(State.ON_PROGRESS):
+            case Int16(State.IN_PROGRESS):
                 self.stateImageColor.tintColor = UIColor.red
                 self.stateLabel.text = "Estado: En Proceso"
             case Int16(State.COMPLETE):
@@ -119,7 +122,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func startActionButton(_ sender: Any) {
-        self.updateActivityStateFromCoreData(state: State.ON_PROGRESS)
+        self.updateActivityStateFromCoreData(state: State.IN_PROGRESS)
         self.updateInterface()
     }
     
@@ -144,11 +147,11 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
 
                                 var updateRoute = false
                                 if(route.state == State.AVAILABLE) {
-                                    route.state = Int16(State.ON_PROGRESS)
+                                    route.state = Int16(State.IN_PROGRESS)
                                     updateRoute = true
                                 }
                                 
-                                if(route.state == State.ON_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
+                                if(route.state == State.IN_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
                                     route.state = Int16(State.COMPLETE)
                                     updateRoute = true
                                 }

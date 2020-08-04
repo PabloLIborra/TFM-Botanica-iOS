@@ -11,7 +11,7 @@ import GoogleMaps
 
 struct State {
     //CONSTANTS: State of the marker
-    public static let ON_PROGRESS = 0
+    public static let IN_PROGRESS = 0
     public static let AVAILABLE = 1
     public static let COMPLETE = 2
     public static let INACTIVE = 3
@@ -27,7 +27,7 @@ class CustomMarker: GMSMarker {
         self.state = state
         
         switch state {
-            case State.ON_PROGRESS:
+            case State.IN_PROGRESS:
                 self.icon = GMSMarker.markerImage(with: UIColor.red)
             case State.AVAILABLE:
                 self.icon = GMSMarker.markerImage(with: UIColor.cyan)
@@ -45,7 +45,7 @@ class CustomMarker: GMSMarker {
         self.state = state
         
         switch state {
-            case State.ON_PROGRESS:
+            case State.IN_PROGRESS:
                 self.icon = GMSMarker.markerImage(with: UIColor.red)
                 self.isTappable = true
             case State.AVAILABLE:
