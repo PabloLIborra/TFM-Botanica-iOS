@@ -100,6 +100,14 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     // MARK: Functions
+    func unlockNextActivityFromActivityChange(activity: Activity) {
+        let indexPath = self.activities.firstIndex(of: activity)
+        if indexPath != self.activities.count - 1 {
+            self.activities[indexPath! + 1].state = Int16(State.AVAILABLE)
+            self.updateFromActivityChange()
+        }
+    }
+    
     func updateFromActivityChange() {
         self.updateRouteData()
         self.updateMarkers()
@@ -114,6 +122,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     
     func updateMarkers() {
         // Add Markers into the map
+        self.numCompletedActivities = 0
         self.mapView.clear()
         self.markers = []
         for activity in activities {

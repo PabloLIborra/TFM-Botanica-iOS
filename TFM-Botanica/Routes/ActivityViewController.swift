@@ -67,7 +67,6 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         self.descriptionTextField.text = self.activity?.information
         
         self.updateButtonState()
-        
     }
     
     func updateButtonState() {
@@ -151,8 +150,12 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
                                     updateRoute = true
                                 }
                                 
-                                if(route.state == State.IN_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
+                                if(route.state == State.IN_PROGRESS && activities[activities.count - 1] != activity && state == State.COMPLETE) {
+                                    self.mapViewController?.unlockNextActivityFromActivityChange(activity: activity)
+                                } else if(route.state == State.IN_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
                                     route.state = Int16(State.COMPLETE)
+                                    updateRoute = true
+                                } else if(route.state == State.IN_PROGRESS && state == State.IN_PROGRESS) {
                                     updateRoute = true
                                 }
                                 
@@ -179,6 +182,10 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @IBAction func questionAction(_ sender: Any) {
+        
+    }
+    
+    func completeRoute() {
         self.updateActivityStateFromCoreData(state: State.COMPLETE)
         self.updateInterface()
     }
@@ -197,6 +204,10 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
                     vc?.imageFromCamera = self.cameraImage
                 }
             }
+        }
+        if segue.identifier == "questionSegue" {
+            let destiny = segue.destination as! QuestionTableViewController
+            destiny.activityViewController = self
         }
     }
     

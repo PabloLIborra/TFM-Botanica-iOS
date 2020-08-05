@@ -25,6 +25,7 @@
 		1A5723B22433419E00ADDEBB /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B12433419E00ADDEBB /* ActivityViewController.swift */; };
 		1A5723B42433487000ADDEBB /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B32433487000ADDEBB /* InitViewController.swift */; };
 		1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B52433522C00ADDEBB /* CameraViewController.swift */; };
+		1A83BCC624DAB3BD00A69665 /* SendQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */; };
 		1A84BC842469915D00E92EE6 /* TFM_Botanica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC822469915D00E92EE6 /* TFM_Botanica.xcdatamodeld */; };
 		1A84BC8A246AA9AC00E92EE6 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */; };
 		1A84BC8C246AB42A00E92EE6 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A84BC8B246AB42A00E92EE6 /* iOSDropDown.framework */; };
@@ -59,6 +60,7 @@
 		1A5723B12433419E00ADDEBB /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
 		1A5723B32433487000ADDEBB /* InitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewController.swift; sourceTree = "<group>"; };
 		1A5723B52433522C00ADDEBB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1A84BC832469915D00E92EE6 /* TFM_Botanica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TFM_Botanica.xcdatamodel; sourceTree = "<group>"; };
 		1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1A84BC8B246AB42A00E92EE6 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +145,7 @@
 				1A5723B52433522C00ADDEBB /* CameraViewController.swift */,
 				1A175D242443292C0073181C /* QuestionTableViewController.swift */,
 				1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */,
+				1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */,
 				1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */,
 				1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */,
 			);
@@ -328,6 +331,7 @@
 				1A84BC8A246AA9AC00E92EE6 /* QuestionTableViewCell.swift in Sources */,
 				1A5723B02432570700ADDEBB /* PlantsTableViewController.swift in Sources */,
 				1A5723852432008B00ADDEBB /* AppDelegate.swift in Sources */,
+				1A83BCC624DAB3BD00A69665 /* SendQuestionTableViewCell.swift in Sources */,
 				1A175D342445EE3D0073181C /* CustomAlertViewController.swift in Sources */,
 				1A5723872432008B00ADDEBB /* SceneDelegate.swift in Sources */,
 				1AB2DB0324D593D800A2AB91 /* PlantsViewController.swift in Sources */,

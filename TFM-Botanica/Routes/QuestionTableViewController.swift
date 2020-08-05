@@ -11,10 +11,15 @@ import iOSDropDown
 
 class QuestionTableViewController: UITableViewController {
     
+    var activityViewController: ActivityViewController?
+    
     var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 1)
     
     let questionCellHeight: CGFloat = 88.0
     let answerCellHeight: CGFloat = 55.0
+    let finishCellHeight: CGFloat = 55.0
+    
+    let temporalSizeTable = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +40,7 @@ class QuestionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return temporalSizeTable
     }
 
     
@@ -43,7 +48,7 @@ class QuestionTableViewController: UITableViewController {
         
         var cell: UITableViewCell!
         
-        if self.selectedCellIndexPath.row == indexPath.row {
+        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != temporalSizeTable - 1{
             let questionCell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as! QuestionTableViewCell
 
             questionCell.titleLable.text = "Hola"
@@ -51,36 +56,48 @@ class QuestionTableViewController: UITableViewController {
             questionCell.answerDropDown.optionIds = [1,23,54,22]
             
             cell = questionCell
-        } else {
+        } else if indexPath.row != temporalSizeTable - 1 {
             let answerCell = tableView.dequeueReusableCell(withIdentifier: "answerCell", for: indexPath)
 
             answerCell.textLabel!.text = "Hola"
             
             cell = answerCell
+        } else {
+            let finishCell = tableView.dequeueReusableCell(withIdentifier: "finishCell", for: indexPath)
+            
+            cell = finishCell
         }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.selectedCellIndexPath.row == indexPath.row {
+        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != temporalSizeTable - 1{
             return self.questionCellHeight
+        } else if indexPath.row != temporalSizeTable - 1 {
+            return self.answerCellHeight
+        } else {
+            return self.finishCellHeight
         }
-        return self.answerCellHeight
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedCellIndexPath = indexPath
+        if indexPath.row != temporalSizeTable - 1 {
+            self.selectedCellIndexPath = indexPath
 
-        tableView.beginUpdates()
-        tableView.endUpdates()
+            tableView.beginUpdates()
+            tableView.endUpdates()
 
-        // This ensures, that the cell is fully visible once expanded
-        tableView.scrollToRow(at: indexPath, at: .none, animated: true)
-        tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
+            // This ensures, that the cell is fully visible once expanded
+            tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+            tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
+        }
     }
     
-
+    @IBAction func finishAction(_ sender: Any) {
+        self.activityViewController?.completeRoute()
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

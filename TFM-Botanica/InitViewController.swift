@@ -51,14 +51,14 @@ class InitViewController: UIViewController {
             let route3 = Route(context:miContexto)
             route3.name = "Ruta Pinos"
             route3.information = "Ruta destinada a los Pinos."
-            route3.state = Int16(State.COMPLETE)
+            route3.state = Int16(State.AVAILABLE)
             
             let activity = Activity(context: miContexto)
             activity.latitude = 38.385750
             activity.longitude = -0.514250
             activity.title = "Universidad de Alicante"
             activity.subtitle = "Alicante"
-            activity.state = Int16(State.INACTIVE)
+            activity.state = Int16(State.AVAILABLE)
             activity.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
             activity.route = route3
             route3.addToActivities(activity)
@@ -68,7 +68,7 @@ class InitViewController: UIViewController {
             activity2.longitude = -0.516452
             activity2.title = "Aulario 1"
             activity2.subtitle = "Aulario"
-            activity2.state = Int16(State.IN_PROGRESS)
+            activity2.state = Int16(State.INACTIVE)
             activity2.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             activity2.route = route3
             route3.addToActivities(activity2)
@@ -78,10 +78,12 @@ class InitViewController: UIViewController {
             activity3.longitude = -0.511912
             activity3.title = "Escuela Politécnica Superior"
             activity3.subtitle = "EPS"
-            activity3.state = Int16(State.COMPLETE)
+            activity3.state = Int16(State.INACTIVE)
             activity3.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
             activity3.route = route3
             route3.addToActivities(activity3)
+            
+/*
             
             let route2 = Route(context:miContexto)
             route2.name = "Ruta Palmeras"
@@ -127,6 +129,8 @@ class InitViewController: UIViewController {
             activity5.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
             activity5.route = route6
             route6.addToActivities(activity5)
+ 
+ */
             
             do {
                try miContexto.save()
