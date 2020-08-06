@@ -14,6 +14,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <entity name="Plant" representedClassName="Plant" syncable="YES" codeGenerationType="class">
+        <attribute name="family" optional="YES" attributeType="String"/>
         <attribute name="information" optional="YES" attributeType="String"/>
         <attribute name="scientific_name" optional="YES" attributeType="String"/>
         <attribute name="unlock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
@@ -33,9 +34,9 @@
     </entity>
     <elements>
         <element name="Activity" positionX="-54" positionY="18" width="128" height="163"/>
-        <element name="Route" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Plant" positionX="-63" positionY="63" width="128" height="118"/>
-        <element name="Question" positionX="-54" positionY="72" width="128" height="88"/>
         <element name="Answer" positionX="-36" positionY="81" width="128" height="58"/>
+        <element name="Plant" positionX="-63" positionY="63" width="128" height="133"/>
+        <element name="Question" positionX="-54" positionY="72" width="128" height="88"/>
+        <element name="Route" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>

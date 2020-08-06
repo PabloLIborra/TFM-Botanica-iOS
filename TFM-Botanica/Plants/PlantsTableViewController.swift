@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class PlantsTableViewController: UITableViewController {
 
-    var plantsDictionary = [String: [String]]()
+    var plantsDictionary = [String: [Plant]]()
     var plantSectionTitles = [String]()
     
-    let plants = ["Audi", "Aston Martin","BMW", "Bugatti", "Bentley","Chevrolet", "Cadillac","Dodge","Ferrari", "Ford","Honda","Jaguar","Lamborghini","Mercedes", "Mazda","Nissan","Porsche","Rolls Royce","Toyota","Volkswagen"]
+    private let customRefreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,17 @@ class PlantsTableViewController: UITableViewController {
         
         self.tableView.contentInset.top = 10.0
         
+        self.addRefreshControl()
+        
         self.updateInterface()
         self.loadPlantsCoreData()
+    }
+    
+    @objc private func refreshTableData() {
+        DispatchQueue.main.async {
+            self.updateData()
+            self.customRefreshControl.endRefreshing()
+        }
     }
 
     // MARK: - Table view data source
@@ -55,10 +65,14 @@ class PlantsTableViewController: UITableViewController {
         
         let plantKey = plantSectionTitles[indexPath.section]
         if let plantValues = plantsDictionary[plantKey] {
-            cell.nameLabel.text = plantValues[indexPath.row]
+            cell.nameLabel.text = plantValues[indexPath.row].scientific_name
             cell.plantImage.image = UIImage(named: "background-plants.jpeg")
+            
+            if plantValues[indexPath.row].unlock == false{
+                cell.setInteractableCardView(interactable: false)
+            }
         }
-
+        
         return cell
     }
     
@@ -80,28 +94,39 @@ class PlantsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "plantSegue" {
-            if let indexPath = self.tableView.indexPathForSelectedRow {
-                if segue.destination is PlantsViewController {
-                    let plantController = segue.destination as? PlantsViewController
-                    let plantKey = plantSectionTitles[indexPath.section]
-                    if let plantValues = plantsDictionary[plantKey] {
-                        plantController?.title = plantValues[indexPath.row]
-                        plantController?.family = "Prueba"
-                        plantController?.photoName = "background-routes.jpeg"
-                        plantController?.textDescription = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
-                        
+
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            let plantKey = plantSectionTitles[indexPath.section]
+            if let plantValues = plantsDictionary[plantKey] {
+                if plantValues[indexPath.row].unlock {
+                    if segue.identifier == "plantSegue" {
+                        if segue.destination is PlantsViewController {
+                            let plantController = segue.destination as? PlantsViewController
+                            let plantKey = plantSectionTitles[indexPath.section]
+                            if let plantValues = plantsDictionary[plantKey] {
+                                plantController?.title = plantValues[indexPath.row].scientific_name
+                                plantController?.family = plantValues[indexPath.row].family!
+                                plantController?.photoName = "background-routes.jpeg"
+                                plantController?.textDescription = plantValues[indexPath.row].information!
+                            }
+                        }
                     }
                 }
             }
         }
-        
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if(identifier == "cameraSegue") {
-            return false
+        if let indexPath = self.tableView.indexPathForSelectedRow {
+            let plantKey = plantSectionTitles[indexPath.section]
+            if let plantValues = plantsDictionary[plantKey] {
+                if !plantValues[indexPath.row].unlock {
+                    self.tableView.deselectRow(at: indexPath, animated: true)
+                    return false
+                }
+            }
         }
+        
         return true
     }
     
@@ -113,24 +138,53 @@ class PlantsTableViewController: UITableViewController {
         self.navigationItem.rightBarButtonItems = [reportButton]
     }
     
+    func updateData() {
+        plantsDictionary = [String: [Plant]]()
+        plantSectionTitles = [String]()
+        
+        self.loadPlantsCoreData()
+        self.tableView.reloadData()
+    }
+    
     @objc func reportActionButton() {
         
     }
     
     // MARK: ToDo: Cambiar a core data y no datos fijos
     func loadPlantsCoreData() {
-        for plant in plants {
-            let plantKey = String(plant.prefix(1))
-                if var plantValues = plantsDictionary[plantKey] {
-                    plantValues.append(plant)
-                    plantsDictionary[plantKey] = plantValues
-                } else {
-                    plantsDictionary[plantKey] = [plant]
-                }
+        guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let miContexto = miDelegate.persistentContainer.viewContext
+        
+        let requestPlants : NSFetchRequest<Plant> = NSFetchRequest(entityName:"Plant")
+        let plants = try? miContexto.fetch(requestPlants)
+        
+        for plant in plants! {
+            let plantKey = String(plant.scientific_name!.prefix(1))
+            if var plantValues = plantsDictionary[plantKey] {
+                plantValues.append(plant)
+                plantsDictionary[plantKey] = plantValues
+            } else {
+                plantsDictionary[plantKey] = [plant]
+            }
         }
         
-        // 2
         plantSectionTitles = [String](plantsDictionary.keys)
         plantSectionTitles = plantSectionTitles.sorted(by: { $0 < $1 })
+    }
+    
+    func addRefreshControl() {
+        self.customRefreshControl.tintColor = UIColor(red:0, green:0, blue:0, alpha:1.0)
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor(red:0, green:0, blue:0, alpha:1.0)]
+        self.customRefreshControl.attributedTitle = NSAttributedString(string: "Actualizando Plantas ...", attributes: attributes)
+
+        if #available(iOS 10.0, *) {
+           tableView.refreshControl = customRefreshControl
+        } else {
+           tableView.addSubview(customRefreshControl)
+        }
+
+        customRefreshControl.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
     }
 }

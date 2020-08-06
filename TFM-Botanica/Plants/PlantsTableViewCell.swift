@@ -32,4 +32,12 @@ class PlantsTableViewCell: UITableViewCell {
         
         self.plantImage.layer.cornerRadius = 8
     }
+    
+    func setInteractableCardView(interactable: Bool) {
+        if interactable == true {
+            self.cardView.layer.backgroundColor = UIColor.greenCell.cgColor
+        } else {
+            self.cardView.layer.backgroundColor = UIColor.gray.cgColor
+        }
+    }
 }

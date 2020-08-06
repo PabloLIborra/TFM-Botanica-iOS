@@ -152,8 +152,10 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
                                 
                                 if(route.state == State.IN_PROGRESS && activities[activities.count - 1] != activity && state == State.COMPLETE) {
                                     self.mapViewController?.unlockNextActivityFromActivityChange(activity: activity)
+                                    self.activity?.plant?.unlock = true
                                 } else if(route.state == State.IN_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
                                     route.state = Int16(State.COMPLETE)
+                                    self.activity?.plant?.unlock = true
                                     updateRoute = true
                                 } else if(route.state == State.IN_PROGRESS && state == State.IN_PROGRESS) {
                                     updateRoute = true

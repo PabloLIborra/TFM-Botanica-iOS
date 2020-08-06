@@ -63,6 +63,14 @@ class InitViewController: UIViewController {
             activity.route = route3
             route3.addToActivities(activity)
             
+            let plant = Plant(context: miContexto)
+            plant.scientific_name = "Planta de prueba"
+            plant.family = "Familia de prueba"
+            plant.information = "Planta de prueba, aqui solo voy a escribir informacion de prueba"
+            plant.unlock = false
+            plant.activity = activity
+            activity.plant = plant
+            
             let activity2 = Activity(context: miContexto)
             activity2.latitude = 38.383827
             activity2.longitude = -0.516452
@@ -72,6 +80,14 @@ class InitViewController: UIViewController {
             activity2.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             activity2.route = route3
             route3.addToActivities(activity2)
+            
+            let plant2 = Plant(context: miContexto)
+            plant2.scientific_name = "Planta de prueba2"
+            plant2.family = "Familia de prueba2"
+            plant2.information = "Planta de prueba2, aqui solo voy a escribir informacion de prueba"
+            plant2.unlock = false
+            plant2.activity = activity2
+            activity2.plant = plant2
             
             let activity3 = Activity(context: miContexto)
             activity3.latitude = 38.387711
