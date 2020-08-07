@@ -32,6 +32,10 @@ class PlantsTableViewController: UITableViewController {
         self.loadPlantsCoreData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.updateData()
+    }
+    
     @objc private func refreshTableData() {
         DispatchQueue.main.async {
             self.updateData()
@@ -70,6 +74,8 @@ class PlantsTableViewController: UITableViewController {
             
             if plantValues[indexPath.row].unlock == false{
                 cell.setInteractableCardView(interactable: false)
+            } else {
+                cell.setInteractableCardView(interactable: true)
             }
         }
         
@@ -94,7 +100,6 @@ class PlantsTableViewController: UITableViewController {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         if let indexPath = self.tableView.indexPathForSelectedRow {
             let plantKey = plantSectionTitles[indexPath.section]
             if let plantValues = plantsDictionary[plantKey] {
@@ -150,7 +155,6 @@ class PlantsTableViewController: UITableViewController {
         
     }
     
-    // MARK: ToDo: Cambiar a core data y no datos fijos
     func loadPlantsCoreData() {
         guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -158,7 +162,9 @@ class PlantsTableViewController: UITableViewController {
         let miContexto = miDelegate.persistentContainer.viewContext
         
         let requestPlants : NSFetchRequest<Plant> = NSFetchRequest(entityName:"Plant")
-        let plants = try? miContexto.fetch(requestPlants)
+        var plants = try? miContexto.fetch(requestPlants)
+        
+        plants!.sort(by: {$0.scientific_name!.lowercased() < $1.scientific_name!.lowercased()})
         
         for plant in plants! {
             let plantKey = String(plant.scientific_name!.prefix(1))

@@ -210,6 +210,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         if segue.identifier == "questionSegue" {
             let destiny = segue.destination as! QuestionTableViewController
             destiny.activityViewController = self
+            destiny.plant = self.activity?.plant
         }
     }
     

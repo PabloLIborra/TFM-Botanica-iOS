@@ -118,6 +118,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.information = route!.information!
         self.stateRoute = Int(route!.state)
         self.activities = route!.activities?.allObjects as! [Activity]
+        
+        self.activities.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
     }
     
     func updateMarkers() {

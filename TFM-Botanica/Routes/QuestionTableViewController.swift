@@ -12,6 +12,9 @@ import iOSDropDown
 class QuestionTableViewController: UITableViewController {
     
     var activityViewController: ActivityViewController?
+    var plant: Plant?
+    
+    var questions: [Question] = []
     
     var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 1)
     
@@ -19,7 +22,7 @@ class QuestionTableViewController: UITableViewController {
     let answerCellHeight: CGFloat = 55.0
     let finishCellHeight: CGFloat = 55.0
     
-    let temporalSizeTable = 4
+    var tableSize = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +32,7 @@ class QuestionTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
 
         self.updateInterface()
+        self.updateQuestionData()
     }
     
     // MARK: - Table view data source
@@ -40,7 +44,7 @@ class QuestionTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return temporalSizeTable
+        return self.tableSize
     }
 
     
@@ -48,18 +52,23 @@ class QuestionTableViewController: UITableViewController {
         
         var cell: UITableViewCell!
         
-        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != temporalSizeTable - 1{
+        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != self.tableSize - 1{
             let questionCell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as! QuestionTableViewCell
 
-            questionCell.titleLable.text = "Hola"
-            questionCell.answerDropDown.optionArray = ["Option 1", "Option 2", "Option 3"]
-            questionCell.answerDropDown.optionIds = [1,23,54,22]
+            questionCell.titleLable.text = self.questions[indexPath.row].title
+            let answers = self.questions[indexPath.row].answers?.allObjects as! [Answer]
+            var answersString: [String] = []
+            for answer in answers {
+                answersString.append(answer.title!)
+            }
+            answersString.shuffle()
+            questionCell.answerDropDown.optionArray = answersString
             
             cell = questionCell
-        } else if indexPath.row != temporalSizeTable - 1 {
+        } else if indexPath.row != self.tableSize - 1 {
             let answerCell = tableView.dequeueReusableCell(withIdentifier: "answerCell", for: indexPath)
 
-            answerCell.textLabel!.text = "Hola"
+            answerCell.textLabel!.text = self.questions[indexPath.row].title
             
             cell = answerCell
         } else {
@@ -72,9 +81,9 @@ class QuestionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != temporalSizeTable - 1{
+        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != self.tableSize - 1{
             return self.questionCellHeight
-        } else if indexPath.row != temporalSizeTable - 1 {
+        } else if indexPath.row != self.tableSize - 1 {
             return self.answerCellHeight
         } else {
             return self.finishCellHeight
@@ -82,7 +91,7 @@ class QuestionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row != temporalSizeTable - 1 {
+        if indexPath.row != self.tableSize - 1 {
             self.selectedCellIndexPath = indexPath
 
             tableView.beginUpdates()
@@ -95,56 +104,11 @@ class QuestionTableViewController: UITableViewController {
     }
     
     @IBAction func finishAction(_ sender: Any) {
+        
         self.activityViewController?.completeRoute()
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     // MARK: Functions
-    
     func updateInterface() {
         //Create report button
         let reportButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(reportActionButton))
@@ -154,6 +118,12 @@ class QuestionTableViewController: UITableViewController {
     
     @objc func reportActionButton() {
         
+    }
+    
+    func updateQuestionData() {
+        self.questions = plant!.questions?.allObjects as! [Question]
+        self.questions.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
+        self.tableSize = self.questions.count + 1
     }
 
 }

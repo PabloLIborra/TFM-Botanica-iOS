@@ -58,6 +58,7 @@ class InitViewController: UIViewController {
             activity.longitude = -0.514250
             activity.title = "Universidad de Alicante"
             activity.subtitle = "Alicante"
+            activity.date = Date()
             activity.state = Int16(State.AVAILABLE)
             activity.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
             activity.route = route3
@@ -71,11 +72,26 @@ class InitViewController: UIViewController {
             plant.activity = activity
             activity.plant = plant
             
+            let question = Question(context: miContexto)
+            question.title = "¿Cómo me llamo?"
+            question.date = Date()
+            plant.addToQuestions(question)
+            
+            let answer = Answer(context: miContexto)
+            answer.title = "Pablo"
+            let answer2 = Answer(context: miContexto)
+            answer2.title = "Pedro"
+            
+            question.true_answer = answer
+            question.addToAnswers(answer)
+            question.addToAnswers(answer2)
+            
             let activity2 = Activity(context: miContexto)
             activity2.latitude = 38.383827
             activity2.longitude = -0.516452
             activity2.title = "Aulario 1"
             activity2.subtitle = "Aulario"
+            activity2.date = Date()
             activity2.state = Int16(State.INACTIVE)
             activity2.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
             activity2.route = route3
@@ -95,6 +111,7 @@ class InitViewController: UIViewController {
             activity3.title = "Escuela Politécnica Superior"
             activity3.subtitle = "EPS"
             activity3.state = Int16(State.INACTIVE)
+            activity3.date = Date()
             activity3.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
             activity3.route = route3
             route3.addToActivities(activity3)
