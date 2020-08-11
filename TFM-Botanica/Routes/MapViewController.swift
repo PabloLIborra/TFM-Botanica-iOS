@@ -37,6 +37,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         self.updateInterface()
         self.updateRouteData()
+        self.checkActivitiesFromCoreData()
         self.updateMarkers()
         
         var camera: GMSCameraPosition
@@ -157,11 +158,65 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             for route in routes! {
                 if route == self.route {
                     route.state = Int16(self.route!.state)
+                    break
                 }
             }
 
             do {
                 try miContexto.save()
+            } catch let error as NSError  {
+                print("Error al guardar el contexto: \(error)")
+            }
+        }
+        
+    }
+    
+    func checkActivitiesFromCoreData() {
+        guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let miContexto = miDelegate.persistentContainer.viewContext
+        
+        let requestRoutes : NSFetchRequest<Route> = NSFetchRequest(entityName:"Route")
+        let routes = try? miContexto.fetch(requestRoutes)
+        
+        if(routes!.count > 0) {
+            var changeActivity = false
+            var changedActivity = Activity()
+            routesLoop: for route in routes! {
+                if route == self.route {
+                    let activities = self.activities
+                    activitiesLoop: for activity in activities {
+                        if activity.state != State.COMPLETE {
+                            if activity.state != State.IN_PROGRESS {
+                                if activity.state != State.AVAILABLE {
+                                    if activity.state == State.INACTIVE {
+                                        activity.state = Int16(State.AVAILABLE)
+                                        changedActivity = activity
+                                        changeActivity = true
+                                    }
+                                }
+                            }
+                            break activitiesLoop
+                        }
+                    }
+                    if changeActivity == true {
+                        let activities = route.activities?.allObjects as! [Activity]
+                        activitiesLoop: for activity in activities {
+                            if activity.latitude == changedActivity.latitude && activity.longitude == changedActivity.longitude {
+                                activity.state = changedActivity.state
+                                break activitiesLoop
+                            }
+                        }
+                    }
+                    break routesLoop
+                }
+            }
+
+            do {
+                if changeActivity == true {
+                    try miContexto.save()
+                }
             } catch let error as NSError  {
                 print("Error al guardar el contexto: \(error)")
             }
@@ -186,7 +241,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
 
     @objc func informationActionButton() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let informationAlert = storyboard.instantiateViewController(withIdentifier: "informationAlert") as! CustomAlertViewController
+        let informationAlert = storyboard.instantiateViewController(withIdentifier: "informationAlert") as! CustomMapAlertViewController
         informationAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
         informationAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         
@@ -215,6 +270,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         for activity in self.activities {
             if activity.latitude == self.tappedMarker!.position.latitude && activity.longitude == self.tappedMarker!.position.longitude {
                 activityController.activity = activity
+                break
             }
         }
         

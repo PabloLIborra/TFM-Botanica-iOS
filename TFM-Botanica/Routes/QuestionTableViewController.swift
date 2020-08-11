@@ -18,7 +18,7 @@ class QuestionTableViewController: UITableViewController {
     
     var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 1)
     
-    let questionCellHeight: CGFloat = 88.0
+    let questionCellHeight: CGFloat = 99.0
     let answerCellHeight: CGFloat = 55.0
     let finishCellHeight: CGFloat = 55.0
     
@@ -26,6 +26,10 @@ class QuestionTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "background-questions.jpeg"))
+        self.tableView.backgroundView?.contentMode = .scaleAspectFill
+        self.tableView.backgroundView?.alpha = 0.3
         
         self.tableView.selectRow(at: selectedCellIndexPath, animated: true, scrollPosition: UITableView.ScrollPosition.none)
         // This will remove extra separators from tableview
@@ -52,7 +56,7 @@ class QuestionTableViewController: UITableViewController {
         
         var cell: UITableViewCell!
         
-        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != self.tableSize - 1{
+        if /*self.selectedCellIndexPath.row == indexPath.row &&*/ indexPath.row != self.tableSize - 1{
             let questionCell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as! QuestionTableViewCell
 
             questionCell.titleLable.text = self.questions[indexPath.row].title
@@ -63,15 +67,17 @@ class QuestionTableViewController: UITableViewController {
             }
             answersString.shuffle()
             questionCell.answerDropDown.optionArray = answersString
+            questionCell.trueAnswer = self.questions[indexPath.row].true_answer!.title!
+            questionCell.checkTrueAnswer()
             
             cell = questionCell
-        } else if indexPath.row != self.tableSize - 1 {
+        } /*else if indexPath.row != self.tableSize - 1 {
             let answerCell = tableView.dequeueReusableCell(withIdentifier: "answerCell", for: indexPath)
 
             answerCell.textLabel!.text = self.questions[indexPath.row].title
             
             cell = answerCell
-        } else {
+        }*/ else {
             let finishCell = tableView.dequeueReusableCell(withIdentifier: "finishCell", for: indexPath)
             
             cell = finishCell
@@ -81,11 +87,11 @@ class QuestionTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.selectedCellIndexPath.row == indexPath.row && indexPath.row != self.tableSize - 1{
+        if /*self.selectedCellIndexPath.row == indexPath.row &&*/ indexPath.row != self.tableSize - 1{
             return self.questionCellHeight
-        } else if indexPath.row != self.tableSize - 1 {
+        } /*else if indexPath.row != self.tableSize - 1 {
             return self.answerCellHeight
-        } else {
+        }*/ else {
             return self.finishCellHeight
         }
     }
@@ -93,19 +99,15 @@ class QuestionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != self.tableSize - 1 {
             self.selectedCellIndexPath = indexPath
-
+            /*
             tableView.beginUpdates()
             tableView.endUpdates()
 
             // This ensures, that the cell is fully visible once expanded
             tableView.scrollToRow(at: indexPath, at: .none, animated: true)
             tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
+            */
         }
-    }
-    
-    @IBAction func finishAction(_ sender: Any) {
-        
-        self.activityViewController?.completeRoute()
     }
     
     // MARK: Functions
@@ -125,5 +127,35 @@ class QuestionTableViewController: UITableViewController {
         self.questions.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
         self.tableSize = self.questions.count + 1
     }
-
+    
+    @IBAction func finishAction(_ sender: Any) {
+        var result = true
+        for i in 0..<tableSize-1 {
+            let indexPath = IndexPath(row: i, section: 0)
+            let cell = tableView.cellForRow(at: indexPath) as! QuestionTableViewCell
+            if result == true && cell.isCorrected == false {
+                result = cell.isCorrected
+            }
+            cell.changeColor()
+        }
+        if result == true {
+            self.activityViewController?.completedRoute()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.showCompletedTestAlertView()
+            }
+        }
+    }
+    
+    func showCompletedTestAlertView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let completedTestController = storyboard.instantiateViewController(withIdentifier: "completedTestController") as! CustomTestAlertViewController
+        completedTestController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        completedTestController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        completedTestController.textTitle = "Test Completado"
+        completedTestController.textInformation = "Has completado con éxito el test.\nYa puedes ver con detalle la planta oculta."
+        completedTestController.plant = self.plant
+        
+        self.present(completedTestController, animated: true, completion: nil)
+    }
 }

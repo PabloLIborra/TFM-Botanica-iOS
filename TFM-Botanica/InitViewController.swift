@@ -49,8 +49,8 @@ class InitViewController: UIViewController {
         if(routes?.count == 0) {
             
             let route3 = Route(context:miContexto)
-            route3.name = "Ruta Pinos"
-            route3.information = "Ruta destinada a los Pinos."
+            route3.name = "Ruta Pinooooooooooooooos"
+            route3.information = "Ruta destinada a los Pinoooooooooooooos."
             route3.state = Int16(State.AVAILABLE)
             
             let activity = Activity(context: miContexto)
@@ -65,8 +65,8 @@ class InitViewController: UIViewController {
             route3.addToActivities(activity)
             
             let plant = Plant(context: miContexto)
-            plant.scientific_name = "Planta de prueba"
-            plant.family = "Familia de prueba"
+            plant.scientific_name = "Planta de pruebaaaaaaaaaaaaaaa"
+            plant.family = "Familia de pruebaaaaaaaaaaaaaaaaaaa"
             plant.information = "Planta de prueba, aqui solo voy a escribir informacion de prueba"
             plant.unlock = false
             plant.activity = activity
@@ -85,6 +85,34 @@ class InitViewController: UIViewController {
             question.true_answer = answer
             question.addToAnswers(answer)
             question.addToAnswers(answer2)
+            
+            let question2 = Question(context: miContexto)
+            question2.title = "¿Cómo te llamas?"
+            question2.date = Date()
+            plant.addToQuestions(question2)
+            
+            let answer3 = Answer(context: miContexto)
+            answer3.title = "Julian"
+            let answer4 = Answer(context: miContexto)
+            answer4.title = "Federico"
+            
+            question2.true_answer = answer3
+            question2.addToAnswers(answer3)
+            question2.addToAnswers(answer4)
+            
+            let question3 = Question(context: miContexto)
+            question3.title = "¿Cómo te apellidas?"
+            question3.date = Date()
+            plant.addToQuestions(question3)
+            
+            let answer5 = Answer(context: miContexto)
+            answer5.title = "Lopez"
+            let answer6 = Answer(context: miContexto)
+            answer6.title = "Garcia"
+            
+            question3.true_answer = answer5
+            question3.addToAnswers(answer5)
+            question3.addToAnswers(answer6)
             
             let activity2 = Activity(context: miContexto)
             activity2.latitude = 38.383827

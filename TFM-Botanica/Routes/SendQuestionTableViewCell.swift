@@ -18,7 +18,7 @@ class SendQuestionTableViewCell: UITableViewCell {
         self.sendButton.layer.cornerRadius = 8
         self.sendButton.layer.borderWidth = 1
         self.sendButton.layer.borderColor = UIColor.black.cgColor
-        self.sendButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
+        self.sendButton.layer.backgroundColor = UIColor.barColor.cgColor
         self.sendButton.setTitleColor(UIColor.black, for: .normal)
     }
 

@@ -11,4 +11,5 @@ import UIKit
 
 extension UIColor {
     static let greenCell = UIColor(red: 45.0/255.0, green: 118.0/255.0, blue: 79.0/255.0, alpha: 1.0)
+    static let barColor = UIColor(red: 190.0/255.0, green: 255/255.0, blue: 209/255.0, alpha: 1.0)
 }

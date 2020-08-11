@@ -126,6 +126,7 @@ class PlantsTableViewController: UITableViewController {
             let plantKey = plantSectionTitles[indexPath.section]
             if let plantValues = plantsDictionary[plantKey] {
                 if !plantValues[indexPath.row].unlock {
+                    self.showLockedPlantAlertView(plant: plantValues[indexPath.row])
                     self.tableView.deselectRow(at: indexPath, animated: true)
                     return false
                 }
@@ -192,5 +193,19 @@ class PlantsTableViewController: UITableViewController {
         }
 
         customRefreshControl.addTarget(self, action: #selector(refreshTableData), for: .valueChanged)
+    }
+    
+    func showLockedPlantAlertView(plant: Plant) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let lockedPlantAlert = storyboard.instantiateViewController(withIdentifier: "lockedPlantAlert") as! CustomPlantAlertViewController
+        lockedPlantAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        lockedPlantAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        lockedPlantAlert.titleCustom = "Planta Bloqueada"
+        lockedPlantAlert.information = "Para poder visualizar esta planta necesitas desbloquearla. Para ello debes completar la siguiente actividad."
+        lockedPlantAlert.route = plant.activity!.route!.name!
+        lockedPlantAlert.activity = plant.activity!.title!
+        
+        self.present(lockedPlantAlert, animated: true, completion: nil)
     }
 }

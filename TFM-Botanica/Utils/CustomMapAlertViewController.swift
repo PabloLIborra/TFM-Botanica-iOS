@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomAlertViewController: UIViewController {
+class CustomMapAlertViewController: UIViewController {
 
     @IBOutlet weak var alertBox: UIView!
     
@@ -45,7 +45,7 @@ class CustomAlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.alertBox?.layer.backgroundColor = UIColor.white.cgColor
+        self.alertBox?.layer.backgroundColor = UIColor.barColor.cgColor
         self.alertBox?.layer.borderColor = UIColor.black.cgColor
         self.alertBox?.layer.borderWidth = 1
         self.alertBox?.layer.cornerRadius = 30
@@ -53,6 +53,7 @@ class CustomAlertViewController: UIViewController {
         self.name.text = self.nameText
         
         self.information.text = self.informationText
+        self.information?.layer.backgroundColor = UIColor.barColor.cgColor
         
         self.inactiveImage.image = self.imageInactive
         self.inactiveText.text = self.textInactive
@@ -67,6 +68,11 @@ class CustomAlertViewController: UIViewController {
         self.completeText.text = self.textComplete
         
         self.closeButton.setTitle(self.textButton, for: .normal)
+        self.closeButton.layer.cornerRadius = 8
+        self.closeButton.layer.borderWidth = 1
+        self.closeButton.layer.borderColor = UIColor.black.cgColor
+        self.closeButton.layer.backgroundColor = UIColor.greenCell.cgColor
+        self.closeButton.setTitleColor(UIColor.white, for: .normal)
     }
     
     @IBAction func actionButton(_ sender: Any) {

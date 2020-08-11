@@ -153,6 +153,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
                                 if(route.state == State.IN_PROGRESS && activities[activities.count - 1] != activity && state == State.COMPLETE) {
                                     self.mapViewController?.unlockNextActivityFromActivityChange(activity: activity)
                                     self.activity?.plant?.unlock = true
+                                    break
                                 } else if(route.state == State.IN_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
                                     route.state = Int16(State.COMPLETE)
                                     self.activity?.plant?.unlock = true
@@ -164,6 +165,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
                                 if (updateRoute == true) {
                                     self.mapViewController?.route = route
                                     self.mapViewController?.updateFromActivityChange()
+                                    break
                                 }
                             }
                         }
@@ -187,7 +189,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
-    func completeRoute() {
+    func completedRoute() {
         self.updateActivityStateFromCoreData(state: State.COMPLETE)
         self.updateInterface()
     }
