@@ -166,7 +166,7 @@ class RouteTableViewController: UITableViewController {
     }
     
     @objc func reportActionButton() {
-        
+        CustomReportAlertViewController.showReportAlertViewController(view: self)
     }
     
     func addRefreshControl() {

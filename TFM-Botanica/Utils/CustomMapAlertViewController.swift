@@ -73,6 +73,8 @@ class CustomMapAlertViewController: UIViewController {
         self.closeButton.layer.borderColor = UIColor.black.cgColor
         self.closeButton.layer.backgroundColor = UIColor.greenCell.cgColor
         self.closeButton.setTitleColor(UIColor.white, for: .normal)
+        
+        self.name.adjustsFontSizeToFitWidth = true
     }
     
     @IBAction func actionButton(_ sender: Any) {

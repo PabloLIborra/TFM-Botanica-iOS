@@ -153,7 +153,7 @@ class PlantsTableViewController: UITableViewController {
     }
     
     @objc func reportActionButton() {
-        
+        CustomReportAlertViewController.showReportAlertViewController(view: self)
     }
     
     func loadPlantsCoreData() {

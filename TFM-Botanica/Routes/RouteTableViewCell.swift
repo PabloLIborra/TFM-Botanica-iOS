@@ -32,5 +32,7 @@ class RouteTableViewCell: UITableViewCell {
         self.cardView.layer.shadowColor = UIColor.black.cgColor
         self.cardView.layer.shouldRasterize = true
         self.cardView.layer.rasterizationScale = UIScreen.main.scale
+        
+        self.nameLabel.adjustsFontSizeToFitWidth = true
     }
 }

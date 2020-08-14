@@ -27,6 +27,8 @@
 		1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B52433522C00ADDEBB /* CameraViewController.swift */; };
 		1A60E47F24E160B0001FC516 /* CustomPlantAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E47E24E160B0001FC516 /* CustomPlantAlertViewController.swift */; };
 		1A60E48124E2ADF9001FC516 /* CustomTestAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */; };
+		1A60E48424E556E3001FC516 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48324E556E3001FC516 /* CreditsViewController.swift */; };
+		1A60E48624E5615D001FC516 /* CustomReportAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */; };
 		1A83BCC624DAB3BD00A69665 /* SendQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */; };
 		1A83BCC824DC919200A69665 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83BCC724DC919200A69665 /* CustomColors.swift */; };
 		1A84BC842469915D00E92EE6 /* TFM_Botanica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC822469915D00E92EE6 /* TFM_Botanica.xcdatamodeld */; };
@@ -65,6 +67,8 @@
 		1A5723B52433522C00ADDEBB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1A60E47E24E160B0001FC516 /* CustomPlantAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlantAlertViewController.swift; sourceTree = "<group>"; };
 		1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTestAlertViewController.swift; sourceTree = "<group>"; };
+		1A60E48324E556E3001FC516 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
+		1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReportAlertViewController.swift; sourceTree = "<group>"; };
 		1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1A83BCC724DC919200A69665 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		1A84BC832469915D00E92EE6 /* TFM_Botanica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TFM_Botanica.xcdatamodel; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				1A83BCC724DC919200A69665 /* CustomColors.swift */,
 				1A60E47E24E160B0001FC516 /* CustomPlantAlertViewController.swift */,
 				1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */,
+				1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 				1A175D2C244472270073181C /* Utils */,
 				1A57239F24320A7000ADDEBB /* Routes */,
 				1A5723AE2432566A00ADDEBB /* Plants */,
+				1A60E48224E556C8001FC516 /* Credits */,
 				1A5723902432008D00ADDEBB /* Assets.xcassets */,
 				1A5723922432008D00ADDEBB /* LaunchScreen.storyboard */,
 				1A84BC822469915D00E92EE6 /* TFM_Botanica.xcdatamodeld */,
@@ -171,6 +177,14 @@
 				1AB2DB0D24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.xib */,
 			);
 			path = Plants;
+			sourceTree = "<group>";
+		};
+		1A60E48224E556C8001FC516 /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				1A60E48324E556E3001FC516 /* CreditsViewController.swift */,
+			);
+			path = Credits;
 			sourceTree = "<group>";
 		};
 		3A7DED14477416194D574BEA /* Frameworks */ = {
@@ -336,6 +350,7 @@
 				1AB2DB0B24D6D13500A2AB91 /* PlantsTableViewCell.swift in Sources */,
 				1A175D252443292C0073181C /* QuestionTableViewController.swift in Sources */,
 				1AB2DB0E24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.swift in Sources */,
+				1A60E48424E556E3001FC516 /* CreditsViewController.swift in Sources */,
 				1A5723B42433487000ADDEBB /* InitViewController.swift in Sources */,
 				1A84BC8A246AA9AC00E92EE6 /* QuestionTableViewCell.swift in Sources */,
 				1A60E47F24E160B0001FC516 /* CustomPlantAlertViewController.swift in Sources */,
@@ -348,6 +363,7 @@
 				1A83BCC824DC919200A69665 /* CustomColors.swift in Sources */,
 				1AB2DB0324D593D800A2AB91 /* PlantsViewController.swift in Sources */,
 				1A84BC842469915D00E92EE6 /* TFM_Botanica.xcdatamodeld in Sources */,
+				1A60E48624E5615D001FC516 /* CustomReportAlertViewController.swift in Sources */,
 				1A5723A124320BC800ADDEBB /* RouteTableViewCell.swift in Sources */,
 				1AB2DB0824D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift in Sources */,
 				1A5723A324321F3A00ADDEBB /* MapViewController.swift in Sources */,

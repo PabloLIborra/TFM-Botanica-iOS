@@ -60,6 +60,8 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         self.captureButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
         self.captureButton.setTitleColor(UIColor.black, for: .normal)
         
+        self.titleLabel.adjustsFontSizeToFitWidth = true
+        
         //Update data inteface
         self.updateActivityState()
         self.titleLabel.text = self.activity?.title
@@ -182,7 +184,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @objc func reportActionButton() {
-        
+        CustomReportAlertViewController.showReportAlertViewController(view: self)
     }
     
     @IBAction func questionAction(_ sender: Any) {

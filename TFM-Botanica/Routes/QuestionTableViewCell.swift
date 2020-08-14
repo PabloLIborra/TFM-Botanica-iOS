@@ -30,6 +30,10 @@ class QuestionTableViewCell: UITableViewCell {
         self.cardView.layer.shadowColor = UIColor.black.cgColor
         self.cardView.layer.shouldRasterize = true
         self.cardView.layer.rasterizationScale = UIScreen.main.scale
+        
+        self.titleLable.adjustsFontSizeToFitWidth = true
+        
+        self.answerDropDown.adjustsFontSizeToFitWidth = true
     }
     
     func checkTrueAnswer() {
@@ -37,6 +41,8 @@ class QuestionTableViewCell: UITableViewCell {
         self.answerDropDown.didSelect{(selectedText , index ,id) in
             if(selectedText == self.trueAnswer) {
                 self.isCorrected = true
+            } else {
+                self.isCorrected = false
             }
 
             if self.lastAnswer != selectedText {

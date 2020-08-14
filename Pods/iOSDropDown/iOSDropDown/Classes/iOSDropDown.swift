@@ -401,6 +401,7 @@ extension DropDown: UITableViewDataSource {
         cell!.selectionStyle = .none
         cell?.textLabel?.font = self.font
         cell?.textLabel?.textAlignment = self.textAlignment
+        cell?.textLabel?.adjustsFontSizeToFitWidth = true
         return cell!
     }
 }
