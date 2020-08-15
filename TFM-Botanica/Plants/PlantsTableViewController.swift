@@ -33,7 +33,9 @@ class PlantsTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.updateData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     @objc private func refreshTableData() {

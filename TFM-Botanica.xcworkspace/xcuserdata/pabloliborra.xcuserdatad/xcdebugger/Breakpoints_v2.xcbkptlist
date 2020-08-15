@@ -333,8 +333,8 @@
             filePath = "TFM-Botanica/Plants/PlantsTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -349,8 +349,8 @@
             filePath = "TFM-Botanica/Plants/PlantsTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
             landmarkName = "shouldPerformSegue(withIdentifier:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -365,9 +365,9 @@
             filePath = "TFM-Botanica/Routes/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "updateMarkers()"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "checkActivitiesFromCoreData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -381,9 +381,9 @@
             filePath = "TFM-Botanica/Routes/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "updateMarkers()"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "checkActivitiesFromCoreData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -397,8 +397,8 @@
             filePath = "TFM-Botanica/Plants/PlantsTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -429,8 +429,8 @@
             filePath = "TFM-Botanica/Routes/QuestionTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "finishAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -445,9 +445,9 @@
             filePath = "TFM-Botanica/Routes/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "checkActivitiesFromCoreData()"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
+            landmarkName = "updateInterface()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -461,9 +461,9 @@
             filePath = "TFM-Botanica/Routes/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "200"
-            endingLineNumber = "200"
-            landmarkName = "checkActivitiesFromCoreData()"
+            startingLineNumber = "251"
+            endingLineNumber = "251"
+            landmarkName = "updateInterface()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -496,6 +496,118 @@
             startingLineNumber = "67"
             endingLineNumber = "67"
             landmarkName = "showReportAlertViewController(view:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "819072F8-345A-46BE-9A59-487DE839118E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TFM-Botanica/Routes/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
+            landmarkName = "unlockNextActivityFromActivityChange(activity:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E2F055DD-332D-46DE-A16E-750FE8D8F36C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TFM-Botanica/Routes/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "updateRouteData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E2F055DD-332D-46DE-A16E-750FE8D8F36C - 5fafe35d00c1799b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "UAPlant.MapViewController.updateRouteData() -&gt; ()"
+                  moduleName = "UAPlant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pabloliborra/Documents/Xcode%20Projects/TFM-Botanica/TFM-Botanica/Routes/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "2253">
+               </Location>
+               <Location
+                  uuid = "E2F055DD-332D-46DE-A16E-750FE8D8F36C - 23189683b0d5603"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (UAPlant.Activity, UAPlant.Activity) -&gt; Swift.Bool in UAPlant.MapViewController.updateRouteData() -&gt; ()"
+                  moduleName = "UAPlant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pabloliborra/Documents/Xcode%20Projects/TFM-Botanica/TFM-Botanica/Routes/MapViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "123"
+                  endingLineNumber = "123"
+                  offsetFromSymbolStart = "159">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BC98606-7358-48CC-83DF-6E26698324AA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TFM-Botanica/Routes/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "updateMarkers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8500AFA6-7CBA-492A-92CB-2FA531E91937"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TFM-Botanica/Routes/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "updateMarkers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "26356E96-30B3-4D3F-820A-85184B41B065"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TFM-Botanica/Routes/ActivityViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "updateActivityStateFromCoreData(state:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

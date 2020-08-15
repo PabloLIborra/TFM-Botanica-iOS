@@ -35,19 +35,20 @@ class RouteTableViewController: UITableViewController {
         self.loadRoutesCoreData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     @objc private func refreshTableData() {
         DispatchQueue.main.async {
             self.updateData()
             self.customRefreshControl.endRefreshing()
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.updateData()
-    }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return self.sections.count

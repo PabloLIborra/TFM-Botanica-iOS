@@ -58,20 +58,20 @@ class InitViewController: UIViewController {
             activity.longitude = -0.514250
             activity.title = "Universidad de Alicanteeeeeeeeeeeeeeeeeeee"
             activity.subtitle = "Alicanteeeeeeeeeeeeeeeeeeeeeee"
+            activity.state = Int16(State.INACTIVE)
             activity.date = Date()
-            activity.state = Int16(State.AVAILABLE)
             activity.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."
             activity.route = route3
             route3.addToActivities(activity)
             
             let plant = Plant(context: miContexto)
-            plant.scientific_name = "Planta de pruebaaaaaaaaaaaaaaa"
+            plant.scientific_name = "Glanta de pruebaaaaaaaaaaaaaaa"
             plant.family = "Familia de pruebaaaaaaaaaaaaaaaaaaa"
             plant.information = "Planta de prueba, aqui solo voy a escribir informacion de prueba"
             plant.unlock = false
             plant.activity = activity
             activity.plant = plant
-            
+   
             let question = Question(context: miContexto)
             question.title = "¿Cómo me llamoooooooooooooooooooo?"
             question.date = Date()
@@ -113,7 +113,7 @@ class InitViewController: UIViewController {
             question3.true_answer = answer5
             question3.addToAnswers(answer5)
             question3.addToAnswers(answer6)
-            
+       
             let activity2 = Activity(context: miContexto)
             activity2.latitude = 38.383827
             activity2.longitude = -0.516452
@@ -126,14 +126,13 @@ class InitViewController: UIViewController {
             route3.addToActivities(activity2)
             
             let plant2 = Plant(context: miContexto)
-            plant2.scientific_name = "Planta de prueba2"
+            plant2.scientific_name = "Flanta de prueba2"
             plant2.family = "Familia de prueba2"
             plant2.information = "Planta de prueba2, aqui solo voy a escribir informacion de prueba"
             plant2.unlock = false
             plant2.activity = activity2
             activity2.plant = plant2
 
-/*
             let activity3 = Activity(context: miContexto)
             activity3.latitude = 38.387711
             activity3.longitude = -0.511912
@@ -145,7 +144,34 @@ class InitViewController: UIViewController {
             activity3.route = route3
             route3.addToActivities(activity3)
             
+            let plant3 = Plant(context: miContexto)
+            plant3.scientific_name = "Alanta de Pino"
+            plant3.family = "Familia de pino"
+            plant3.information = "Planta de pino, aqui solo voy a escribir informacion de prueba"
+            plant3.unlock = false
+            plant3.activity = activity3
+            activity3.plant = plant3
             
+            let activity5 = Activity(context: miContexto)
+            activity5.latitude = 38.388789
+            activity5.longitude = -0.515486
+            activity5.title = "Gimasio"
+            activity5.subtitle = "GYM"
+            activity5.state = Int16(State.INACTIVE)
+            activity5.date = Date()
+            activity5.information = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+            activity5.route = route3
+            route3.addToActivities(activity5)
+            
+            let plant4 = Plant(context: miContexto)
+            plant4.scientific_name = "Mlanta de Hibisco"
+            plant4.family = "Familia de Hibisco"
+            plant4.information = "Planta de Hibisco, aqui solo voy a escribir informacion de prueba"
+            plant4.unlock = false
+            plant4.activity = activity5
+            activity5.plant = plant4
+
+            /*
             let route2 = Route(context:miContexto)
             route2.name = "Ruta Palmeras"
             route2.information = "Ruta destinada a la vista de Palmeras. Podremos ver los diferentes tipos. Cada actividad de esta sección esta compuesta por unas preguntas de prueba."

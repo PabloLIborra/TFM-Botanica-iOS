@@ -129,6 +129,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.mapView.clear()
         self.markers = []
         for activity in activities {
+            print(activity.title)
             self.addMapMarker(latitude: activity.latitude, longitude: activity.longitude, title: activity.title!, subtitle: activity.subtitle!, state: Int(activity.state))
             
             if activity.state == State.COMPLETE {
@@ -143,6 +144,21 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
             self.route?.state = Int16(State.IN_PROGRESS)
             self.updateRouteFromCoreData()
         }
+        
+        self.drawPolylineBetweenMarkers()
+    }
+    
+    func drawPolylineBetweenMarkers() {
+        let path = GMSMutablePath()
+        for marker in self.markers {
+            let location = CLLocationCoordinate2D(latitude: marker.layer.latitude, longitude: marker.layer.longitude)
+            
+            path.add(location)
+        }
+        let polyline = GMSPolyline(path: path)
+        polyline.strokeColor = UIColor.greenCell
+        polyline.strokeWidth = 2
+        polyline.map = self.mapView
     }
     
     func updateRouteFromCoreData() {

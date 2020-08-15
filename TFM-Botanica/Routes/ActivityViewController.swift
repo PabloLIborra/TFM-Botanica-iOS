@@ -140,8 +140,8 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
             if(routes!.count > 0) {
                 for route in routes! {
                     if(self.activity?.route == route) {
-                        let activities = route.activities?.allObjects as! [Activity]
-                        for activity in activities {
+                        let activities = self.mapViewController?.activities
+                        for activity in activities! {
                             if self.activity == activity {
                                 activity.state = Int16(state)
                                 self.activity? = activity
@@ -151,12 +151,12 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
                                     route.state = Int16(State.IN_PROGRESS)
                                     updateRoute = true
                                 }
-                                
-                                if(route.state == State.IN_PROGRESS && activities[activities.count - 1] != activity && state == State.COMPLETE) {
+                                print("Actividad resuelta: "+activity.title!)
+                                if(route.state == State.IN_PROGRESS && activities![activities!.count - 1] != activity && state == State.COMPLETE) {
                                     self.mapViewController?.unlockNextActivityFromActivityChange(activity: activity)
                                     self.activity?.plant?.unlock = true
                                     break
-                                } else if(route.state == State.IN_PROGRESS && activities[activities.count - 1] == activity && state == State.COMPLETE) {
+                                } else if(route.state == State.IN_PROGRESS && activities![activities!.count - 1] == activity && state == State.COMPLETE) {
                                     route.state = Int16(State.COMPLETE)
                                     self.activity?.plant?.unlock = true
                                     updateRoute = true

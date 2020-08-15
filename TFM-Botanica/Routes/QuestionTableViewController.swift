@@ -39,6 +39,12 @@ class QuestionTableViewController: UITableViewController {
         self.updateQuestionData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
