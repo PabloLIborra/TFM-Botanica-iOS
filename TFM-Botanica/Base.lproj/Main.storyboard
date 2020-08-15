@@ -992,7 +992,7 @@ Ya puedes ver con detalle la planta oculta.
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4F-Pg-D8w">
-                                        <rect key="frame" x="8" y="121" width="224" height="40"/>
+                                        <rect key="frame" x="8" y="119" width="224" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <string key="text">Itinerario
@@ -1007,21 +1007,11 @@ Ya puedes ver con detalle la planta oculta.
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="sH4-bz-LLe">
-                                        <rect key="frame" x="113" y="96.333333333333258" width="15" height="16"/>
+                                        <rect key="frame" x="113" y="96.333333333333144" width="15" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEv-gG-BBF">
-                                        <rect key="frame" x="8" y="194.33333333333371" width="224" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <string key="text">Actividad
-"Nombre de la actividad"</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6xd-QI-L3w">
-                                        <rect key="frame" x="113" y="170.33333333333371" width="15" height="16"/>
+                                        <rect key="frame" x="113" y="170.33333333333331" width="15" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0C-mA-fpp">
@@ -1032,6 +1022,16 @@ Ya puedes ver con detalle la planta oculta.
                                             <action selector="closeAction:" destination="Vxb-wC-0Ab" eventType="touchUpInside" id="9Ee-SR-CO7"/>
                                         </connections>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gEv-gG-BBF">
+                                        <rect key="frame" x="10" y="193" width="224" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <string key="text">Actividad
+"Nombre de la actividad"</string>
+                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
@@ -1058,7 +1058,7 @@ Ya puedes ver con detalle la planta oculta.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0h7-HD-xwR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5481" y="138"/>
+            <point key="canvasLocation" x="5479.7101449275369" y="137.94642857142856"/>
         </scene>
         <!--Itinerarios-->
         <scene sceneID="Fbh-xA-riv">
