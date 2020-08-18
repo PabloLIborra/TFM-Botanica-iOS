@@ -7,18 +7,19 @@
 //
 
 import UIKit
+import FlexiblePageControl
 
 class PlantsViewController: UIViewController {
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
-    @IBOutlet weak var pageController: UIPageControl!
+    @IBOutlet weak var viewPageControl: UIView!
     var photoName: [String] = []
     @IBOutlet weak var familyLabel: UILabel!
     var family: String = ""
     @IBOutlet weak var descriptionText: UITextView!
     var textDescription: String = ""
     
-    let pageControl = UIPageControl()
+    var pageControl = FlexiblePageControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,12 @@ class PlantsViewController: UIViewController {
         tlabel.textAlignment = .center
         self.navigationItem.titleView = tlabel
         
-        self.pageController.numberOfPages = self.photoName.count
+        self.pageControl = FlexiblePageControl(frame: CGRect(x: 0, y: 0, width: self.viewPageControl.frame.size.width, height: self.viewPageControl.frame.size.height))
+        self.pageControl.numberOfPages = self.photoName.count
+        self.pageControl.pageIndicatorTintColor = UIColor.black
+        self.pageControl.currentPageIndicatorTintColor = UIColor.greenCell
+        self.viewPageControl.addSubview(self.pageControl)
+        
         //self.photoImage.image = UIImage(named: photoName)?.withRoundedCorners(radius: 30)
         self.familyLabel.text = "Familia: \(family)"
         self.familyLabel.adjustsFontSizeToFitWidth = true
@@ -81,12 +87,12 @@ extension PlantsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 
-        self.pageController.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        self.pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
     }
 
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
 
-        self.pageController.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+        self.pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
     }
 }
 

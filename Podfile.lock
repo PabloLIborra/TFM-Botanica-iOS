@@ -1,4 +1,5 @@
 PODS:
+  - FlexiblePageControl (1.0.8)
   - GoogleMaps (3.8.0):
     - GoogleMaps/Maps (= 3.8.0)
   - GoogleMaps/Base (3.8.0)
@@ -9,21 +10,24 @@ PODS:
   - iOSDropDown (0.3.4)
 
 DEPENDENCIES:
+  - FlexiblePageControl
   - GoogleMaps
   - GooglePlaces
   - iOSDropDown
 
 SPEC REPOS:
   trunk:
+    - FlexiblePageControl
     - GoogleMaps
     - GooglePlaces
     - iOSDropDown
 
 SPEC CHECKSUMS:
+  FlexiblePageControl: 07f7765054f16b3f0bc3f14dfd95ab5f45817ea4
   GoogleMaps: 7c8d66d70e4e8c300f43a7219d8fdaad7b325a9a
   GooglePlaces: d5f70c3e9e427964fdeca1301a665d276ccd8754
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
 
-PODFILE CHECKSUM: 81e6a4b339bcd86382c0fa01f74c25f0f027914c
+PODFILE CHECKSUM: 871724426c28d649a0e5d0c68cf71b693dbf41e2
 
 COCOAPODS: 1.9.1

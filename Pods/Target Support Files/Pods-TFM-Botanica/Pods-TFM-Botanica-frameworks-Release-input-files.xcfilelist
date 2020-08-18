@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica-frameworks.sh
+${BUILT_PRODUCTS_DIR}/FlexiblePageControl/FlexiblePageControl.framework
 ${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework

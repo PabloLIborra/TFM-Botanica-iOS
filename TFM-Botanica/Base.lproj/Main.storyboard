@@ -1004,32 +1004,31 @@ Ya puedes ver con detalle la planta oculta.
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <pageControl opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="dOb-sd-9F1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-4B-8Cb">
                                 <rect key="frame" x="100" y="416.33333333333331" width="214" height="37"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="dOb-sd-9F1" secondAttribute="height" multiplier="214:37" id="Il0-CQ-qIb"/>
+                                    <constraint firstAttribute="width" secondItem="P5f-4B-8Cb" secondAttribute="height" multiplier="214:37" id="vAl-R3-28T"/>
                                 </constraints>
-                                <color key="pageIndicatorTintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <color key="currentPageIndicatorTintColor" red="0.74559394609999996" green="1" blue="0.81765314889999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </pageControl>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960784313721" green="1" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Bro-ib-S4H" firstAttribute="top" secondItem="F3W-y3-SsL" secondAttribute="top" multiplier="1.15" id="4Te-wp-0Fj"/>
+                            <constraint firstItem="P5f-4B-8Cb" firstAttribute="centerX" secondItem="F3W-y3-SsL" secondAttribute="centerX" id="4fS-Cd-ZJU"/>
                             <constraint firstItem="Koj-Cr-Ww0" firstAttribute="height" secondItem="Edk-ki-23O" secondAttribute="height" multiplier="0.0345982" id="5gd-qe-7KG"/>
                             <constraint firstItem="xqd-AK-Ag3" firstAttribute="centerX" secondItem="Edk-ki-23O" secondAttribute="centerX" id="ASX-Cg-fKp"/>
-                            <constraint firstItem="dOb-sd-9F1" firstAttribute="top" secondItem="Bro-ib-S4H" secondAttribute="bottom" id="PGs-kb-XKr"/>
-                            <constraint firstItem="dOb-sd-9F1" firstAttribute="centerX" secondItem="Edk-ki-23O" secondAttribute="centerX" id="PHr-ZP-YbH"/>
+                            <constraint firstItem="P5f-4B-8Cb" firstAttribute="top" secondItem="Bro-ib-S4H" secondAttribute="bottom" id="M7Y-C3-ly2"/>
                             <constraint firstItem="Bro-ib-S4H" firstAttribute="centerX" secondItem="F3W-y3-SsL" secondAttribute="centerX" id="UAg-ce-Xed"/>
                             <constraint firstItem="Bro-ib-S4H" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" multiplier="0.900966" id="UDF-HK-tuE"/>
-                            <constraint firstItem="Koj-Cr-Ww0" firstAttribute="top" secondItem="dOb-sd-9F1" secondAttribute="bottom" multiplier="1.01" id="YLX-yT-9oO"/>
-                            <constraint firstItem="dOb-sd-9F1" firstAttribute="height" secondItem="Edk-ki-23O" secondAttribute="height" multiplier="0.0412946" id="aju-2u-z2d"/>
+                            <constraint firstItem="P5f-4B-8Cb" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" multiplier="0.516908" id="WAr-oG-cus"/>
                             <constraint firstItem="Koj-Cr-Ww0" firstAttribute="centerX" secondItem="Edk-ki-23O" secondAttribute="centerX" id="cil-p3-yWF"/>
                             <constraint firstItem="xqd-AK-Ag3" firstAttribute="top" secondItem="Koj-Cr-Ww0" secondAttribute="bottom" multiplier="1.02" id="dzd-CD-04a"/>
                             <constraint firstItem="Bro-ib-S4H" firstAttribute="height" secondItem="Edk-ki-23O" secondAttribute="height" multiplier="0.393973" constant="-38" id="fbc-b5-xS0"/>
-                            <constraint firstItem="dOb-sd-9F1" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" multiplier="0.516908" id="qJg-GT-WZc"/>
+                            <constraint firstItem="P5f-4B-8Cb" firstAttribute="height" secondItem="Edk-ki-23O" secondAttribute="height" multiplier="0.0412946" id="vBI-Jz-VG4"/>
                             <constraint firstItem="F3W-y3-SsL" firstAttribute="bottom" secondItem="xqd-AK-Ag3" secondAttribute="bottom" multiplier="1.02" id="vZO-Ty-YIW"/>
                             <constraint firstItem="Koj-Cr-Ww0" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" multiplier="0.903382" id="voj-TJ-KG1"/>
+                            <constraint firstItem="Koj-Cr-Ww0" firstAttribute="top" secondItem="P5f-4B-8Cb" secondAttribute="bottom" multiplier="1.01" id="yZs-wB-hW2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F3W-y3-SsL"/>
                     </view>
@@ -1038,7 +1037,7 @@ Ya puedes ver con detalle la planta oculta.
                         <outlet property="descriptionText" destination="xqd-AK-Ag3" id="kk2-DG-Wn8"/>
                         <outlet property="familyLabel" destination="Koj-Cr-Ww0" id="Ifl-Yc-dYj"/>
                         <outlet property="imageCollectionView" destination="Bro-ib-S4H" id="XH9-Pv-97f"/>
-                        <outlet property="pageController" destination="dOb-sd-9F1" id="E0e-iG-BS4"/>
+                        <outlet property="viewPageControl" destination="P5f-4B-8Cb" id="owK-4L-Mhb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBd-hB-2w4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

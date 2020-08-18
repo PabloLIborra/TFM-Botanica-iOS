@@ -29,18 +29,30 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0601021B163CAD5A5F41F56FE27B2860 /* FlexiblePageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4126B01C7D3F2B0CBBF1365527A951 /* FlexiblePageControl.swift */; };
+		100BBB86FDA7F4308026D9441E5BF96A /* FlexiblePageControl-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C912B0290E299AD5D7E67723650477 /* FlexiblePageControl-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46DD08FB7D6071E99E75ECDBA47E90C1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		6762724102132C861217B911E70056ED /* iOSDropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C2B7A8E2BEB1DD93DE2E2551C7E0C204 /* iOSDropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6ADFB626C34AA35AC883469526699F8D /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542FC3908C6F9390F58E7E08BDC7F55 /* iOSDropDown.swift */; };
-		8FFA725EDE7D25B8C05DAC9887398F90 /* Pods-TFM-Botanica-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7514509352433D88169857C722165065 /* Pods-TFM-Botanica-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C312131E6526BFB7C1CB92D93D58FCC7 /* iOSDropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 113D3C612B0B6D54C24B3C05D21FDA23 /* iOSDropDown-dummy.m */; };
-		EDE5653C4EAD767DFB168CF13DF64CB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		F94B920AA8F28AF030756F35A233EE27 /* Pods-TFM-Botanica-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D42AF87CD87979017FCC418C850999CA /* Pods-TFM-Botanica-dummy.m */; };
+		65BED40B096AFF4152E00B5A628AB943 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		6762724102132C861217B911E70056ED /* iOSDropDown-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 485168ACFDB848D65FA766482DF4B652 /* iOSDropDown-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ADFB626C34AA35AC883469526699F8D /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 320ECB21AFE53261E1EF86998649E7B2 /* iOSDropDown.swift */; };
+		7DFF6737378E0BB70D64C0B11667D062 /* FlexiblePageControl-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18594C9611382BF273746F2666636FA6 /* FlexiblePageControl-dummy.m */; };
+		AC1058C7F2716CA2BF30987C874A1BBD /* Pods-TFM-Botanica-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D42AF87CD87979017FCC418C850999CA /* Pods-TFM-Botanica-dummy.m */; };
+		C312131E6526BFB7C1CB92D93D58FCC7 /* iOSDropDown-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C526CB35AEBA6058831A5D8A942CAA8F /* iOSDropDown-dummy.m */; };
+		DB9A60EB27F6338FC20D8AADCEA6D5C5 /* FlexiblePageControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 590FDB7FC64AD7BD8FD7F5789BAEE1F0 /* FlexiblePageControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E97FC71D6C89C6471FD5E67518A9BA0E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
 		FB1A59DAD92E574036C966A2CD221FAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		FE984AB7E0544847D56D7CAB768143B2 /* Pods-TFM-Botanica-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7514509352433D88169857C722165065 /* Pods-TFM-Botanica-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5570CFDB5CC0BE8A77E1A6576BBA7263 /* PBXContainerItemProxy */ = {
+		2C99B031549F22F228AA3CAB5E77E74B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0C1885900810601510E0C632060FAF26;
+			remoteInfo = GooglePlaces;
+		};
+		578EF623A71369B4696D28B50A9C25ED /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -54,55 +66,65 @@
 			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
 			remoteInfo = GoogleMaps;
 		};
-		94C175D3CD98FCB25EF54C81D103EFFF /* PBXContainerItemProxy */ = {
+		9F614A7547C53D1BA72B99DEECE1FF03 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E5B4BBC6DD552AC8943C7E22772FC1D3;
 			remoteInfo = GoogleMaps;
 		};
-		974541141C42B573DAC426FCAB604865 /* PBXContainerItemProxy */ = {
+		B1E0CDD7D415775B5E7E7B1FFECB1F69 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 0C1885900810601510E0C632060FAF26;
-			remoteInfo = GooglePlaces;
+			remoteGlobalIDString = 8405800C6CFF13EEFA4D1650B2F78024;
+			remoteInfo = FlexiblePageControl;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		08F13811AF858F703DBF86F815DBEB33 /* iOSDropDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.debug.xcconfig; sourceTree = "<group>"; };
+		069E0C8A37F3BE096259CDD05F89FD27 /* FlexiblePageControl-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlexiblePageControl-prefix.pch"; sourceTree = "<group>"; };
 		09A5D2A82CCB994AC904B44B2716FAB4 /* Pods_TFM_Botanica.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TFM_Botanica.framework; path = "Pods-TFM-Botanica.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		113D3C612B0B6D54C24B3C05D21FDA23 /* iOSDropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSDropDown-dummy.m"; sourceTree = "<group>"; };
+		0AC06A034C742645927BC6A95347FD80 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		0FE9E2C4922A80C807DFCEBAF797EB3C /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		1567AB6BED82C2A96209A78F4FA67A1C /* FlexiblePageControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlexiblePageControl.release.xcconfig; sourceTree = "<group>"; };
+		18594C9611382BF273746F2666636FA6 /* FlexiblePageControl-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FlexiblePageControl-dummy.m"; sourceTree = "<group>"; };
+		1DAF9681981D219D5AC7B7D383CD7FBF /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
 		1E9D18056B686F92A7C9B196C3316D9E /* Pods-TFM-Botanica-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TFM-Botanica-resources.sh"; sourceTree = "<group>"; };
-		303624C8C8E4E6FAB53B22420FC2A5C6 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		3B94E923FA73E8321186FB8C52EDFB4E /* iOSDropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSDropDown.modulemap; sourceTree = "<group>"; };
+		320ECB21AFE53261E1EF86998649E7B2 /* iOSDropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = iOSDropDown.swift; path = iOSDropDown/Classes/iOSDropDown.swift; sourceTree = "<group>"; };
+		3FADECA65D911135436A01735A69C068 /* FlexiblePageControl.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FlexiblePageControl.modulemap; sourceTree = "<group>"; };
+		42FF1168A9A1C4007FE0251FA4E49204 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
 		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		5542FC3908C6F9390F58E7E08BDC7F55 /* iOSDropDown.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = iOSDropDown.swift; path = iOSDropDown/Classes/iOSDropDown.swift; sourceTree = "<group>"; };
+		485168ACFDB848D65FA766482DF4B652 /* iOSDropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-umbrella.h"; sourceTree = "<group>"; };
 		584C5B4406107D2EDEEBAD97EC4B0DB6 /* Pods-TFM-Botanica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TFM-Botanica.release.xcconfig"; sourceTree = "<group>"; };
-		5A65F0E330A4BF779A5D1961D3EB839F /* GooglePlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlaces.debug.xcconfig; sourceTree = "<group>"; };
+		590FDB7FC64AD7BD8FD7F5789BAEE1F0 /* FlexiblePageControl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FlexiblePageControl.h; path = FlexiblePageControl/FlexiblePageControl.h; sourceTree = "<group>"; };
 		61B1AFD56327FFBFD8C5CFBC9E3BC046 /* Pods-TFM-Botanica-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TFM-Botanica-acknowledgements.plist"; sourceTree = "<group>"; };
-		6872F324B169E14F841884AC4AF4F961 /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
-		74FE97CCF0D8F9E3BD6A41777D916D14 /* GooglePlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlaces.release.xcconfig; sourceTree = "<group>"; };
+		71B2C7F82000F6CB8813680A4CCB4E1E /* iOSDropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.release.xcconfig; sourceTree = "<group>"; };
 		7514509352433D88169857C722165065 /* Pods-TFM-Botanica-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TFM-Botanica-umbrella.h"; sourceTree = "<group>"; };
-		82FCB17EE20D68A0C113226A541B82B8 /* iOSDropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-prefix.pch"; sourceTree = "<group>"; };
-		8710D03BCC8FB8B5FD80B0AEDAB8D0E7 /* iOSDropDown.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.release.xcconfig; sourceTree = "<group>"; };
-		8A1C2D23D925D40C455697298C663068 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		794F87EF9584B76BE8A131F9E05ACB2F /* GooglePlaces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlaces.debug.xcconfig; sourceTree = "<group>"; };
+		888984E22547687E9BC9BCB7965E9A44 /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
+		8CEDA11281D9D5D7DFE67E6230AB8FC0 /* GooglePlaces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GooglePlaces.release.xcconfig; sourceTree = "<group>"; };
+		8FF93EB435C4A443E271604867FB2BE8 /* FlexiblePageControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlexiblePageControl.debug.xcconfig; sourceTree = "<group>"; };
+		94C912B0290E299AD5D7E67723650477 /* FlexiblePageControl-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FlexiblePageControl-umbrella.h"; sourceTree = "<group>"; };
 		958738032987F97B3C0E752C580DD2BC /* Pods-TFM-Botanica.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TFM-Botanica.modulemap"; sourceTree = "<group>"; };
+		9B3E7CA6C25160EA6D83A9BB69499BD5 /* FlexiblePageControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FlexiblePageControl.framework; path = FlexiblePageControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A1AD0A41F209DFE88212226543D59B9D /* iOSDropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "iOSDropDown-Info.plist"; sourceTree = "<group>"; };
-		AE9CFE17B203D65A9FD0E06AB3534BC2 /* GoogleMaps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.debug.xcconfig; sourceTree = "<group>"; };
 		B34376EC59E0CBCA6CE596BFFEDBFCF7 /* Pods-TFM-Botanica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TFM-Botanica.debug.xcconfig"; sourceTree = "<group>"; };
-		BC8B651A1B01120684547A071E5B088B /* GoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.release.xcconfig; sourceTree = "<group>"; };
-		C2B7A8E2BEB1DD93DE2E2551C7E0C204 /* iOSDropDown-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-umbrella.h"; sourceTree = "<group>"; };
+		BC01D2BE72E97846BC502FB78B1A4A6A /* iOSDropDown-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "iOSDropDown-prefix.pch"; sourceTree = "<group>"; };
+		C526CB35AEBA6058831A5D8A942CAA8F /* iOSDropDown-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "iOSDropDown-dummy.m"; sourceTree = "<group>"; };
 		C6AF560D05FD583DB11AFD4C621D1067 /* Pods-TFM-Botanica-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TFM-Botanica-Info.plist"; sourceTree = "<group>"; };
 		C6B959F45763DCBFC76E8481291D2EE7 /* Pods-TFM-Botanica-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-TFM-Botanica-frameworks.sh"; sourceTree = "<group>"; };
 		C6D1722611A701A4A4C79DA315C3FDB0 /* Pods-TFM-Botanica-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TFM-Botanica-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D07251143701B7F9FEDCF592731BD2F5 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		D1C0FDA9B4FB6987B3C91AB67AA072DD /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
 		D42AF87CD87979017FCC418C850999CA /* Pods-TFM-Botanica-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TFM-Botanica-dummy.m"; sourceTree = "<group>"; };
-		D947F09F598B1C7CDB05342C1C76E657 /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
-		EAA8476132E3BA345B764C73C6EE3521 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		D49BFA688E3E2F4D83B022C8821A0830 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		D6B3D8B3D7556F1C6C7640D0E259263E /* iOSDropDown.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = iOSDropDown.modulemap; sourceTree = "<group>"; };
+		DD42F313E36B68521148A519EADA99A3 /* iOSDropDown.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = iOSDropDown.debug.xcconfig; sourceTree = "<group>"; };
+		E9244F269B084F039868FFCA0E583D0B /* GoogleMaps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleMaps.release.xcconfig; sourceTree = "<group>"; };
+		E950C6F083DB51F7CBFAF87569AD1110 /* FlexiblePageControl-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FlexiblePageControl-Info.plist"; sourceTree = "<group>"; };
+		EA4126B01C7D3F2B0CBBF1365527A951 /* FlexiblePageControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FlexiblePageControl.swift; path = FlexiblePageControl/FlexiblePageControl.swift; sourceTree = "<group>"; };
+		ECE7BA9333505BE9C00EC00C4E546088 /* iOSDropDown-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "iOSDropDown-Info.plist"; sourceTree = "<group>"; };
 		FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = iOSDropDown.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,17 +138,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6E2E10D1888852C4E7AC20AE94DF4257 /* Frameworks */ = {
+		90912BFC161C26B7D36A28F3D3019DA3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDE5653C4EAD767DFB168CF13DF64CB7 /* Foundation.framework in Frameworks */,
+				E97FC71D6C89C6471FD5E67518A9BA0E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC3CC0B2013516D8F0A56E49D08A50C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				65BED40B096AFF4152E00B5A628AB943 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04766C68B6D2E060F709CD9688E87F5A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				42FF1168A9A1C4007FE0251FA4E49204 /* GoogleMaps.framework */,
+				D1C0FDA9B4FB6987B3C91AB67AA072DD /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0C9BC8B785F99BF8BAC975FCBD79401A /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				888984E22547687E9BC9BCB7965E9A44 /* GoogleMaps.debug.xcconfig */,
+				E9244F269B084F039868FFCA0E583D0B /* GoogleMaps.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/GoogleMaps";
+			sourceTree = "<group>";
+		};
 		0F32E3491D30212F57B1BB160AEA86EB /* Pods-TFM-Botanica */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,12 +194,25 @@
 			path = "Target Support Files/Pods-TFM-Botanica";
 			sourceTree = "<group>";
 		};
-		126494CC236C1A2B08447029F136CE05 /* Resources */ = {
+		14DA1D46C3A16A78F32F259188632237 /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				6872F324B169E14F841884AC4AF4F961 /* GooglePlaces.bundle */,
+				7AA6BCC92C595F7FE4AC5207A1E35792 /* Base */,
+				5BE7657E69419A581DAEE5EE2572878C /* Maps */,
+				0C9BC8B785F99BF8BAC975FCBD79401A /* Support Files */,
 			);
-			name = Resources;
+			name = GoogleMaps;
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
+		14E64DB84DA5192D0F05EFE8D58C20F1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9B3E7CA6C25160EA6D83A9BB69499BD5 /* FlexiblePageControl.framework */,
+				FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown.framework */,
+				09A5D2A82CCB994AC904B44B2716FAB4 /* Pods_TFM_Botanica.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
@@ -169,114 +231,102 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		19EC303E5E31694D27F9CD34BCC8F8B4 /* Support Files */ = {
+		273493B1D9A65338B4F9923B34DE2A5D /* iOSDropDown */ = {
 			isa = PBXGroup;
 			children = (
-				AE9CFE17B203D65A9FD0E06AB3534BC2 /* GoogleMaps.debug.xcconfig */,
-				BC8B651A1B01120684547A071E5B088B /* GoogleMaps.release.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/GoogleMaps";
-			sourceTree = "<group>";
-		};
-		2D5D5F067434C39A00B62C4CF21AB9C0 /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				CA404BAF7EB2957089549E3FF6495278 /* Base */,
-				D60F14268CCFDB68D9323D603AC2170F /* Maps */,
-				19EC303E5E31694D27F9CD34BCC8F8B4 /* Support Files */,
-			);
-			name = GoogleMaps;
-			path = GoogleMaps;
-			sourceTree = "<group>";
-		};
-		42DF1BAC3873B39206E5D452A1A530D8 /* iOSDropDown */ = {
-			isa = PBXGroup;
-			children = (
-				5542FC3908C6F9390F58E7E08BDC7F55 /* iOSDropDown.swift */,
-				CBBCA69FF48EBDD63DCF7B7D31393A92 /* Support Files */,
+				320ECB21AFE53261E1EF86998649E7B2 /* iOSDropDown.swift */,
+				8020F6240B40B95A5EE54C24973AAF36 /* Support Files */,
 			);
 			name = iOSDropDown;
 			path = iOSDropDown;
 			sourceTree = "<group>";
 		};
-		63CE5F8A5C043AAC1A000323A2FC238F /* Frameworks */ = {
+		3CC028B1F819B4186102872C4661A277 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8A1C2D23D925D40C455697298C663068 /* GooglePlaces.framework */,
+				3FADECA65D911135436A01735A69C068 /* FlexiblePageControl.modulemap */,
+				18594C9611382BF273746F2666636FA6 /* FlexiblePageControl-dummy.m */,
+				E950C6F083DB51F7CBFAF87569AD1110 /* FlexiblePageControl-Info.plist */,
+				069E0C8A37F3BE096259CDD05F89FD27 /* FlexiblePageControl-prefix.pch */,
+				94C912B0290E299AD5D7E67723650477 /* FlexiblePageControl-umbrella.h */,
+				8FF93EB435C4A443E271604867FB2BE8 /* FlexiblePageControl.debug.xcconfig */,
+				1567AB6BED82C2A96209A78F4FA67A1C /* FlexiblePageControl.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/FlexiblePageControl";
 			sourceTree = "<group>";
 		};
-		73370094A651EC989565ECB087929603 /* Resources */ = {
+		475426F894C6AAA6B2C9F1C9DD9B8F7B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D947F09F598B1C7CDB05342C1C76E657 /* GoogleMaps.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		74D26CAE51AF8D246497CE81343335BA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				303624C8C8E4E6FAB53B22420FC2A5C6 /* GoogleMaps.framework */,
-				EAA8476132E3BA345B764C73C6EE3521 /* GoogleMapsCore.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		889513BD4272BDAEDA8F37E381BBC4C4 /* GooglePlaces */ = {
-			isa = PBXGroup;
-			children = (
-				63CE5F8A5C043AAC1A000323A2FC238F /* Frameworks */,
-				126494CC236C1A2B08447029F136CE05 /* Resources */,
-				CD449BFDA176F685F8780C4291B68AAA /* Support Files */,
-			);
-			name = GooglePlaces;
-			path = GooglePlaces;
-			sourceTree = "<group>";
-		};
-		89D526D2A9552558F146294A5CFC1BBD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2D5D5F067434C39A00B62C4CF21AB9C0 /* GoogleMaps */,
-				889513BD4272BDAEDA8F37E381BBC4C4 /* GooglePlaces */,
-				42DF1BAC3873B39206E5D452A1A530D8 /* iOSDropDown */,
+				58B68BE6575B309C9A37E422B4A9DE29 /* FlexiblePageControl */,
+				14DA1D46C3A16A78F32F259188632237 /* GoogleMaps */,
+				C4455512CBF29E5811F4B7678DF02DEC /* GooglePlaces */,
+				273493B1D9A65338B4F9923B34DE2A5D /* iOSDropDown */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		CA404BAF7EB2957089549E3FF6495278 /* Base */ = {
+		58B68BE6575B309C9A37E422B4A9DE29 /* FlexiblePageControl */ = {
 			isa = PBXGroup;
 			children = (
-				E02616CCDE74A1DC4CBF787F75437955 /* Frameworks */,
+				590FDB7FC64AD7BD8FD7F5789BAEE1F0 /* FlexiblePageControl.h */,
+				EA4126B01C7D3F2B0CBBF1365527A951 /* FlexiblePageControl.swift */,
+				3CC028B1F819B4186102872C4661A277 /* Support Files */,
+			);
+			name = FlexiblePageControl;
+			path = FlexiblePageControl;
+			sourceTree = "<group>";
+		};
+		5BE7657E69419A581DAEE5EE2572878C /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				04766C68B6D2E060F709CD9688E87F5A /* Frameworks */,
+				FA98E76D36DDF9D34325F50BC89EA126 /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		7AA6BCC92C595F7FE4AC5207A1E35792 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B786410549C4FC485727771D4A4F0154 /* Frameworks */,
 			);
 			name = Base;
 			sourceTree = "<group>";
 		};
-		CBBCA69FF48EBDD63DCF7B7D31393A92 /* Support Files */ = {
+		8020F6240B40B95A5EE54C24973AAF36 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3B94E923FA73E8321186FB8C52EDFB4E /* iOSDropDown.modulemap */,
-				113D3C612B0B6D54C24B3C05D21FDA23 /* iOSDropDown-dummy.m */,
-				A1AD0A41F209DFE88212226543D59B9D /* iOSDropDown-Info.plist */,
-				82FCB17EE20D68A0C113226A541B82B8 /* iOSDropDown-prefix.pch */,
-				C2B7A8E2BEB1DD93DE2E2551C7E0C204 /* iOSDropDown-umbrella.h */,
-				08F13811AF858F703DBF86F815DBEB33 /* iOSDropDown.debug.xcconfig */,
-				8710D03BCC8FB8B5FD80B0AEDAB8D0E7 /* iOSDropDown.release.xcconfig */,
+				D6B3D8B3D7556F1C6C7640D0E259263E /* iOSDropDown.modulemap */,
+				C526CB35AEBA6058831A5D8A942CAA8F /* iOSDropDown-dummy.m */,
+				ECE7BA9333505BE9C00EC00C4E546088 /* iOSDropDown-Info.plist */,
+				BC01D2BE72E97846BC502FB78B1A4A6A /* iOSDropDown-prefix.pch */,
+				485168ACFDB848D65FA766482DF4B652 /* iOSDropDown-umbrella.h */,
+				DD42F313E36B68521148A519EADA99A3 /* iOSDropDown.debug.xcconfig */,
+				71B2C7F82000F6CB8813680A4CCB4E1E /* iOSDropDown.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/iOSDropDown";
 			sourceTree = "<group>";
 		};
-		CD449BFDA176F685F8780C4291B68AAA /* Support Files */ = {
+		B786410549C4FC485727771D4A4F0154 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5A65F0E330A4BF779A5D1961D3EB839F /* GooglePlaces.debug.xcconfig */,
-				74FE97CCF0D8F9E3BD6A41777D916D14 /* GooglePlaces.release.xcconfig */,
+				D49BFA688E3E2F4D83B022C8821A0830 /* GoogleMapsBase.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/GooglePlaces";
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4455512CBF29E5811F4B7678DF02DEC /* GooglePlaces */ = {
+			isa = PBXGroup;
+			children = (
+				F794F437F5DB816DAE9BA9D914E60BBC /* Frameworks */,
+				F2CDC3EF00D8549366EEC84109094FE0 /* Resources */,
+				E27D3AD0BE8896FCBAB56026271B79BC /* Support Files */,
+			);
+			name = GooglePlaces;
+			path = GooglePlaces;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
@@ -284,27 +334,20 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				89D526D2A9552558F146294A5CFC1BBD /* Pods */,
-				F5EB3F9464ACD4243C7AC5B5FB45DC2B /* Products */,
+				475426F894C6AAA6B2C9F1C9DD9B8F7B /* Pods */,
+				14E64DB84DA5192D0F05EFE8D58C20F1 /* Products */,
 				18E84CB60202723E2C5B86F3C1496234 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D60F14268CCFDB68D9323D603AC2170F /* Maps */ = {
+		E27D3AD0BE8896FCBAB56026271B79BC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				74D26CAE51AF8D246497CE81343335BA /* Frameworks */,
-				73370094A651EC989565ECB087929603 /* Resources */,
+				794F87EF9584B76BE8A131F9E05ACB2F /* GooglePlaces.debug.xcconfig */,
+				8CEDA11281D9D5D7DFE67E6230AB8FC0 /* GooglePlaces.release.xcconfig */,
 			);
-			name = Maps;
-			sourceTree = "<group>";
-		};
-		E02616CCDE74A1DC4CBF787F75437955 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D07251143701B7F9FEDCF592731BD2F5 /* GoogleMapsBase.framework */,
-			);
-			name = Frameworks;
+			name = "Support Files";
+			path = "../Target Support Files/GooglePlaces";
 			sourceTree = "<group>";
 		};
 		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
@@ -316,31 +359,55 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		F5EB3F9464ACD4243C7AC5B5FB45DC2B /* Products */ = {
+		F2CDC3EF00D8549366EEC84109094FE0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown.framework */,
-				09A5D2A82CCB994AC904B44B2716FAB4 /* Pods_TFM_Botanica.framework */,
+				0FE9E2C4922A80C807DFCEBAF797EB3C /* GooglePlaces.bundle */,
 			);
-			name = Products;
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		F794F437F5DB816DAE9BA9D914E60BBC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1DAF9681981D219D5AC7B7D383CD7FBF /* GooglePlaces.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA98E76D36DDF9D34325F50BC89EA126 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0AC06A034C742645927BC6A95347FD80 /* GoogleMaps.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		6F2A81C54E288C6BA721A2157B9FE17D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				100BBB86FDA7F4308026D9441E5BF96A /* FlexiblePageControl-umbrella.h in Headers */,
+				DB9A60EB27F6338FC20D8AADCEA6D5C5 /* FlexiblePageControl.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7ED3A2FB5193914ACC055A879F14600D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE984AB7E0544847D56D7CAB768143B2 /* Pods-TFM-Botanica-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		93A905842D7F38038C5AE524E9DF7789 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6762724102132C861217B911E70056ED /* iOSDropDown-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B0468B10436A73942E2772775BBC821A /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8FFA725EDE7D25B8C05DAC9887398F90 /* Pods-TFM-Botanica-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -365,21 +432,40 @@
 			productReference = FCEEA8BBD9DA8D0CCE0A3092B20E3FA7 /* iOSDropDown.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		EF649216AAF43988E38D6DDA3018F8B2 /* Pods-TFM-Botanica */ = {
+		8405800C6CFF13EEFA4D1650B2F78024 /* FlexiblePageControl */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E4F9B97897A29FD6D0CF12D614CABCD5 /* Build configuration list for PBXNativeTarget "Pods-TFM-Botanica" */;
+			buildConfigurationList = 630C594C0EBC9837CE22050CC43FEF06 /* Build configuration list for PBXNativeTarget "FlexiblePageControl" */;
 			buildPhases = (
-				B0468B10436A73942E2772775BBC821A /* Headers */,
-				439939112C77772795B51683D51B770F /* Sources */,
-				6E2E10D1888852C4E7AC20AE94DF4257 /* Frameworks */,
-				B37079ED6DE1718677CCDB10DE891049 /* Resources */,
+				6F2A81C54E288C6BA721A2157B9FE17D /* Headers */,
+				7343A85DE2B3123819C9F6B449D74927 /* Sources */,
+				FC3CC0B2013516D8F0A56E49D08A50C9 /* Frameworks */,
+				4055C42E8B2DE101E32F2A293C076903 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A9074DA22D652701BC12C0D3AEFC75CB /* PBXTargetDependency */,
-				7B2F4C042A0AE09F98F503C6DCFD422B /* PBXTargetDependency */,
-				CE3EAA075CC63992C16B693DAD115B5D /* PBXTargetDependency */,
+			);
+			name = FlexiblePageControl;
+			productName = FlexiblePageControl;
+			productReference = 9B3E7CA6C25160EA6D83A9BB69499BD5 /* FlexiblePageControl.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EF649216AAF43988E38D6DDA3018F8B2 /* Pods-TFM-Botanica */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB1157EFCCF5B4E43EA2538BAE198EE4 /* Build configuration list for PBXNativeTarget "Pods-TFM-Botanica" */;
+			buildPhases = (
+				7ED3A2FB5193914ACC055A879F14600D /* Headers */,
+				63F8D2F4D2405F7162F7EA9F1405DABF /* Sources */,
+				90912BFC161C26B7D36A28F3D3019DA3 /* Frameworks */,
+				F790B10087924CDD61439BD325C4DFE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14EEA9FE57D2D58A0D6F23FDEC7685D8 /* PBXTargetDependency */,
+				A69BE8DAC8841FB4B438B37FE4080DD4 /* PBXTargetDependency */,
+				574D42B97BCC0A6C4F138E01F5293CC8 /* PBXTargetDependency */,
+				0AF313A2FBE3AC90B98254AEEE3CE62F /* PBXTargetDependency */,
 			);
 			name = "Pods-TFM-Botanica";
 			productName = "Pods-TFM-Botanica";
@@ -404,10 +490,11 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = F5EB3F9464ACD4243C7AC5B5FB45DC2B /* Products */;
+			productRefGroup = 14E64DB84DA5192D0F05EFE8D58C20F1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				8405800C6CFF13EEFA4D1650B2F78024 /* FlexiblePageControl */,
 				E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */,
 				0C1885900810601510E0C632060FAF26 /* GooglePlaces */,
 				3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */,
@@ -417,6 +504,13 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4055C42E8B2DE101E32F2A293C076903 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		4F2761F0F0D962265232D9EE899A184E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,7 +518,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B37079ED6DE1718677CCDB10DE891049 /* Resources */ = {
+		F790B10087924CDD61439BD325C4DFE3 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -434,14 +528,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		439939112C77772795B51683D51B770F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F94B920AA8F28AF030756F35A233EE27 /* Pods-TFM-Botanica-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		51ADBD82176C61B9136F2C18746D6E55 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -451,26 +537,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		63F8D2F4D2405F7162F7EA9F1405DABF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC1058C7F2716CA2BF30987C874A1BBD /* Pods-TFM-Botanica-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7343A85DE2B3123819C9F6B449D74927 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7DFF6737378E0BB70D64C0B11667D062 /* FlexiblePageControl-dummy.m in Sources */,
+				0601021B163CAD5A5F41F56FE27B2860 /* FlexiblePageControl.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7B2F4C042A0AE09F98F503C6DCFD422B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GooglePlaces;
-			target = 0C1885900810601510E0C632060FAF26 /* GooglePlaces */;
-			targetProxy = 974541141C42B573DAC426FCAB604865 /* PBXContainerItemProxy */;
-		};
-		A9074DA22D652701BC12C0D3AEFC75CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = GoogleMaps;
-			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
-			targetProxy = 94C175D3CD98FCB25EF54C81D103EFFF /* PBXContainerItemProxy */;
-		};
-		CE3EAA075CC63992C16B693DAD115B5D /* PBXTargetDependency */ = {
+		0AF313A2FBE3AC90B98254AEEE3CE62F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = iOSDropDown;
 			target = 3C76CE6CD60B1CE55A174F03CC59AE17 /* iOSDropDown */;
-			targetProxy = 5570CFDB5CC0BE8A77E1A6576BBA7263 /* PBXContainerItemProxy */;
+			targetProxy = 578EF623A71369B4696D28B50A9C25ED /* PBXContainerItemProxy */;
+		};
+		14EEA9FE57D2D58A0D6F23FDEC7685D8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FlexiblePageControl;
+			target = 8405800C6CFF13EEFA4D1650B2F78024 /* FlexiblePageControl */;
+			targetProxy = B1E0CDD7D415775B5E7E7B1FFECB1F69 /* PBXContainerItemProxy */;
+		};
+		574D42B97BCC0A6C4F138E01F5293CC8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GooglePlaces;
+			target = 0C1885900810601510E0C632060FAF26 /* GooglePlaces */;
+			targetProxy = 2C99B031549F22F228AA3CAB5E77E74B /* PBXContainerItemProxy */;
+		};
+		A69BE8DAC8841FB4B438B37FE4080DD4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GoogleMaps;
+			target = E5B4BBC6DD552AC8943C7E22772FC1D3 /* GoogleMaps */;
+			targetProxy = 9F614A7547C53D1BA72B99DEECE1FF03 /* PBXContainerItemProxy */;
 		};
 		D42315111F400C0605ACCD6B5CAF2178 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -481,7 +590,45 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		38F6ACB6A6AFED9496E620A71459020C /* Release */ = {
+		0CC12C016104365A9BCA417E07071E89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B34376EC59E0CBCA6CE596BFFEDBFCF7 /* Pods-TFM-Botanica.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		29F443C398134A0A5360630B22B5F2E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 584C5B4406107D2EDEEBAD97EC4B0DB6 /* Pods-TFM-Botanica.release.xcconfig */;
 			buildSettings = {
@@ -520,9 +667,44 @@
 			};
 			name = Release;
 		};
+		42193AC2B14EA0CDCEB6A3ED08A9E5B1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FF93EB435C4A443E271604867FB2BE8 /* FlexiblePageControl.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FlexiblePageControl/FlexiblePageControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FlexiblePageControl/FlexiblePageControl-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FlexiblePageControl/FlexiblePageControl.modulemap";
+				PRODUCT_MODULE_NAME = FlexiblePageControl;
+				PRODUCT_NAME = FlexiblePageControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		4AE9FC8A852243DC9A2EFE9BA39BAC7B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5A65F0E330A4BF779A5D1961D3EB839F /* GooglePlaces.debug.xcconfig */;
+			baseConfigurationReference = 794F87EF9584B76BE8A131F9E05ACB2F /* GooglePlaces.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -536,9 +718,45 @@
 			};
 			name = Debug;
 		};
+		55936C1E3B2C34177A508475698BBE3B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1567AB6BED82C2A96209A78F4FA67A1C /* FlexiblePageControl.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FlexiblePageControl/FlexiblePageControl-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FlexiblePageControl/FlexiblePageControl-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FlexiblePageControl/FlexiblePageControl.modulemap";
+				PRODUCT_MODULE_NAME = FlexiblePageControl;
+				PRODUCT_NAME = FlexiblePageControl;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		573B04AB9E058A1911353A22A780E993 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 74FE97CCF0D8F9E3BD6A41777D916D14 /* GooglePlaces.release.xcconfig */;
+			baseConfigurationReference = 8CEDA11281D9D5D7DFE67E6230AB8FC0 /* GooglePlaces.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -555,7 +773,7 @@
 		};
 		8CE5BA3EF4F6FABF028CE30772ECDA11 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BC8B651A1B01120684547A071E5B088B /* GoogleMaps.release.xcconfig */;
+			baseConfigurationReference = E9244F269B084F039868FFCA0E583D0B /* GoogleMaps.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -572,7 +790,7 @@
 		};
 		92111D7F4357A63D476FF4384C052E33 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8710D03BCC8FB8B5FD80B0AEDAB8D0E7 /* iOSDropDown.release.xcconfig */;
+			baseConfigurationReference = 71B2C7F82000F6CB8813680A4CCB4E1E /* iOSDropDown.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -672,7 +890,7 @@
 		};
 		9777F8A98343527160CF9950B9A6980B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08F13811AF858F703DBF86F815DBEB33 /* iOSDropDown.debug.xcconfig */;
+			baseConfigurationReference = DD42F313E36B68521148A519EADA99A3 /* iOSDropDown.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -705,47 +923,9 @@
 			};
 			name = Debug;
 		};
-		A61C5BFDAD66EC981D0BC3300EACD758 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = B34376EC59E0CBCA6CE596BFFEDBFCF7 /* Pods-TFM-Botanica.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		E1E452060D51DF935547186CE54B26CC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AE9CFE17B203D65A9FD0E06AB3534BC2 /* GoogleMaps.debug.xcconfig */;
+			baseConfigurationReference = 888984E22547687E9BC9BCB7965E9A44 /* GoogleMaps.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -849,6 +1029,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		630C594C0EBC9837CE22050CC43FEF06 /* Build configuration list for PBXNativeTarget "FlexiblePageControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42193AC2B14EA0CDCEB6A3ED08A9E5B1 /* Debug */,
+				55936C1E3B2C34177A508475698BBE3B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A476A331E996DC82BDA1CD0E8A43F8B6 /* Build configuration list for PBXNativeTarget "iOSDropDown" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -858,11 +1047,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E4F9B97897A29FD6D0CF12D614CABCD5 /* Build configuration list for PBXNativeTarget "Pods-TFM-Botanica" */ = {
+		DB1157EFCCF5B4E43EA2538BAE198EE4 /* Build configuration list for PBXNativeTarget "Pods-TFM-Botanica" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A61C5BFDAD66EC981D0BC3300EACD758 /* Debug */,
-				38F6ACB6A6AFED9496E620A71459020C /* Release */,
+				0CC12C016104365A9BCA417E07071E89 /* Debug */,
+				29F443C398134A0A5360630B22B5F2E3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
