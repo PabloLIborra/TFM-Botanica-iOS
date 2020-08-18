@@ -114,6 +114,10 @@ class PlantsTableViewController: UITableViewController {
                                 plantController?.title = plantValues[indexPath.row].scientific_name
                                 plantController?.family = plantValues[indexPath.row].family!
                                 plantController?.photoName.append("background-routes.jpeg")
+                                plantController?.photoName.append("background-activity.jpeg")
+                                plantController?.photoName.append("background-credits.jpeg")
+                                plantController?.photoName.append("background-detail.jpeg")
+                                plantController?.photoName.append("background-activity.jpeg")
 
                                 plantController?.textDescription = plantValues[indexPath.row].information!
                             }
