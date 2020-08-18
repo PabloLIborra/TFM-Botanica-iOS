@@ -61,7 +61,7 @@ class CustomReportAlertViewController: UIViewController {
     static func showReportAlertViewController(view: UIViewController) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let reportAlert = storyboard.instantiateViewController(withIdentifier: "reportAlert") as! CustomReportAlertViewController
-        reportAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        reportAlert.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         reportAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         
         reportAlert.nameController = NSStringFromClass(view.classForCoder)

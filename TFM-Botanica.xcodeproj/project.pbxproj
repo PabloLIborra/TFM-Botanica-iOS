@@ -29,6 +29,9 @@
 		1A60E48124E2ADF9001FC516 /* CustomTestAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */; };
 		1A60E48424E556E3001FC516 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48324E556E3001FC516 /* CreditsViewController.swift */; };
 		1A60E48624E5615D001FC516 /* CustomReportAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */; };
+		1A60E48A24EA82AA001FC516 /* ZoomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48924EA82AA001FC516 /* ZoomPhotoViewController.swift */; };
+		1A60E48C24EA9EA3001FC516 /* CustomUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48B24EA9EA3001FC516 /* CustomUIImage.swift */; };
+		1A60E49124EBDAC3001FC516 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */; };
 		1A83BCC624DAB3BD00A69665 /* SendQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */; };
 		1A83BCC824DC919200A69665 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83BCC724DC919200A69665 /* CustomColors.swift */; };
 		1A84BC842469915D00E92EE6 /* TFM_Botanica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC822469915D00E92EE6 /* TFM_Botanica.xcdatamodeld */; };
@@ -69,6 +72,9 @@
 		1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTestAlertViewController.swift; sourceTree = "<group>"; };
 		1A60E48324E556E3001FC516 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomReportAlertViewController.swift; sourceTree = "<group>"; };
+		1A60E48924EA82AA001FC516 /* ZoomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomPhotoViewController.swift; sourceTree = "<group>"; };
+		1A60E48B24EA9EA3001FC516 /* CustomUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIImage.swift; sourceTree = "<group>"; };
+		1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1A83BCC724DC919200A69665 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		1A84BC832469915D00E92EE6 /* TFM_Botanica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TFM_Botanica.xcdatamodel; sourceTree = "<group>"; };
@@ -105,9 +111,12 @@
 				1A5723AA24323F5000ADDEBB /* CustomInfoWindow.xib */,
 				1A175D332445EE3D0073181C /* CustomMapAlertViewController.swift */,
 				1A83BCC724DC919200A69665 /* CustomColors.swift */,
+				1A60E48B24EA9EA3001FC516 /* CustomUIImage.swift */,
 				1A60E47E24E160B0001FC516 /* CustomPlantAlertViewController.swift */,
 				1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */,
 				1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */,
+				1A60E48924EA82AA001FC516 /* ZoomPhotoViewController.swift */,
+				1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -344,9 +353,11 @@
 				1A5723AD2432400200ADDEBB /* CustomInfoWindow.swift in Sources */,
 				1A57239C243204B000ADDEBB /* RouteTableViewController.swift in Sources */,
 				1A5723B22433419E00ADDEBB /* ActivityViewController.swift in Sources */,
+				1A60E48A24EA82AA001FC516 /* ZoomPhotoViewController.swift in Sources */,
 				1A5723892432008B00ADDEBB /* ViewController.swift in Sources */,
 				1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */,
 				1A175D29244467020073181C /* CustomMarker.swift in Sources */,
+				1A60E49124EBDAC3001FC516 /* ImageCollectionViewCell.swift in Sources */,
 				1AB2DB0B24D6D13500A2AB91 /* PlantsTableViewCell.swift in Sources */,
 				1A175D252443292C0073181C /* QuestionTableViewController.swift in Sources */,
 				1AB2DB0E24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.swift in Sources */,
@@ -366,6 +377,7 @@
 				1A60E48624E5615D001FC516 /* CustomReportAlertViewController.swift in Sources */,
 				1A5723A124320BC800ADDEBB /* RouteTableViewCell.swift in Sources */,
 				1AB2DB0824D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift in Sources */,
+				1A60E48C24EA9EA3001FC516 /* CustomUIImage.swift in Sources */,
 				1A5723A324321F3A00ADDEBB /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

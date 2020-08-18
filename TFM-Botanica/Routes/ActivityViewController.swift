@@ -65,10 +65,20 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         //Update data inteface
         self.updateActivityState()
         self.titleLabel.text = self.activity?.title
-        self.photoImage.image = UIImage(named: "background-routes.jpeg")
+        self.photoImage.image = UIImage(named: "background-routes.jpeg")!.withRoundedCorners(radius: 30)
         self.descriptionTextField.text = self.activity?.information
         
+        //Gesture zoom photo
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        self.photoImage.isUserInteractionEnabled = true
+        self.photoImage.addGestureRecognizer(tapGestureRecognizer)
+        
         self.updateButtonState()
+    }
+
+    @objc func imageTapped()
+    {
+        ZoomPhotoViewController.showZoomPhotoViewController(view: self, photo: self.photoImage.image!)
     }
     
     func updateButtonState() {

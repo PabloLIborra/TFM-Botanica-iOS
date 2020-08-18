@@ -10,12 +10,15 @@ import UIKit
 
 class PlantsViewController: UIViewController {
 
-    @IBOutlet weak var photoImage: UIImageView!
-    var photoName: String = ""
+    @IBOutlet weak var imageCollectionView: UICollectionView!
+    @IBOutlet weak var pageController: UIPageControl!
+    var photoName: [String] = []
     @IBOutlet weak var familyLabel: UILabel!
     var family: String = ""
     @IBOutlet weak var descriptionText: UITextView!
     var textDescription: String = ""
+    
+    let pageControl = UIPageControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +32,16 @@ class PlantsViewController: UIViewController {
         tlabel.textAlignment = .center
         self.navigationItem.titleView = tlabel
         
-        self.photoImage.image = UIImage(named: photoName)
+        self.pageController.numberOfPages = self.photoName.count
+        //self.photoImage.image = UIImage(named: photoName)?.withRoundedCorners(radius: 30)
         self.familyLabel.text = "Familia: \(family)"
         self.familyLabel.adjustsFontSizeToFitWidth = true
         self.descriptionText.text = textDescription
+        
+        //Gesture zoom photo
+        /*let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        self.photoImage.isUserInteractionEnabled = true
+        self.photoImage.addGestureRecognizer(tapGestureRecognizer)*/
         
         self.updateInterface()
     }
@@ -44,8 +53,56 @@ class PlantsViewController: UIViewController {
         reportButton.image = UIImage(systemName: "exclamationmark.triangle")
         self.navigationItem.rightBarButtonItems = [reportButton]
     }
+
+    @objc func imageTapped()
+    {
+        //ZoomPhotoViewController.showZoomPhotoViewController(view: self, photo: self.photoImage.image!)
+    }
     
     @objc func reportActionButton() {
         CustomReportAlertViewController.showReportAlertViewController(view: self)
+    }
+}
+
+extension PlantsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.photoName.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionCell", for: indexPath) as? ImageCollectionViewCell
+        
+        cell?.photoImage.image = UIImage(named: photoName[indexPath.row])?.withRoundedCorners(radius: 30)
+
+        cell?.photoImage.clipsToBounds = true
+        
+        return cell!
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        self.pageController.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+
+        self.pageController.currentPage = Int(scrollView.contentOffset.x) / Int(scrollView.frame.width)
+    }
+}
+
+extension PlantsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let size = collectionView.frame.size
+        return CGSize(width: size.width, height: size.height)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

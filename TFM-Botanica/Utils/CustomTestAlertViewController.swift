@@ -65,7 +65,8 @@ class CustomTestAlertViewController: UIViewController {
 
         plant.title = self.plant!.scientific_name
         plant.family = self.plant!.family!
-        plant.photoName = "background-routes.jpeg"
+        plant.photoName.append("background-routes.jpeg")
+        plant.photoName.append("background-activity.jpeg")
         plant.textDescription = self.plant!.information!
         
         navigationController.pushViewController(plant, animated: true)
