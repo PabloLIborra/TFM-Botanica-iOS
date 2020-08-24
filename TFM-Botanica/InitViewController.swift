@@ -44,71 +44,76 @@ class InitViewController: UIViewController {
         }
         let miContexto = miDelegate.persistentContainer.viewContext
         
-        let url = Bundle.main.url(forResource: "prueba", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
-        
-        do {
-            let json = try JSONSerialization.jsonObject(with: data) as! [String:Any]
-            if let route = json["itinerario"] as? String {
-                let routeData = NSEntityDescription.insertNewObject(forEntityName: "Route", into: miContexto) as? Route
-                routeData?.name = route
-            
-                if let information = json["informacion_itinerario"] as? String {
-                    routeData?.information = information
-                }
-                routeData?.state = Int16(State.AVAILABLE)
+        if let url = URL(string: "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/prueba.json?token=AHTLPJIU7Y2YKCQHP5YDNXK7JVPDI") {
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    guard let jsonSerialize = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else { return }
 
-                if let plants = json["plantas"] as? [[String:Any]] {
-                    for plant in plants {
-                        let activityData = NSEntityDescription.insertNewObject(forEntityName: "Activity", into: miContexto) as? Activity
-                        activityData?.title = plant["titulo_actividad"] as? String
-                        activityData?.subtitle = plant["subtitulo_actividad"] as? String
-                        activityData?.state = Int16(State.INACTIVE)
-                        activityData?.information = plant["informacion_actividad"] as? String
-                        activityData?.date = Date()
-                        activityData?.longitude = (plant["lng"] as! NSString).doubleValue
-                        activityData?.latitude = (plant["lat"] as! NSString).doubleValue
-                        activityData?.route = routeData
-                        routeData?.addToActivities(activityData!)
+                    do {
+                        guard let json = jsonSerialize as? [String: Any] else { return }
+                        if let route = json["itinerario"] as? String {
+                            let routeData = NSEntityDescription.insertNewObject(forEntityName: "Route", into: miContexto) as? Route
+                            routeData?.name = route
                         
-                        let plantData = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: miContexto) as? Plant
-                        plantData?.scientific_name = plant["nombre_cientifico"] as? String
-                        plantData?.family = plant["familia"] as? String
-                        plantData?.information = plant["descripcion_planta"] as? String
-                        plantData?.unlock = false
-                        plantData?.activity = activityData
-                        activityData?.plant = plantData
-                        
-                        if let questions = plant["preguntas"] as? [[String:Any]] {
-                            for question in questions {
-                                let questionData = NSEntityDescription.insertNewObject(forEntityName: "Question", into: miContexto) as? Question
-                                questionData?.title = question["titulo_pregunta"] as? String
-                                questionData?.date = Date()
-                                plantData?.addToQuestions(questionData!)
-                                
-                                let trueAnswerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
-                                trueAnswerData?.title = question["respuestac"] as? String
-                                questionData?.true_answer = trueAnswerData
-                                questionData?.addToAnswers(trueAnswerData!)
-                                
-                                let answers = question["respuestas"] as? String
-                                let splitAnswers = answers?.components(separatedBy: ";")
-                                for splitAnswer in splitAnswers! {
-                                    let answerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
-                                    answerData?.title = splitAnswer
-                                    questionData?.addToAnswers(answerData!)
-                                }
-                                
+                            if let information = json["informacion_itinerario"] as? String {
+                                routeData?.information = information
                             }
+                            routeData?.state = Int16(State.AVAILABLE)
+
+                            if let plants = json["plantas"] as? [[String:Any]] {
+                                for plant in plants {
+                                    let activityData = NSEntityDescription.insertNewObject(forEntityName: "Activity", into: miContexto) as? Activity
+                                    activityData?.title = plant["titulo_actividad"] as? String
+                                    activityData?.subtitle = plant["subtitulo_actividad"] as? String
+                                    activityData?.state = Int16(State.INACTIVE)
+                                    activityData?.information = plant["informacion_actividad"] as? String
+                                    activityData?.date = Date()
+                                    activityData?.longitude = (plant["lng"] as! NSString).doubleValue
+                                    activityData?.latitude = (plant["lat"] as! NSString).doubleValue
+                                    activityData?.route = routeData
+                                    routeData?.addToActivities(activityData!)
+                                    
+                                    let plantData = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: miContexto) as? Plant
+                                    plantData?.scientific_name = plant["nombre_cientifico"] as? String
+                                    plantData?.family = plant["familia"] as? String
+                                    plantData?.information = plant["descripcion_planta"] as? String
+                                    plantData?.unlock = false
+                                    plantData?.activity = activityData
+                                    activityData?.plant = plantData
+                                    
+                                    if let questions = plant["preguntas"] as? [[String:Any]] {
+                                        for question in questions {
+                                            let questionData = NSEntityDescription.insertNewObject(forEntityName: "Question", into: miContexto) as? Question
+                                            questionData?.title = question["titulo_pregunta"] as? String
+                                            questionData?.date = Date()
+                                            plantData?.addToQuestions(questionData!)
+                                            
+                                            let trueAnswerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
+                                            trueAnswerData?.title = question["respuestac"] as? String
+                                            questionData?.true_answer = trueAnswerData
+                                            questionData?.addToAnswers(trueAnswerData!)
+                                            
+                                            let answers = question["respuestas"] as? String
+                                            let splitAnswers = answers?.components(separatedBy: ";")
+                                            for splitAnswer in splitAnswers! {
+                                                let answerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
+                                                answerData?.title = splitAnswer
+                                                questionData?.addToAnswers(answerData!)
+                                            }
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            try miContexto.save()
+                            print("SAVED")
                         }
+                    } catch {
+                        print(error)
                     }
                 }
-                
-                try miContexto.save()
-                print("SAVED")
-            }
-        } catch {
-            print(error)
+            }.resume()
         }
     }
     
