@@ -33,7 +33,7 @@ class PlantsViewController: UIViewController {
         tlabel.textAlignment = .center
         self.navigationItem.titleView = tlabel
         
-        self.pageControl = FlexiblePageControl(frame: CGRect(x: 0, y: 0, width: self.viewPageControl.frame.size.width, height: self.viewPageControl.frame.size.height))
+        self.pageControl = FlexiblePageControl(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.viewPageControl.frame.size.height))
         self.pageControl.numberOfPages = self.photoName.count
         self.pageControl.pageIndicatorTintColor = UIColor.black
         self.pageControl.currentPageIndicatorTintColor = UIColor.greenCell
@@ -44,11 +44,6 @@ class PlantsViewController: UIViewController {
         self.familyLabel.adjustsFontSizeToFitWidth = true
         self.descriptionText.text = textDescription
         
-        //Gesture zoom photo
-        /*let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        self.photoImage.isUserInteractionEnabled = true
-        self.photoImage.addGestureRecognizer(tapGestureRecognizer)*/
-        
         self.updateInterface()
     }
     
@@ -58,11 +53,6 @@ class PlantsViewController: UIViewController {
         let reportButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(reportActionButton))
         reportButton.image = UIImage(systemName: "exclamationmark.triangle")
         self.navigationItem.rightBarButtonItems = [reportButton]
-    }
-
-    @objc func imageTapped()
-    {
-        //ZoomPhotoViewController.showZoomPhotoViewController(view: self, photo: self.photoImage.image!)
     }
     
     @objc func reportActionButton() {
@@ -78,8 +68,8 @@ extension PlantsViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionCell", for: indexPath) as? ImageCollectionViewCell
         
+        cell?.parentView = self
         cell?.photoImage.image = UIImage(named: photoName[indexPath.row])?.withRoundedCorners(radius: 30)
-
         cell?.photoImage.clipsToBounds = true
         
         return cell!

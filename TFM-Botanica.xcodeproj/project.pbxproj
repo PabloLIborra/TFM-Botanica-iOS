@@ -32,6 +32,7 @@
 		1A60E48A24EA82AA001FC516 /* ZoomPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48924EA82AA001FC516 /* ZoomPhotoViewController.swift */; };
 		1A60E48C24EA9EA3001FC516 /* CustomUIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48B24EA9EA3001FC516 /* CustomUIImage.swift */; };
 		1A60E49124EBDAC3001FC516 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */; };
+		1A60E49424ED2128001FC516 /* prueba.json in Resources */ = {isa = PBXBuildFile; fileRef = 1A60E49324ED2128001FC516 /* prueba.json */; };
 		1A83BCC624DAB3BD00A69665 /* SendQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */; };
 		1A83BCC824DC919200A69665 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A83BCC724DC919200A69665 /* CustomColors.swift */; };
 		1A84BC842469915D00E92EE6 /* TFM_Botanica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC822469915D00E92EE6 /* TFM_Botanica.xcdatamodeld */; };
@@ -75,6 +76,7 @@
 		1A60E48924EA82AA001FC516 /* ZoomPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomPhotoViewController.swift; sourceTree = "<group>"; };
 		1A60E48B24EA9EA3001FC516 /* CustomUIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIImage.swift; sourceTree = "<group>"; };
 		1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
+		1A60E49324ED2128001FC516 /* prueba.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = prueba.json; sourceTree = "<group>"; };
 		1A83BCC524DAB3BD00A69665 /* SendQuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendQuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1A83BCC724DC919200A69665 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
 		1A84BC832469915D00E92EE6 /* TFM_Botanica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TFM_Botanica.xcdatamodel; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		1A5723832432008B00ADDEBB /* TFM-Botanica */ = {
 			isa = PBXGroup;
 			children = (
+				1A60E49324ED2128001FC516 /* prueba.json */,
 				1A5723842432008B00ADDEBB /* AppDelegate.swift */,
 				1A5723862432008B00ADDEBB /* SceneDelegate.swift */,
 				1A5723882432008B00ADDEBB /* ViewController.swift */,
@@ -278,6 +281,7 @@
 				1AB2DB0F24D6D65300A2AB91 /* CustomHeaderViewPlantsTableViewCell.xib in Resources */,
 				1A5723AB24323F5000ADDEBB /* CustomInfoWindow.xib in Resources */,
 				1AB2DB0924D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib in Resources */,
+				1A60E49424ED2128001FC516 /* prueba.json in Resources */,
 				1A5723942432008D00ADDEBB /* LaunchScreen.storyboard in Resources */,
 				1A5723912432008D00ADDEBB /* Assets.xcassets in Resources */,
 				1A57238C2432008B00ADDEBB /* Main.storyboard in Resources */,

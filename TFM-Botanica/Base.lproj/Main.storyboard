@@ -947,11 +947,8 @@ Ya puedes ver con detalle la planta oculta.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bro-ib-S4H">
-                                <rect key="frame" x="20.666666666666657" y="101.33333333333331" width="373" height="315"/>
+                                <rect key="frame" x="20.666666666666657" y="101.33333333333333" width="373" height="315.00000000000006"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Bro-ib-S4H" secondAttribute="height" multiplier="373:353" constant="40.1529745042493" id="E6o-ev-Q42"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gtR-Ng-Res">
                                     <size key="itemSize" width="373" height="317"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -968,13 +965,16 @@ Ya puedes ver con detalle la planta oculta.
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orL-YT-FPf">
                                                     <rect key="frame" x="0.0" y="0.0" width="373" height="317"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="orL-YT-FPf" secondAttribute="height" multiplier="373:317" id="etd-bY-h4f"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="orL-YT-FPf" secondAttribute="trailing" id="W9c-5C-xex"/>
-                                                <constraint firstItem="orL-YT-FPf" firstAttribute="top" secondItem="RSW-Wz-goy" secondAttribute="top" id="eyV-Fb-Hld"/>
-                                                <constraint firstItem="orL-YT-FPf" firstAttribute="leading" secondItem="RSW-Wz-goy" secondAttribute="leading" id="gvO-cq-vPw"/>
-                                                <constraint firstAttribute="bottom" secondItem="orL-YT-FPf" secondAttribute="bottom" id="hyJ-KJ-dvE"/>
+                                                <constraint firstItem="orL-YT-FPf" firstAttribute="height" secondItem="RSW-Wz-goy" secondAttribute="height" id="ABI-Y6-WBN"/>
+                                                <constraint firstItem="orL-YT-FPf" firstAttribute="centerX" secondItem="RSW-Wz-goy" secondAttribute="centerX" id="GJk-fe-7B5"/>
+                                                <constraint firstItem="orL-YT-FPf" firstAttribute="width" secondItem="RSW-Wz-goy" secondAttribute="width" id="SPX-cZ-H4D"/>
+                                                <constraint firstItem="orL-YT-FPf" firstAttribute="top" secondItem="RSW-Wz-goy" secondAttribute="top" id="r6Q-dl-1Jn"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="373" height="317"/>
@@ -989,13 +989,13 @@ Ya puedes ver con detalle la planta oculta.
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Familia: Nombre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Koj-Cr-Ww0">
-                                <rect key="frame" x="20" y="457.66666666666669" width="374" height="31"/>
+                                <rect key="frame" x="20" y="455.66666666666669" width="374" height="31"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Descripción" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqd-AK-Ag3">
-                                <rect key="frame" x="18.333333333333343" y="498.66666666666674" width="377.33333333333326" height="298.33333333333326"/>
+                                <rect key="frame" x="17" y="496.33333333333326" width="380" height="300.66666666666674"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xqd-AK-Ag3" secondAttribute="height" multiplier="187:148" id="GmD-lZ-IPa"/>
@@ -1005,10 +1005,10 @@ Ya puedes ver con detalle la planta oculta.
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P5f-4B-8Cb">
-                                <rect key="frame" x="100" y="416.33333333333331" width="214" height="37"/>
+                                <rect key="frame" x="0.0" y="416.33333333333331" width="414" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="P5f-4B-8Cb" secondAttribute="height" multiplier="214:37" id="vAl-R3-28T"/>
+                                    <constraint firstAttribute="height" constant="35" id="Fox-rK-PUG"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1021,11 +1021,10 @@ Ya puedes ver con detalle la planta oculta.
                             <constraint firstItem="P5f-4B-8Cb" firstAttribute="top" secondItem="Bro-ib-S4H" secondAttribute="bottom" id="M7Y-C3-ly2"/>
                             <constraint firstItem="Bro-ib-S4H" firstAttribute="centerX" secondItem="F3W-y3-SsL" secondAttribute="centerX" id="UAg-ce-Xed"/>
                             <constraint firstItem="Bro-ib-S4H" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" multiplier="0.900966" id="UDF-HK-tuE"/>
-                            <constraint firstItem="P5f-4B-8Cb" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" multiplier="0.516908" id="WAr-oG-cus"/>
+                            <constraint firstItem="P5f-4B-8Cb" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" id="WAr-oG-cus"/>
                             <constraint firstItem="Koj-Cr-Ww0" firstAttribute="centerX" secondItem="Edk-ki-23O" secondAttribute="centerX" id="cil-p3-yWF"/>
                             <constraint firstItem="xqd-AK-Ag3" firstAttribute="top" secondItem="Koj-Cr-Ww0" secondAttribute="bottom" multiplier="1.02" id="dzd-CD-04a"/>
                             <constraint firstItem="Bro-ib-S4H" firstAttribute="height" secondItem="Edk-ki-23O" secondAttribute="height" multiplier="0.393973" constant="-38" id="fbc-b5-xS0"/>
-                            <constraint firstItem="P5f-4B-8Cb" firstAttribute="height" secondItem="Edk-ki-23O" secondAttribute="height" multiplier="0.0412946" id="vBI-Jz-VG4"/>
                             <constraint firstItem="F3W-y3-SsL" firstAttribute="bottom" secondItem="xqd-AK-Ag3" secondAttribute="bottom" multiplier="1.02" id="vZO-Ty-YIW"/>
                             <constraint firstItem="Koj-Cr-Ww0" firstAttribute="width" secondItem="Edk-ki-23O" secondAttribute="width" multiplier="0.903382" id="voj-TJ-KG1"/>
                             <constraint firstItem="Koj-Cr-Ww0" firstAttribute="top" secondItem="P5f-4B-8Cb" secondAttribute="bottom" multiplier="1.01" id="yZs-wB-hW2"/>

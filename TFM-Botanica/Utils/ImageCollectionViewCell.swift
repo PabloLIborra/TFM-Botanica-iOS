@@ -10,11 +10,21 @@ import UIKit
 
 class ImageCollectionViewCell: UICollectionViewCell {
 
+    var parentView: UIViewController?
     @IBOutlet weak var photoImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        //Gesture zoom photo
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        self.photoImage.isUserInteractionEnabled = true
+        self.photoImage.addGestureRecognizer(tapGestureRecognizer)
+    }
+
+    @objc func imageTapped()
+    {
+        ZoomPhotoViewController.showZoomPhotoViewController(view: self.parentView!, photo: self.photoImage.image!)
     }
 
 }
