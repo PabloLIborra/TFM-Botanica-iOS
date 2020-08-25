@@ -64,7 +64,9 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.mapView.animate(with: camera)
         
         self.customInfoWindow?.titleLabel.text = self.tappedMarker?.title
-        self.customInfoWindow?.subtitleLabel.text = self.tappedMarker?.snippet
+        self.customInfoWindow?.subtitleText.text = "HolaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaHolaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaHolaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        self.customInfoWindow?.subtitleText.layer.backgroundColor = UIColor.barColor.cgColor
+        self.customInfoWindow?.subtitleText.textContainerInset = UIEdgeInsets.zero
         
         self.customInfoWindow?.button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         self.customInfoWindow?.button.layer.cornerRadius = 8

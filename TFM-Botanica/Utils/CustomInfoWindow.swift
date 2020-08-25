@@ -11,7 +11,7 @@ import UIKit
 class CustomInfoWindow: UIView {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var subtitleText: UITextView!
     @IBOutlet weak var button: UIButton!
     
     override init(frame: CGRect) {
