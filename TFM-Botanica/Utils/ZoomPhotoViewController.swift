@@ -36,7 +36,15 @@ class ZoomPhotoViewController: UIViewController {
         zoomPhotoController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
         zoomPhotoController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         
-        zoomPhotoController.photo = photo
+        var image = photo
+        
+        let widthInPixels = image.size.width * image.scale
+        let heightInPixels = image.size.height * image.scale
+        if widthInPixels / heightInPixels > 1.0 {
+            image = image.rotate(radians: Float.pi / 2)!
+        }
+        
+        zoomPhotoController.photo = image
         
         view.present(zoomPhotoController, animated: true, completion: nil)
     }

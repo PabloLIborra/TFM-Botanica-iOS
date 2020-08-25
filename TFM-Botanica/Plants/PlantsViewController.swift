@@ -69,7 +69,8 @@ extension PlantsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionCell", for: indexPath) as? ImageCollectionViewCell
         
         cell?.parentView = self
-        cell?.photoImage.image = UIImage(named: photoName[indexPath.row])?.withRoundedCorners(radius: 30)
+        
+        cell?.photoImage.image = UIImage(named: photoName[indexPath.row])?.withRoundedCorners(radius: 40)
         cell?.photoImage.clipsToBounds = true
         
         return cell!

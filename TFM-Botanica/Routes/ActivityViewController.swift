@@ -65,7 +65,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         //Update data inteface
         self.updateActivityState()
         self.titleLabel.text = self.activity?.title
-        self.photoImage.image = UIImage(named: "background-routes.jpeg")!.withRoundedCorners(radius: 30)
+        self.photoImage.image = UIImage(named: "example-image-detail.jpeg")!.withRoundedCorners(radius: 40)
         self.descriptionTextField.text = self.activity?.information
         
         //Gesture zoom photo
@@ -161,7 +161,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
                                     route.state = Int16(State.IN_PROGRESS)
                                     updateRoute = true
                                 }
-                                print("Actividad resuelta: "+activity.title!)
+                                
                                 if(route.state == State.IN_PROGRESS && activities![activities!.count - 1] != activity && state == State.COMPLETE) {
                                     self.mapViewController?.unlockNextActivityFromActivityChange(activity: activity)
                                     self.activity?.plant?.unlock = true
