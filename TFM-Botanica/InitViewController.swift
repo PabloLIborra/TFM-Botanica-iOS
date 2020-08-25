@@ -15,6 +15,9 @@ class InitViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var initButton: UIButton!
     
+    let urlIndex = ""
+    let urlJSON = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueba.json?token=AHTLPJJG3SSXRRNFM4XWNP27JY2ZU"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -44,7 +47,7 @@ class InitViewController: UIViewController {
         }
         let miContexto = miDelegate.persistentContainer.viewContext
         
-        if let url: URL = URL(string: "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/prueba.json?token=AHTLPJM4TS5SRMBD3S3I5C27JYTNA") {
+        if let url: URL = URL(string: self.urlJSON) {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
                     guard let jsonSerialize = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else { return }
