@@ -26,6 +26,7 @@
 		1A5723B42433487000ADDEBB /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B32433487000ADDEBB /* InitViewController.swift */; };
 		1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723B52433522C00ADDEBB /* CameraViewController.swift */; };
 		1A5E217D24F5322900A88E64 /* JSON in Resources */ = {isa = PBXBuildFile; fileRef = 1A5E217C24F5322900A88E64 /* JSON */; };
+		1A5E217F24F567F200A88E64 /* JSONRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5E217E24F567F200A88E64 /* JSONRequest.swift */; };
 		1A60E47F24E160B0001FC516 /* CustomPlantAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E47E24E160B0001FC516 /* CustomPlantAlertViewController.swift */; };
 		1A60E48124E2ADF9001FC516 /* CustomTestAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */; };
 		1A60E48424E556E3001FC516 /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A60E48324E556E3001FC516 /* CreditsViewController.swift */; };
@@ -70,6 +71,7 @@
 		1A5723B32433487000ADDEBB /* InitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitViewController.swift; sourceTree = "<group>"; };
 		1A5723B52433522C00ADDEBB /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		1A5E217C24F5322900A88E64 /* JSON */ = {isa = PBXFileReference; lastKnownFileType = folder; path = JSON; sourceTree = "<group>"; };
+		1A5E217E24F567F200A88E64 /* JSONRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRequest.swift; sourceTree = "<group>"; };
 		1A60E47E24E160B0001FC516 /* CustomPlantAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPlantAlertViewController.swift; sourceTree = "<group>"; };
 		1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTestAlertViewController.swift; sourceTree = "<group>"; };
 		1A60E48324E556E3001FC516 /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */,
 				1A60E48924EA82AA001FC516 /* ZoomPhotoViewController.swift */,
 				1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */,
+				1A5E217E24F567F200A88E64 /* JSONRequest.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				1A60E47F24E160B0001FC516 /* CustomPlantAlertViewController.swift in Sources */,
 				1A5723B02432570700ADDEBB /* PlantsTableViewController.swift in Sources */,
 				1A5723852432008B00ADDEBB /* AppDelegate.swift in Sources */,
+				1A5E217F24F567F200A88E64 /* JSONRequest.swift in Sources */,
 				1A83BCC624DAB3BD00A69665 /* SendQuestionTableViewCell.swift in Sources */,
 				1A175D342445EE3D0073181C /* CustomMapAlertViewController.swift in Sources */,
 				1A60E48124E2ADF9001FC516 /* CustomTestAlertViewController.swift in Sources */,

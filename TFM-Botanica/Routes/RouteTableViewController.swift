@@ -43,6 +43,7 @@ class RouteTableViewController: UITableViewController {
     
     @objc private func refreshTableData() {
         DispatchQueue.main.async {
+            JSONRequest.readJSONFromServer()
             self.updateData()
             self.customRefreshControl.endRefreshing()
         }
@@ -74,7 +75,7 @@ class RouteTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell", for: indexPath) as! RouteTableViewCell
 
-        var route: Route = Route()
+        var route: Route?
         if(indexPath.section == State.IN_PROGRESS) {
             route = routesInProgress[indexPath.row]
         } else if(indexPath.section == State.AVAILABLE) {
@@ -83,15 +84,15 @@ class RouteTableViewController: UITableViewController {
             route = routesComplete[indexPath.row]
         }
 
-        cell.nameLabel.text = route.name
-        cell.informationLabel.text = route.information
+        cell.nameLabel.text = route!.name
+        cell.informationLabel.text = route!.information
         var complete = 0
-        for activity in route.activities?.allObjects as! [Activity] {
+        for activity in route!.activities?.allObjects as! [Activity] {
             if(activity.state == State.COMPLETE) {
                 complete += 1
             }
         }
-        cell.progressLabel.text = String(complete) + "/" + String(route.activities!.allObjects.count)
+        cell.progressLabel.text = String(complete) + "/" + String(route!.activities!.allObjects.count)
         
         return cell
     }
@@ -135,7 +136,7 @@ class RouteTableViewController: UITableViewController {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let destiny = segue.destination as! MapViewController
                 
-                var route: Route = Route()
+                var route: Route?
                 if(indexPath.section == State.IN_PROGRESS) {
                     route = routesInProgress[indexPath.row]
                 } else if(indexPath.section == State.AVAILABLE) {

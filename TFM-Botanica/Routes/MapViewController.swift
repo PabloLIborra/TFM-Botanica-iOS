@@ -64,7 +64,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.mapView.animate(with: camera)
         
         self.customInfoWindow?.titleLabel.text = self.tappedMarker?.title
-        self.customInfoWindow?.subtitleText.text = "HolaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaHolaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaHolaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        self.customInfoWindow?.subtitleText.text = self.tappedMarker?.snippet
         self.customInfoWindow?.subtitleText.layer.backgroundColor = UIColor.barColor.cgColor
         self.customInfoWindow?.subtitleText.textContainerInset = UIEdgeInsets.zero
         
@@ -131,7 +131,6 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.mapView.clear()
         self.markers = []
         for activity in activities {
-            print(activity.title)
             self.addMapMarker(latitude: activity.latitude, longitude: activity.longitude, title: activity.title!, subtitle: activity.subtitle!, state: Int(activity.state))
             
             if activity.state == State.COMPLETE {
@@ -200,7 +199,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         
         if(routes!.count > 0) {
             var changeActivity = false
-            var changedActivity = Activity()
+            var changedActivity: Activity?
             routesLoop: for route in routes! {
                 if route == self.route {
                     let activities = self.activities
@@ -221,8 +220,8 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
                     if changeActivity == true {
                         let activities = route.activities?.allObjects as! [Activity]
                         activitiesLoop: for activity in activities {
-                            if activity.latitude == changedActivity.latitude && activity.longitude == changedActivity.longitude {
-                                activity.state = changedActivity.state
+                            if activity.latitude == changedActivity!.latitude && activity.longitude == changedActivity!.longitude {
+                                activity.state = changedActivity!.state
                                 break activitiesLoop
                             }
                         }
