@@ -34,7 +34,7 @@ class JSONRequest {
                         for text in splitText {
                             var prueba: String = self.urlJSON
                             if text == "prueba.json" {
-                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueba.json?token=AHTLPJMJUGSKSFAAV7MVTIC7JZSV6"
+                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueba.json?token=AHTLPJOE7JXQOTHYC6G7JCK7KJZLI"
                             } else if text == "prueb2.json" {
                                 prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueb2.json?token=AHTLPJJHJE7C3OHVYRDNZNS7KJZFO"
                             }
