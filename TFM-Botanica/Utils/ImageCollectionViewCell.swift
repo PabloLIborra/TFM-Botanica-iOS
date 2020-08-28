@@ -12,6 +12,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
 
     var parentView: UIViewController?
     @IBOutlet weak var photoImage: UIImageView!
+    var imageLoaded: Bool?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +25,7 @@ class ImageCollectionViewCell: UICollectionViewCell {
 
     @objc func imageTapped()
     {
-        ZoomPhotoViewController.showZoomPhotoViewController(view: self.parentView!, photo: self.photoImage.image!)
+        ZoomPhotoViewController.showZoomPhotoViewController(view: self.parentView!, photo: self.photoImage.image!, imageLoaded: self.imageLoaded!)
     }
 
 }

@@ -65,8 +65,12 @@ class CustomTestAlertViewController: UIViewController {
 
         plant.title = self.plant!.scientific_name
         plant.family = self.plant!.family!
-        plant.photoName.append("background-routes.jpeg")
-        plant.photoName.append("background-activity.jpeg")
+        if var imagesPlant = self.plant!.images!.allObjects as? [Image] {
+            imagesPlant.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
+            for imagePlant in imagesPlant {
+                plant.images.append(imagePlant)
+            }
+        }
         plant.textDescription = self.plant!.information!
         
         navigationController.pushViewController(plant, animated: true)

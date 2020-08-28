@@ -33,6 +33,22 @@ class RouteTableViewController: UITableViewController {
 
         self.updateInterface()
         self.loadRoutesCoreData()
+        
+        
+        let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
+        longPressGesture.minimumPressDuration = 1.0 // 1 second press
+        self.tableView.addGestureRecognizer(longPressGesture)
+        
+        
+        guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        let miContexto = miDelegate.persistentContainer.viewContext
+        
+        let requestRoutes : NSFetchRequest<Image> = NSFetchRequest(entityName:"Image")
+        var routes = try? miContexto.fetch(requestRoutes)
+        
+        print(routes?.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,6 +62,16 @@ class RouteTableViewController: UITableViewController {
             JSONRequest.readJSONFromServer()
             self.updateData()
             self.customRefreshControl.endRefreshing()
+            
+            guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            let miContexto = miDelegate.persistentContainer.viewContext
+            
+            let requestRoutes : NSFetchRequest<Image> = NSFetchRequest(entityName:"Image")
+            var routes = try? miContexto.fetch(requestRoutes)
+            
+            print(routes?.count)
         }
     }
 
@@ -206,5 +232,35 @@ class RouteTableViewController: UITableViewController {
             }
         }
     }
-
+    
+    @objc func handleLongPress(_ gestureRecognizer: UILongPressGestureRecognizer){
+        if gestureRecognizer.state == .began {
+            let touchPoint = gestureRecognizer.location(in: self.tableView)
+            if let indexPath = self.tableView.indexPathForRow(at: touchPoint) {
+                var route: Route?
+                if(indexPath.section == State.IN_PROGRESS) {
+                    route = routesInProgress[indexPath.row]
+                } else if(indexPath.section == State.AVAILABLE) {
+                    route = routesAvailables[indexPath.row]
+                } else if(indexPath.section == State.COMPLETE) {
+                    route = routesComplete[indexPath.row]
+                }
+                showDeleteRouteAlertView(route: route!)
+            }
+        }
+    }
+    
+    func showDeleteRouteAlertView(route: Route) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let deleteRouteAlert = storyboard.instantiateViewController(withIdentifier: "deleteRouteAlert") as! CustomDeleteAlertViewController
+        deleteRouteAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        deleteRouteAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        deleteRouteAlert.textTitle = "Eliminar"
+        deleteRouteAlert.textInformation = "¿Desea eliminar el itinerario" + "\n \"" + route.name! + "\"?\n\nSi realiza esta acción perderá todo su progreso, pero podrá volver a descargarla deslizando hacia abajo la lista."
+        deleteRouteAlert.route = route
+        deleteRouteAlert.routeTableView = self
+        
+        self.present(deleteRouteAlert, animated: true, completion: nil)
+    }
 }

@@ -14,6 +14,8 @@ class JSONRequest {
     
     static let urlIndex = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/index.txt?token=AHTLPJLOQBCOBYO5L6TIBB27JY5T6"
     static let urlJSON = "https://github.com/PabloLIborra/TFM-Botanica-iOS/tree/master/TFM-Botanica/JSON/"
+    static let urlImage = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/example-image-detail.imageset/example-image-detail.jpg?token=AHTLPJMI4XCBNX3WP7F3CQ27J56YA"
+    static let urlsPlantImages: [String] = ["https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/background-detail.imageset/background-detail.jpg?token=AHTLPJLTQWOKFHSUF5RCS3S7KC67W", "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/example-image-detail.imageset/example-image-detail.jpg?token=AHTLPJMI4XCBNX3WP7F3CQ27J56YA"]
     
     static func readJSONFromServer() {
         guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -72,6 +74,26 @@ class JSONRequest {
                                                                 activityData?.route = routeData
                                                                 routeData?.addToActivities(activityData!)
                                                                 
+                                                                //Cambiar url por la url de cda nombre en plant["foto_localizacion"]
+                                                                if let urlImage: URL = URL(string: self.urlImage) {
+                                                                    URLSession.shared.dataTask(with: urlImage) { data, response, error in
+                                                                        guard
+                                                                            let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                                                                            let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                                                                            let data = data, error == nil,
+                                                                            let image = UIImage(data: data)
+                                                                            else { return }
+                                                                        DispatchQueue.main.async() {
+                                                                            let imageActivityData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
+                                                                            imageActivityData?.image = image.pngData()
+                                                                            imageActivityData?.date = Date()
+                                                                            activityData?.image = imageActivityData
+                                                                            print("Descargada foto actividad")
+                                                                            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                                                                        }
+                                                                    }.resume()
+                                                                }
+                                                                
                                                                 let plantData = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: miContexto) as? Plant
                                                                 plantData?.scientific_name = plant["nombre_cientifico"] as? String
                                                                 plantData?.family = plant["familia"] as? String
@@ -79,6 +101,28 @@ class JSONRequest {
                                                                 plantData?.unlock = false
                                                                 plantData?.activity = activityData
                                                                 activityData?.plant = plantData
+                                                                
+                                                                //Cambiar url por las urls de cda nombre en plant["fotos_carrusel"], haciendo un split de ; entre nombre de foto y nombre.
+                                                                for urlPlantImage in self.urlsPlantImages {
+                                                                    if let urlImage: URL = URL(string: urlPlantImage) {
+                                                                            URLSession.shared.dataTask(with: urlImage) { data, response, error in
+                                                                                guard
+                                                                                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                                                                                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                                                                                    let data = data, error == nil,
+                                                                                    let image = UIImage(data: data)
+                                                                                    else { return }
+                                                                                DispatchQueue.main.async() {
+                                                                                    let imagePlantData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
+                                                                                    imagePlantData?.image = image.pngData()
+                                                                                    imagePlantData?.date = Date()
+                                                                                    plantData?.addToImages(imagePlantData!)
+                                                                                    print("Descargada foto planta")
+                                                                                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                                                                                }
+                                                                            }.resume()
+                                                                    }
+                                                                }
                                                                 
                                                                 if let questions = plant["preguntas"] as? [[String:Any]] {
                                                                     for question in questions {
@@ -126,7 +170,5 @@ class JSONRequest {
                 }
             }.resume()
         }
-        
-        
     }
 }

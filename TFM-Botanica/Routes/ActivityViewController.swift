@@ -25,6 +25,8 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     var imagePicker: UIImagePickerController! = UIImagePickerController()
     var cameraImage: UIImage? = nil
     
+    var imageLoaded = false
+    
     var activity: Activity? = nil
     
     override func viewDidLoad() {
@@ -65,7 +67,13 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         //Update data inteface
         self.updateActivityState()
         self.titleLabel.text = self.activity?.title
-        self.photoImage.image = UIImage(named: "example-image-detail.jpeg")!.withRoundedCorners(radius: 40)
+        
+        if let image = self.activity?.image?.image {
+            self.photoImage.image = UIImage(data: (image))!.withRoundedCorners(radius: 40)
+            self.imageLoaded = true
+        } else {
+            self.photoImage.image = UIImage(named: "notAvailable.png")
+        }
         self.descriptionTextField.text = self.activity?.information
         
         //Gesture zoom photo
@@ -78,7 +86,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @objc func imageTapped()
     {
-        ZoomPhotoViewController.showZoomPhotoViewController(view: self, photo: self.photoImage.image!)
+        ZoomPhotoViewController.showZoomPhotoViewController(view: self, photo: self.photoImage.image!, imageLoaded: self.imageLoaded)
     }
     
     func updateButtonState() {

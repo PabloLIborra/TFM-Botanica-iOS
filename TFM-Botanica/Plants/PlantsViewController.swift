@@ -13,7 +13,7 @@ class PlantsViewController: UIViewController {
 
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var viewPageControl: UIView!
-    var photoName: [String] = []
+    var images: [Image] = []
     @IBOutlet weak var familyLabel: UILabel!
     var family: String = ""
     @IBOutlet weak var descriptionText: UITextView!
@@ -34,7 +34,11 @@ class PlantsViewController: UIViewController {
         self.navigationItem.titleView = tlabel
         
         self.pageControl = FlexiblePageControl(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.viewPageControl.frame.size.height))
-        self.pageControl.numberOfPages = self.photoName.count
+        if self.images.count > 0 {
+            self.pageControl.numberOfPages = self.images.count
+        } else {
+            self.pageControl.numberOfPages = 1
+        }
         self.pageControl.pageIndicatorTintColor = UIColor.black
         self.pageControl.currentPageIndicatorTintColor = UIColor.greenCell
         self.viewPageControl.addSubview(self.pageControl)
@@ -62,7 +66,11 @@ class PlantsViewController: UIViewController {
 
 extension PlantsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.photoName.count
+        if self.images.count > 0 {
+            return self.images.count
+        } else {
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,19 +78,23 @@ extension PlantsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         cell?.parentView = self
         
-        cell?.photoImage.image = UIImage(named: photoName[indexPath.row])?.withRoundedCorners(radius: 40)
+        if self.images.count > 0 && self.images[indexPath.row].image != nil {
+            cell?.photoImage.image = UIImage(data: self.images[indexPath.row].image!)!.withRoundedCorners(radius: 40)
+            cell?.imageLoaded = true
+        } else {
+            cell?.photoImage.image = UIImage(named: "notAvailable.png")
+            cell?.imageLoaded = false
+        }
         cell?.photoImage.clipsToBounds = true
         
         return cell!
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-
         self.pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
     }
 
     func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-
         self.pageControl.setProgress(contentOffsetX: scrollView.contentOffset.x, pageWidth: scrollView.bounds.width)
     }
 }

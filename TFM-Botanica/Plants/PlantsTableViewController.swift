@@ -34,7 +34,7 @@ class PlantsTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.updateData()
         }
     }
     
@@ -72,13 +72,24 @@ class PlantsTableViewController: UITableViewController {
         let plantKey = plantSectionTitles[indexPath.section]
         if let plantValues = plantsDictionary[plantKey] {
             cell.nameLabel.text = plantValues[indexPath.row].scientific_name
-            cell.plantImage.image = UIImage(named: "background-plants.jpeg")
+            if var image = plantValues[indexPath.row].images?.allObjects as? [Image] {
+                if image.count > 0 {
+                    image.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
+                    cell.plantImage.image = UIImage(data: image.first!.image!)
+                } else {
+                    cell.plantImage.image = UIImage(named: "notAvailable.png")
+                }
+            } else {
+                cell.plantImage.image = UIImage(named: "notAvailable.png")
+            }
             
             if plantValues[indexPath.row].unlock == false{
                 cell.setInteractableCardView(interactable: false)
             } else {
                 cell.setInteractableCardView(interactable: true)
             }
+        } else {
+            cell.plantImage.image = UIImage(named: "notAvailable.png")
         }
         
         return cell
@@ -113,11 +124,13 @@ class PlantsTableViewController: UITableViewController {
                             if let plantValues = plantsDictionary[plantKey] {
                                 plantController?.title = plantValues[indexPath.row].scientific_name
                                 plantController?.family = plantValues[indexPath.row].family!
-                                plantController?.photoName.append("background-routes.jpeg")
-                                plantController?.photoName.append("example-image-detail.jpeg")
-                                plantController?.photoName.append("background-credits.jpeg")
-                                plantController?.photoName.append("background-detail.jpeg")
-                                plantController?.photoName.append("background-activity.jpeg")
+                                
+                                if var imagesPlant = plantValues[indexPath.row].images!.allObjects as? [Image] {
+                                    imagesPlant.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
+                                    for imagePlant in imagesPlant {
+                                        plantController?.images.append(imagePlant)
+                                    }
+                                }
 
                                 plantController?.textDescription = plantValues[indexPath.row].information!
                             }

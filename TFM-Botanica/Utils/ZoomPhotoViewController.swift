@@ -30,22 +30,24 @@ class ZoomPhotoViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    static func showZoomPhotoViewController(view: UIViewController, photo: UIImage) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let zoomPhotoController = storyboard.instantiateViewController(withIdentifier: "zoomPhotoController") as! ZoomPhotoViewController
-        zoomPhotoController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        zoomPhotoController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        var image = photo
-        
-        let widthInPixels = image.size.width * image.scale
-        let heightInPixels = image.size.height * image.scale
-        if widthInPixels / heightInPixels > 1.0 {
-            image = image.rotate(radians: Float.pi / 2)!
+    static func showZoomPhotoViewController(view: UIViewController, photo: UIImage, imageLoaded: Bool) {
+        if imageLoaded == true {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let zoomPhotoController = storyboard.instantiateViewController(withIdentifier: "zoomPhotoController") as! ZoomPhotoViewController
+            zoomPhotoController.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            zoomPhotoController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            
+            var image = photo
+            
+            let widthInPixels = image.size.width * image.scale
+            let heightInPixels = image.size.height * image.scale
+            if widthInPixels / heightInPixels > 1.0 {
+                image = image.rotate(radians: Float.pi / 2)!
+            }
+            
+            zoomPhotoController.photo = image
+            
+            view.present(zoomPhotoController, animated: true, completion: nil)
         }
-        
-        zoomPhotoController.photo = image
-        
-        view.present(zoomPhotoController, animated: true, completion: nil)
     }
 }
