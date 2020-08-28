@@ -36,7 +36,7 @@ class JSONRequest {
                             if text == "prueba.json" {
                                 prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueba.json?token=AHTLPJMJUGSKSFAAV7MVTIC7JZSV6"
                             } else if text == "prueb2.json" {
-                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueb2.json?token=AHTLPJPXSKTMDILCUL4JLDK7JZSMG"
+                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueb2.json?token=AHTLPJJHJE7C3OHVYRDNZNS7KJZFO"
                             }
                             if let url: URL = URL(string: prueba) {
                                 URLSession.shared.dataTask(with: url) { data, response, error in
