@@ -35,7 +35,16 @@ class InitViewController: UIViewController {
         nameLabel.layer.masksToBounds = false
         
         //loadExampleRoutes()
+        self.showSpinner(onView: self.view, textLabel: "Descargando archivos")
+        
+        self.readJSON { () -> () in
+            self.removeSpinner()
+        }
+    }
+    
+    func readJSON(handleComplete:(()->())){
         JSONRequest.readJSONFromServer()
+        handleComplete()
     }
     
     /*

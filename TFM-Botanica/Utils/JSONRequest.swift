@@ -12,7 +12,7 @@ import CoreData
 
 class JSONRequest {
     
-    static let urlIndex = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/index.txt?token=AHTLPJLOQBCOBYO5L6TIBB27JY5T6"
+    static let urlIndex = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/index.txt?token=AHTLPJJ2SRIU5GFCFK23VOC7LDDVG"
     static let urlJSON = "https://github.com/PabloLIborra/TFM-Botanica-iOS/tree/master/TFM-Botanica/JSON/"
     static let urlImage = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/example-image-detail.imageset/example-image-detail.jpg?token=AHTLPJMI4XCBNX3WP7F3CQ27J56YA"
     static let urlsPlantImages: [String] = ["https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/background-detail.imageset/background-detail.jpg?token=AHTLPJLTQWOKFHSUF5RCS3S7KC67W", "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/example-image-detail.imageset/example-image-detail.jpg?token=AHTLPJMI4XCBNX3WP7F3CQ27J56YA"]
@@ -34,9 +34,9 @@ class JSONRequest {
                         for text in splitText {
                             var prueba: String = self.urlJSON
                             if text == "prueba.json" {
-                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueba.json?token=AHTLPJKMBX4JO6EYWXMSR5C7KJ2A2"
+                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueba.json?token=AHTLPJNHSBUTRWEPVDQIHCC7LDDQM"
                             } else if text == "prueb2.json" {
-                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueb2.json?token=AHTLPJJHJE7C3OHVYRDNZNS7KJZFO"
+                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueb2.json?token=AHTLPJLKGFDNJVQYADOFWPS7LDDSA"
                             }
                             if let url: URL = URL(string: prueba) {
                                 URLSession.shared.dataTask(with: url) { data, response, error in
@@ -105,22 +105,22 @@ class JSONRequest {
                                                                 //Cambiar url por las urls de cda nombre en plant["fotos_carrusel"], haciendo un split de ; entre nombre de foto y nombre.
                                                                 for urlPlantImage in self.urlsPlantImages {
                                                                     if let urlImage: URL = URL(string: urlPlantImage) {
-                                                                            URLSession.shared.dataTask(with: urlImage) { data, response, error in
-                                                                                guard
-                                                                                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                                                                                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                                                                                    let data = data, error == nil,
-                                                                                    let image = UIImage(data: data)
-                                                                                    else { return }
-                                                                                DispatchQueue.main.async() {
-                                                                                    let imagePlantData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
-                                                                                    imagePlantData?.image = image.pngData()
-                                                                                    imagePlantData?.date = Date()
-                                                                                    plantData?.addToImages(imagePlantData!)
-                                                                                    print("Descargada foto planta")
-                                                                                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                                                                                }
-                                                                            }.resume()
+                                                                        URLSession.shared.dataTask(with: urlImage) { data, response, error in
+                                                                            guard
+                                                                                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                                                                                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                                                                                let data = data, error == nil,
+                                                                                let image = UIImage(data: data)
+                                                                                else { return }
+                                                                            DispatchQueue.main.async() {
+                                                                                let imagePlantData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
+                                                                                imagePlantData?.image = image.pngData()
+                                                                                imagePlantData?.date = Date()
+                                                                                plantData?.addToImages(imagePlantData!)
+                                                                                print("Descargada foto planta")
+                                                                                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                                                                            }
+                                                                        }.resume()
                                                                     }
                                                                 }
                                                                 

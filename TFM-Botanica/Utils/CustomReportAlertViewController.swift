@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class CustomReportAlertViewController: UIViewController {
 
@@ -59,14 +60,47 @@ class CustomReportAlertViewController: UIViewController {
     }
     
     static func showReportAlertViewController(view: UIViewController) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let reportAlert = storyboard.instantiateViewController(withIdentifier: "reportAlert") as! CustomReportAlertViewController
-        reportAlert.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
-        reportAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        
-        reportAlert.nameController = NSStringFromClass(view.classForCoder)
-        
-        view.present(reportAlert, animated: true, completion: nil)
+        // Modify following variables with your text / recipient
+        let recipientEmail = "test@email.com"
+        let subject = "Multi client email support"
+        let body = "This code supports sending email via multiple different email apps on iOS! :)"
+
+        // Show default mail composer
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.setToRecipients([recipientEmail])
+            mail.setSubject(subject)
+            mail.setMessageBody(body, isHTML: false)
+
+            view.present(mail, animated: true)
+
+        // Show third party email composer if default Mail app is not present
+        } else if let emailUrl = createEmailUrl(to: recipientEmail, subject: subject, body: body) {
+            UIApplication.shared.open(emailUrl)
+        }
+    }
+    
+    static func createEmailUrl(to: String, subject: String, body: String) -> URL? {
+        let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+
+        let gmailUrl = URL(string: "googlegmail://co?to=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
+        let outlookUrl = URL(string: "ms-outlook://compose?to=\(to)&subject=\(subjectEncoded)")
+        let yahooMail = URL(string: "ymail://mail/compose?to=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
+        let sparkUrl = URL(string: "readdle-spark://compose?recipient=\(to)&subject=\(subjectEncoded)&body=\(bodyEncoded)")
+        let defaultUrl = URL(string: "mailto:\(to)?subject=\(subjectEncoded)&body=\(bodyEncoded)")
+
+        if let gmailUrl = gmailUrl, UIApplication.shared.canOpenURL(gmailUrl) {
+            return gmailUrl
+        } else if let outlookUrl = outlookUrl, UIApplication.shared.canOpenURL(outlookUrl) {
+            return outlookUrl
+        } else if let yahooMail = yahooMail, UIApplication.shared.canOpenURL(yahooMail) {
+            return yahooMail
+        } else if let sparkUrl = sparkUrl, UIApplication.shared.canOpenURL(sparkUrl) {
+            return sparkUrl
+        }
+
+        return defaultUrl
     }
     
     @objc func dismissKeyboard() {

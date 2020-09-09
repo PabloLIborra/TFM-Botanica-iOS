@@ -11,6 +11,7 @@
 		1A175D29244467020073181C /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A175D28244467020073181C /* CustomMarker.swift */; };
 		1A175D342445EE3D0073181C /* CustomMapAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A175D332445EE3D0073181C /* CustomMapAlertViewController.swift */; };
 		1A186E8E24F7C1FE00AFE0C6 /* CustomDeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A186E8D24F7C1FE00AFE0C6 /* CustomDeleteAlertViewController.swift */; };
+		1A3A85D424FFBB9300FB614E /* CustomUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A3A85D324FFBB9300FB614E /* CustomUIViewController.swift */; };
 		1A5723852432008B00ADDEBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723842432008B00ADDEBB /* AppDelegate.swift */; };
 		1A5723872432008B00ADDEBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723862432008B00ADDEBB /* SceneDelegate.swift */; };
 		1A5723892432008B00ADDEBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5723882432008B00ADDEBB /* ViewController.swift */; };
@@ -55,6 +56,7 @@
 		1A175D28244467020073181C /* CustomMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		1A175D332445EE3D0073181C /* CustomMapAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapAlertViewController.swift; sourceTree = "<group>"; };
 		1A186E8D24F7C1FE00AFE0C6 /* CustomDeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDeleteAlertViewController.swift; sourceTree = "<group>"; };
+		1A3A85D324FFBB9300FB614E /* CustomUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIViewController.swift; sourceTree = "<group>"; };
 		1A5723812432008B00ADDEBB /* UAPlant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UAPlant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5723842432008B00ADDEBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A5723862432008B00ADDEBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				1A175D332445EE3D0073181C /* CustomMapAlertViewController.swift */,
 				1A83BCC724DC919200A69665 /* CustomColors.swift */,
 				1A60E48B24EA9EA3001FC516 /* CustomUIImage.swift */,
+				1A3A85D324FFBB9300FB614E /* CustomUIViewController.swift */,
 				1A60E47E24E160B0001FC516 /* CustomPlantAlertViewController.swift */,
 				1A60E48024E2ADF9001FC516 /* CustomTestAlertViewController.swift */,
 				1A60E48524E5615D001FC516 /* CustomReportAlertViewController.swift */,
@@ -375,6 +378,7 @@
 				1A60E48424E556E3001FC516 /* CreditsViewController.swift in Sources */,
 				1A5723B42433487000ADDEBB /* InitViewController.swift in Sources */,
 				1A84BC8A246AA9AC00E92EE6 /* QuestionTableViewCell.swift in Sources */,
+				1A3A85D424FFBB9300FB614E /* CustomUIViewController.swift in Sources */,
 				1A60E47F24E160B0001FC516 /* CustomPlantAlertViewController.swift in Sources */,
 				1A5723B02432570700ADDEBB /* PlantsTableViewController.swift in Sources */,
 				1A5723852432008B00ADDEBB /* AppDelegate.swift in Sources */,
