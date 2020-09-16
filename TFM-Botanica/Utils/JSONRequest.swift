@@ -12,7 +12,6 @@ import CoreData
 
 class JSONRequest {
     static let url = "http://jtech.ua.es/uaplant/"
-    static let urlsPlantImages: [String] = ["https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/background-detail.imageset/background-detail.jpg?token=AHTLPJLTQWOKFHSUF5RCS3S7KC67W", "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/example-image-detail.imageset/example-image-detail.jpg?token=AHTLPJMI4XCBNX3WP7F3CQ27J56YA"]
     
     static func readJSONFromServer() {
         guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -66,7 +65,6 @@ class JSONRequest {
                                                                 routeData?.addToActivities(activityData!)
                                                                 
                                                                 let nameLocationImage = plant["foto_localizacion"] as? String
-                                                                //Cambiar url por la url de cda nombre en plant["foto_localizacion"]
                                                                 if let urlImage: URL = URL(string: self.url + nameFolder + "/" + nameLocationImage!) {
                                                                     URLSession.shared.dataTask(with: urlImage) { data, response, error in
                                                                         guard
@@ -94,7 +92,6 @@ class JSONRequest {
                                                                 plantData?.activity = activityData
                                                                 activityData?.plant = plantData
                                                                 
-                                                                //Cambiar url por las urls de cda nombre en plant["fotos_carrusel"], haciendo un split de ; entre nombre de foto y nombre.
                                                                 let images = plant["fotos_carrusel"] as? String
                                                                 let splitImages = images!.components(separatedBy: ";")
                                                                 
