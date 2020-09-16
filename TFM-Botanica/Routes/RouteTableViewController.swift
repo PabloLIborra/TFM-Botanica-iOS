@@ -137,10 +137,13 @@ class RouteTableViewController: UITableViewController {
         switch section {
             case 0:
                 headerView.headerImage.image = UIImage(named: "inProcess-route-icon.png")
+                headerView.numberLabel.text = String(self.routesInProgress.count)
             case 1:
                 headerView.headerImage.image = UIImage(named: "new-route-icon.png")
+                headerView.numberLabel.text = String(self.routesAvailables.count)
             case 2:
                 headerView.headerImage.image = UIImage(named: "completed-route-icon.png")
+                headerView.numberLabel.text = String(self.routesComplete.count)
             default:
                 break
         }

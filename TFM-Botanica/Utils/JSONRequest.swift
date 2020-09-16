@@ -11,10 +11,7 @@ import UIKit
 import CoreData
 
 class JSONRequest {
-    
-    static let urlIndex = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/index.txt?token=AHTLPJJ2SRIU5GFCFK23VOC7LDDVG"
-    static let urlJSON = "https://github.com/PabloLIborra/TFM-Botanica-iOS/tree/master/TFM-Botanica/JSON/"
-    static let urlImage = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/example-image-detail.imageset/example-image-detail.jpg?token=AHTLPJMI4XCBNX3WP7F3CQ27J56YA"
+    static let url = "http://jtech.ua.es/uaplant/"
     static let urlsPlantImages: [String] = ["https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/background-detail.imageset/background-detail.jpg?token=AHTLPJLTQWOKFHSUF5RCS3S7KC67W", "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/Assets.xcassets/example-image-detail.imageset/example-image-detail.jpg?token=AHTLPJMI4XCBNX3WP7F3CQ27J56YA"]
     
     static func readJSONFromServer() {
@@ -23,23 +20,17 @@ class JSONRequest {
         }
         let miContexto = miDelegate.persistentContainer.viewContext
         
-        if let urlIndex: URL = URL(string: self.urlIndex) {
+        if let urlIndex: URL = URL(string: self.url + "index.txt") {
             URLSession.shared.dataTask(with: urlIndex) { data, response, error in
                 if error != nil {
                    print(error!)
                 }
                 else {
                     if let textFile = String(data: data!, encoding: .utf8) {
-                        let splitText = textFile.components(separatedBy: "\n")
-                        for text in splitText {
-                            var prueba: String = self.urlJSON
-                            if text == "prueba.json" {
-                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueba.json?token=AHTLPJNHSBUTRWEPVDQIHCC7LDDQM"
-                            } else if text == "prueb2.json" {
-                                prueba = "https://raw.githubusercontent.com/PabloLIborra/TFM-Botanica-iOS/master/TFM-Botanica/JSON/prueb2.json?token=AHTLPJLKGFDNJVQYADOFWPS7LDDSA"
-                            }
-                            if let url: URL = URL(string: prueba) {
-                                URLSession.shared.dataTask(with: url) { data, response, error in
+                        let splitFolders = textFile.components(separatedBy: "\n")
+                        for nameFolder in splitFolders {
+                            if let urlJSON: URL = URL(string: self.url + nameFolder + "/" + nameFolder + ".json") {
+                                URLSession.shared.dataTask(with: urlJSON) { data, response, error in
                                     if let data = data {
                                         guard let jsonSerialize = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else { return }
                                         guard let json = jsonSerialize as? [String: Any] else { return }
@@ -74,8 +65,9 @@ class JSONRequest {
                                                                 activityData?.route = routeData
                                                                 routeData?.addToActivities(activityData!)
                                                                 
+                                                                let nameLocationImage = plant["foto_localizacion"] as? String
                                                                 //Cambiar url por la url de cda nombre en plant["foto_localizacion"]
-                                                                if let urlImage: URL = URL(string: self.urlImage) {
+                                                                if let urlImage: URL = URL(string: self.url + nameFolder + "/" + nameLocationImage!) {
                                                                     URLSession.shared.dataTask(with: urlImage) { data, response, error in
                                                                         guard
                                                                             let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
@@ -103,8 +95,11 @@ class JSONRequest {
                                                                 activityData?.plant = plantData
                                                                 
                                                                 //Cambiar url por las urls de cda nombre en plant["fotos_carrusel"], haciendo un split de ; entre nombre de foto y nombre.
-                                                                for urlPlantImage in self.urlsPlantImages {
-                                                                    if let urlImage: URL = URL(string: urlPlantImage) {
+                                                                let images = plant["fotos_carrusel"] as? String
+                                                                let splitImages = images!.components(separatedBy: ";")
+                                                                
+                                                                for namePlantImage in splitImages {
+                                                                    if let urlImage: URL = URL(string: self.url + nameFolder + "/" + namePlantImage) {
                                                                         URLSession.shared.dataTask(with: urlImage) { data, response, error in
                                                                             guard
                                                                                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,

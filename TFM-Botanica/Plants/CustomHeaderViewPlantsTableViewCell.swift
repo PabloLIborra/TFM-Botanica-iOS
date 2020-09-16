@@ -11,6 +11,7 @@ import UIKit
 class CustomHeaderViewPlantsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

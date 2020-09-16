@@ -108,6 +108,18 @@ class PlantsTableViewController: UITableViewController {
         
         headerView.titleLabel.text = self.plantSectionTitles[section]
         
+        var plantsUnlock = 0
+        let plantKey = plantSectionTitles[section]
+        if let plantValues = plantsDictionary[plantKey] {
+            for plant in plantValues {
+                if plant.unlock == true {
+                    plantsUnlock += 1
+                }
+            }
+        }
+        
+        headerView.numberLabel.text = String(plantsUnlock) + "/" + String(plantsDictionary[plantKey]!.count)
+        
         return headerView
     }
     

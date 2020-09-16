@@ -1,2 +1,2 @@
-prueba.json
-prueb2.json
+prueba
+prueb2
