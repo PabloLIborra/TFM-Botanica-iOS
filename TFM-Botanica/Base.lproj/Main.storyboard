@@ -199,35 +199,58 @@
             </objects>
             <point key="canvasLocation" x="2374" y="138"/>
         </scene>
-        <!--Creditos-->
-        <scene sceneID="YPs-xN-ohx">
+        <!--Créditos-->
+        <scene sceneID="xHQ-9d-Oni">
             <objects>
-                <viewController id="XhS-P3-dnv" customClass="CreditsViewController" customModule="UAPlant" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="dYq-Hj-hIg">
+                <tableViewController id="w2W-DC-qPg" customClass="CreditsTableViewController" customModule="UAPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Hrf-8I-5JB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FBb-Kp-aTm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="FBb-Kp-aTm" firstAttribute="leading" secondItem="PdE-Ut-tLF" secondAttribute="leading" id="1bp-H1-5Y0"/>
-                            <constraint firstItem="FBb-Kp-aTm" firstAttribute="top" secondItem="dYq-Hj-hIg" secondAttribute="top" id="SSX-Bu-non"/>
-                            <constraint firstItem="FBb-Kp-aTm" firstAttribute="trailing" secondItem="PdE-Ut-tLF" secondAttribute="trailing" id="Yup-0W-SpK"/>
-                            <constraint firstItem="FBb-Kp-aTm" firstAttribute="bottom" secondItem="PdE-Ut-tLF" secondAttribute="bottom" id="bic-jL-aJF"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="PdE-Ut-tLF"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Creditos" id="UJ8-0G-9vP"/>
-                    <connections>
-                        <outlet property="backgroundImage" destination="FBb-Kp-aTm" id="8R0-9Z-0eR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="49E-zg-f4W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="creditsCell" rowHeight="75" id="reV-UD-FeI" customClass="CreditsTableViewCell" customModule="UAPlant" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.333332061767578" width="414" height="75"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="reV-UD-FeI" id="kym-sA-vEF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="75"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="Hola" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ba-Y4-NvO">
+                                            <rect key="frame" x="20" y="11" width="374" height="53"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="7Ba-Y4-NvO" firstAttribute="trailing" secondItem="kym-sA-vEF" secondAttribute="trailingMargin" id="3AM-L4-ay2"/>
+                                        <constraint firstItem="7Ba-Y4-NvO" firstAttribute="bottom" secondItem="kym-sA-vEF" secondAttribute="bottomMargin" id="ayb-MP-1KM"/>
+                                        <constraint firstItem="7Ba-Y4-NvO" firstAttribute="top" secondItem="kym-sA-vEF" secondAttribute="topMargin" id="jV2-V4-slq"/>
+                                        <constraint firstItem="7Ba-Y4-NvO" firstAttribute="leading" secondItem="kym-sA-vEF" secondAttribute="leadingMargin" id="lf9-uA-WuA"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="textView" destination="7Ba-Y4-NvO" id="Acl-16-cGp"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="w2W-DC-qPg" id="Ir6-LV-csn"/>
+                            <outlet property="delegate" destination="w2W-DC-qPg" id="thE-kS-GxF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Créditos" id="854-Y2-18j"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGB-BY-Hpn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3284.057971014493" y="1044.6428571428571"/>
+            <point key="canvasLocation" x="3421.739130434783" y="1044.6428571428571"/>
         </scene>
         <!--Itinerarios-->
         <scene sceneID="I3h-yk-Nk7">
@@ -1157,11 +1180,11 @@ Ya puedes ver con detalle la planta oculta.
             </objects>
             <point key="canvasLocation" x="2374" y="-744"/>
         </scene>
-        <!--Creditos-->
+        <!--Créditos-->
         <scene sceneID="puX-do-klZ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jmt-xh-4PL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Creditos" image="credit-button" id="OI9-Tu-wfl">
+                    <tabBarItem key="tabBarItem" title="Créditos" image="credit-button" id="OI9-Tu-wfl">
                         <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -1172,7 +1195,7 @@ Ya puedes ver con detalle la planta oculta.
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="XhS-P3-dnv" kind="relationship" relationship="rootViewController" id="IgQ-BT-8sU"/>
+                        <segue destination="w2W-DC-qPg" kind="relationship" relationship="rootViewController" id="bGg-fU-ph7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jH-PQ-gQX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
