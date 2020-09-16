@@ -97,15 +97,15 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
             case Int16(State.IN_PROGRESS):
                 self.startButton.isEnabled = false
                 self.startButton.alpha = 0.3
-                self.captureButton.isEnabled = true
-                self.captureButton.alpha = 1.0
+                self.captureButton.isEnabled = false
+                self.captureButton.alpha = 0.3
                 self.questionButton.isEnabled = true
                 self.questionButton.alpha = 1.0
             case Int16(State.COMPLETE):
                 self.startButton.isEnabled = false
                 self.startButton.alpha = 0.3
-                self.captureButton.isEnabled = true
-                self.captureButton.alpha = 1.0
+                self.captureButton.isEnabled = false
+                self.captureButton.alpha = 0.3
                 self.questionButton.isEnabled = true
                 self.questionButton.alpha = 1.0
             case Int16(State.AVAILABLE):

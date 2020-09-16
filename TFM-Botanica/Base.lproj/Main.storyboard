@@ -442,79 +442,6 @@
             </objects>
             <point key="canvasLocation" x="4292.753623188406" y="-1434.375"/>
         </scene>
-        <!--Custom Report Alert View Controller-->
-        <scene sceneID="mHg-in-88n">
-            <objects>
-                <viewController storyboardIdentifier="reportAlert" id="0Sn-K3-SKO" customClass="CustomReportAlertViewController" customModule="UAPlant" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="udh-eZ-CMx">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="417-R5-D5G">
-                                <rect key="frame" x="87" y="306" width="240" height="284"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reportar Error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0n-VR-jpZ">
-                                        <rect key="frame" x="10" y="8" width="220" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Escriba aqui el error." translatesAutoresizingMaskIntoConstraints="NO" id="CoI-aW-EAb">
-                                        <rect key="frame" x="8" y="37" width="224" height="200"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2wv-TQ-nuF">
-                                        <rect key="frame" x="8" y="245" width="224" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aig-4W-Aka">
-                                        <rect key="frame" x="130" y="254" width="90" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Cerrar"/>
-                                        <connections>
-                                            <action selector="closeAction:" destination="0Sn-K3-SKO" eventType="touchUpInside" id="9LX-U5-SHp"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DYZ-rO-CQR">
-                                        <rect key="frame" x="20" y="254" width="90" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Enviar"/>
-                                        <connections>
-                                            <action selector="sendAction:" destination="0Sn-K3-SKO" eventType="touchUpInside" id="095-Yo-bGO"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="284" id="Q5m-He-DRM"/>
-                                    <constraint firstAttribute="width" constant="240" id="ugD-3u-UVe"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="417-R5-D5G" firstAttribute="centerY" secondItem="udh-eZ-CMx" secondAttribute="centerY" id="ISP-RB-Uxj"/>
-                            <constraint firstItem="417-R5-D5G" firstAttribute="centerX" secondItem="udh-eZ-CMx" secondAttribute="centerX" id="zeB-8O-GR5"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="VaX-NC-Qf1"/>
-                    </view>
-                    <connections>
-                        <outlet property="alertBox" destination="417-R5-D5G" id="lOb-9u-2ZR"/>
-                        <outlet property="closeButton" destination="Aig-4W-Aka" id="0d0-SJ-oQf"/>
-                        <outlet property="reportText" destination="CoI-aW-EAb" id="jhi-gT-Dfa"/>
-                        <outlet property="sendButton" destination="DYZ-rO-CQR" id="4RG-pK-1lI"/>
-                        <outlet property="titleLabel" destination="L0n-VR-jpZ" id="0Ac-Ut-ieN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JP1-X6-4nD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="131.8840579710145" y="-795.53571428571422"/>
-        </scene>
         <!--Zoom Photo View Controller-->
         <scene sceneID="TaF-zI-ZsL">
             <objects>
@@ -1022,7 +949,7 @@ Ya puedes ver con detalle la planta oculta.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bro-ib-S4H">
-                                <rect key="frame" x="20.666666666666657" y="101.33333333333331" width="373" height="315.00000000000006"/>
+                                <rect key="frame" x="20.666666666666657" y="101.33333333333331" width="373" height="315"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gtR-Ng-Res">
                                     <size key="itemSize" width="373" height="317"/>

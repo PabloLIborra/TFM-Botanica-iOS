@@ -49,16 +49,18 @@ class PlantsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.plantSectionTitles.count
+        return self.plantSectionTitles.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let plantKey = plantSectionTitles[section]
-        if let plantValues = plantsDictionary[plantKey] {
-            return plantValues.count
+        if section != 0 {
+            let plantKey = plantSectionTitles[section-1]
+            if let plantValues = plantsDictionary[plantKey] {
+                return plantValues.count
+            }
+              
         }
-            
         return 0
     }
 
@@ -69,7 +71,11 @@ class PlantsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "plantasCell", for: indexPath) as! PlantsTableViewCell
         
-        let plantKey = plantSectionTitles[indexPath.section]
+        if indexPath.section == 0 {
+            return cell
+        }
+        
+        let plantKey = plantSectionTitles[indexPath.section - 1]
         if let plantValues = plantsDictionary[plantKey] {
             cell.nameLabel.text = plantValues[indexPath.row].scientific_name
             if var image = plantValues[indexPath.row].images?.allObjects as? [Image] {
@@ -105,20 +111,39 @@ class PlantsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = Bundle.main.loadNibNamed("CustomHeaderViewPlantsTableViewCell", owner: self, options: nil)?.first as! CustomHeaderViewPlantsTableViewCell
-        
-        headerView.titleLabel.text = self.plantSectionTitles[section]
-        
+
         var plantsUnlock = 0
-        let plantKey = plantSectionTitles[section]
-        if let plantValues = plantsDictionary[plantKey] {
-            for plant in plantValues {
-                if plant.unlock == true {
-                    plantsUnlock += 1
+        
+        if section == 0 {
+            headerView.titleLabel.text = "Plantas totales"
+            headerView.titleLabel.font = UIFont.systemFont(ofSize: headerView.titleLabel.font.pointSize, weight: .heavy)
+            
+            var numPlants = 0
+            for sectionCount in self.plantSectionTitles {
+                if let plantValues = plantsDictionary[sectionCount] {
+                    for plant in plantValues {
+                        numPlants += 1
+                        if plant.unlock == true {
+                            plantsUnlock += 1
+                        }
+                    }
                 }
             }
+            
+            headerView.numberLabel.text = String(plantsUnlock) + "/" + String(numPlants)
+            headerView.numberLabel.font = UIFont.systemFont(ofSize: headerView.numberLabel.font.pointSize, weight: .heavy)
+        } else {
+            let plantKey = plantSectionTitles[section-1]
+            if let plantValues = plantsDictionary[plantKey] {
+                for plant in plantValues {
+                    if plant.unlock == true {
+                        plantsUnlock += 1
+                    }
+                }
+            }
+            headerView.titleLabel.text = self.plantSectionTitles[section-1]
+            headerView.numberLabel.text = String(plantsUnlock) + "/" + String(plantsDictionary[plantKey]!.count)
         }
-        
-        headerView.numberLabel.text = String(plantsUnlock) + "/" + String(plantsDictionary[plantKey]!.count)
         
         return headerView
     }
@@ -126,13 +151,13 @@ class PlantsTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = self.tableView.indexPathForSelectedRow {
-            let plantKey = plantSectionTitles[indexPath.section]
+            let plantKey = plantSectionTitles[indexPath.section-1]
             if let plantValues = plantsDictionary[plantKey] {
                 if plantValues[indexPath.row].unlock {
                     if segue.identifier == "plantSegue" {
                         if segue.destination is PlantsViewController {
                             let plantController = segue.destination as? PlantsViewController
-                            let plantKey = plantSectionTitles[indexPath.section]
+                            let plantKey = plantSectionTitles[indexPath.section-1]
                             if let plantValues = plantsDictionary[plantKey] {
                                 plantController?.title = plantValues[indexPath.row].scientific_name
                                 plantController?.family = plantValues[indexPath.row].family!
@@ -155,7 +180,7 @@ class PlantsTableViewController: UITableViewController {
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if let indexPath = self.tableView.indexPathForSelectedRow {
-            let plantKey = plantSectionTitles[indexPath.section]
+            let plantKey = plantSectionTitles[indexPath.section-1]
             if let plantValues = plantsDictionary[plantKey] {
                 if !plantValues[indexPath.row].unlock {
                     self.showLockedPlantAlertView(plant: plantValues[indexPath.row])

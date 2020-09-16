@@ -38,22 +38,11 @@ class RouteTableViewController: UITableViewController {
         let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
         longPressGesture.minimumPressDuration = 1.0 // 1 second press
         self.tableView.addGestureRecognizer(longPressGesture)
-        
-        
-        guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        let miContexto = miDelegate.persistentContainer.viewContext
-        
-        let requestRoutes : NSFetchRequest<Image> = NSFetchRequest(entityName:"Image")
-        var routes = try? miContexto.fetch(requestRoutes)
-        
-        print(routes?.count)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.updateData()
         }
     }
     
@@ -62,32 +51,22 @@ class RouteTableViewController: UITableViewController {
             JSONRequest.readJSONFromServer()
             self.updateData()
             self.customRefreshControl.endRefreshing()
-            
-            guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                return
-            }
-            let miContexto = miDelegate.persistentContainer.viewContext
-            
-            let requestRoutes : NSFetchRequest<Image> = NSFetchRequest(entityName:"Image")
-            var routes = try? miContexto.fetch(requestRoutes)
-            
-            print(routes?.count)
         }
     }
 
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return self.sections.count
+        return self.sections.count + 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-            case State.IN_PROGRESS:
+            case 1:
                 return self.routesInProgress.count
-            case State.AVAILABLE:
+            case 2:
                 return self.routesAvailables.count
-            case State.COMPLETE:
+            case 3:
                 return self.routesComplete.count
             default:
                 return 0
@@ -102,11 +81,11 @@ class RouteTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "routesCell", for: indexPath) as! RouteTableViewCell
 
         var route: Route?
-        if(indexPath.section == State.IN_PROGRESS) {
+        if(indexPath.section == 1) {
             route = routesInProgress[indexPath.row]
-        } else if(indexPath.section == State.AVAILABLE) {
+        } else if(indexPath.section == 2) {
             route = routesAvailables[indexPath.row]
-        } else if(indexPath.section == State.COMPLETE) {
+        } else if(indexPath.section == 3) {
             route = routesComplete[indexPath.row]
         }
 
@@ -136,18 +115,27 @@ class RouteTableViewController: UITableViewController {
         
         switch section {
             case 0:
+                let customHeader = Bundle.main.loadNibNamed("CustomHeaderViewPlantsTableViewCell", owner: self, options: nil)?.first as! CustomHeaderViewPlantsTableViewCell
+                customHeader.titleLabel.text = "Itinerarios totales"
+                customHeader.titleLabel.font = UIFont.systemFont(ofSize: customHeader.titleLabel.font.pointSize, weight: .heavy)
+                let numRoutes = self.routesInProgress.count + self.routesAvailables.count + self.routesComplete.count
+                customHeader.numberLabel.text = String(self.routesComplete.count) + "/" + String(numRoutes)
+                customHeader.numberLabel.font = UIFont.systemFont(ofSize: customHeader.numberLabel.font.pointSize, weight: .heavy)
+            
+                return customHeader
+            case 1:
                 headerView.headerImage.image = UIImage(named: "inProcess-route-icon.png")
                 headerView.numberLabel.text = String(self.routesInProgress.count)
-            case 1:
+            case 2:
                 headerView.headerImage.image = UIImage(named: "new-route-icon.png")
                 headerView.numberLabel.text = String(self.routesAvailables.count)
-            case 2:
+            case 3:
                 headerView.headerImage.image = UIImage(named: "completed-route-icon.png")
                 headerView.numberLabel.text = String(self.routesComplete.count)
             default:
                 break
         }
-        headerView.headerLabel.text = self.sections[section]
+        headerView.headerLabel.text = self.sections[section-1]
         
         return headerView
     }
@@ -166,11 +154,11 @@ class RouteTableViewController: UITableViewController {
                 let destiny = segue.destination as! MapViewController
                 
                 var route: Route?
-                if(indexPath.section == State.IN_PROGRESS) {
+                if(indexPath.section == 1) {
                     route = routesInProgress[indexPath.row]
-                } else if(indexPath.section == State.AVAILABLE) {
+                } else if(indexPath.section == 2) {
                     route = routesAvailables[indexPath.row]
-                } else if(indexPath.section == State.COMPLETE) {
+                } else if(indexPath.section == 3) {
                     route = routesComplete[indexPath.row]
                 }
                 
@@ -241,11 +229,11 @@ class RouteTableViewController: UITableViewController {
             let touchPoint = gestureRecognizer.location(in: self.tableView)
             if let indexPath = self.tableView.indexPathForRow(at: touchPoint) {
                 var route: Route?
-                if(indexPath.section == State.IN_PROGRESS) {
+                if(indexPath.section == 1) {
                     route = routesInProgress[indexPath.row]
-                } else if(indexPath.section == State.AVAILABLE) {
+                } else if(indexPath.section == 2) {
                     route = routesAvailables[indexPath.row]
-                } else if(indexPath.section == State.COMPLETE) {
+                } else if(indexPath.section == 3) {
                     route = routesComplete[indexPath.row]
                 }
                 showDeleteRouteAlertView(route: route!)
