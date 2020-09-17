@@ -125,7 +125,7 @@ class QuestionTableViewController: UITableViewController {
     }
     
     @objc func reportActionButton() {
-        CustomReportAlertViewController.showReportAlertViewController(view: self)
+        CustomReportAlertViewController.shared.showReportAlertViewController(view: self)
     }
     
     func updateQuestionData() {

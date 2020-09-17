@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+var spinner : UIView?
+
 class InitViewController: UIViewController {
 
     @IBOutlet weak var backgroundImage: UIImageView!
@@ -34,48 +36,47 @@ class InitViewController: UIViewController {
         nameLabel.layer.shadowOffset = CGSize(width: 4, height: 4)
         nameLabel.layer.masksToBounds = false
         
-        self.showSpinner(onView: self.view, textLabel: "Descargando archivos")
-        
-        self.readJSON { () -> () in
-            self.removeSpinner()
-        }
-    }
-    
-    func readJSON(handleComplete:(()->())){
-        JSONRequest.readJSONFromServer()
-        handleComplete()
+        JSONRequest.readJSONFromServer(view: self)
     }
 }
 
 extension UIViewController {
+    
     func showSpinner(onView: UIView, textLabel: String) {
-        let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
-        
-        let label = UILabel(frame: CGRect(x: 0, y: 0, width: onView.bounds.width, height: 21))
-        label.center = CGPoint(x: spinnerView.bounds.width/2, y: 2*spinnerView.bounds.height/5)
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
-        label.text = textLabel
-        
-        let ai = UIActivityIndicatorView.init(style: .large)
-        ai.color = UIColor.black
-        ai.startAnimating()
-        ai.center = spinnerView.center
-        
         DispatchQueue.main.async {
+            let spinnerView = UIView.init(frame: onView.bounds)
+            spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+            
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: onView.bounds.width, height: 21))
+            label.center = CGPoint(x: spinnerView.bounds.width/2, y: 2*spinnerView.bounds.height/5)
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 20.0, weight: .medium)
+            label.text = textLabel
+            
+            let ai = UIActivityIndicatorView.init(style: .large)
+            ai.color = UIColor.black
+            ai.startAnimating()
+            ai.center = spinnerView.center
+            
             spinnerView.addSubview(label)
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
+            spinner = spinnerView
         }
-        
-        spinner = spinnerView
     }
     
     func removeSpinner() {
         DispatchQueue.main.async {
             spinner?.removeFromSuperview()
             spinner = nil
+        }
+    }
+    
+    func changeLabelSpinner(text: String) {
+        if spinner != nil {
+            let labels = spinner?.subviews.filter{$0 is UILabel}
+            let label: UILabel = labels![0] as! UILabel
+            label.text = text
         }
     }
 }

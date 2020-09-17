@@ -48,9 +48,9 @@ class RouteTableViewController: UITableViewController {
     
     @objc private func refreshTableData() {
         DispatchQueue.main.async {
-            JSONRequest.readJSONFromServer()
-            self.updateData()
-            self.customRefreshControl.endRefreshing()
+            JSONRequest.readJSONFromServer(view: self)
+            //self.updateData()
+            //self.customRefreshControl.endRefreshing()
         }
     }
 
@@ -184,8 +184,12 @@ class RouteTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
+    func endRefreshing() {
+        self.customRefreshControl.endRefreshing()
+    }
+    
     @objc func reportActionButton() {
-        CustomReportAlertViewController.showReportAlertViewController(view: self)
+        CustomReportAlertViewController.shared.showReportAlertViewController(view: self)
     }
     
     func addRefreshControl() {

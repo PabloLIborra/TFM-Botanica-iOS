@@ -202,7 +202,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     @objc func reportActionButton() {
-        CustomReportAlertViewController.showReportAlertViewController(view: self)
+        CustomReportAlertViewController.shared.showReportAlertViewController(view: self)
     }
     
     @IBAction func questionAction(_ sender: Any) {

@@ -10,10 +10,29 @@ import Foundation
 import UIKit
 import CoreData
 
-class JSONRequest {
+class JSONRequest{
     static let url = "http://jtech.ua.es/uaplant/"
     
-    static func readJSONFromServer() {
+    static var downloadRoutes = 0
+    
+    static var totalImagesDownload = 0
+    static var downloadedImges = 0
+    static var removedSpinner: Bool = false
+    
+    static var imagesLocalizationToDownload = [Activity: String]()
+    static var imagesPlantsToDownload = [Plant: [String]]()
+    
+    static func readJSONFromServer(view: UIViewController) {
+
+        downloadRoutes = 0
+        totalImagesDownload = 0
+        downloadedImges = 0
+        removedSpinner = false
+        imagesLocalizationToDownload.removeAll()
+        imagesPlantsToDownload.removeAll()
+        
+        view.showSpinner(onView: view.view, textLabel: "Descargando archivos")
+
         guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
@@ -42,6 +61,7 @@ class JSONRequest {
                                             do {
                                                 let results = try miContexto.fetch(fetchRequest)
                                                 if results.count == 0 {
+                                                    downloadRoutes += 1
                                                     do {
                                                         let routeData = NSEntityDescription.insertNewObject(forEntityName: "Route", into: miContexto) as? Route
                                                         routeData?.name = route
@@ -65,24 +85,7 @@ class JSONRequest {
                                                                 routeData?.addToActivities(activityData!)
                                                                 
                                                                 let nameLocationImage = plant["foto_localizacion"] as? String
-                                                                if let urlImage: URL = URL(string: self.url + nameFolder + "/" + nameLocationImage!) {
-                                                                    URLSession.shared.dataTask(with: urlImage) { data, response, error in
-                                                                        guard
-                                                                            let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                                                                            let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                                                                            let data = data, error == nil,
-                                                                            let image = UIImage(data: data)
-                                                                            else { return }
-                                                                        DispatchQueue.main.async() {
-                                                                            let imageActivityData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
-                                                                            imageActivityData?.image = image.pngData()
-                                                                            imageActivityData?.date = Date()
-                                                                            activityData?.image = imageActivityData
-                                                                            print("Descargada foto actividad")
-                                                                            (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                                                                        }
-                                                                    }.resume()
-                                                                }
+                                                                imagesLocalizationToDownload[activityData!] = nameFolder + "/" + nameLocationImage!
                                                                 
                                                                 let plantData = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: miContexto) as? Plant
                                                                 plantData?.scientific_name = plant["nombre_cientifico"] as? String
@@ -94,27 +97,12 @@ class JSONRequest {
                                                                 
                                                                 let images = plant["fotos_carrusel"] as? String
                                                                 let splitImages = images!.components(separatedBy: ";")
-                                                                
+
+                                                                var listImagePlants = imagesPlantsToDownload[plantData!] ?? []
                                                                 for namePlantImage in splitImages {
-                                                                    if let urlImage: URL = URL(string: self.url + nameFolder + "/" + namePlantImage) {
-                                                                        URLSession.shared.dataTask(with: urlImage) { data, response, error in
-                                                                            guard
-                                                                                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                                                                                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                                                                                let data = data, error == nil,
-                                                                                let image = UIImage(data: data)
-                                                                                else { return }
-                                                                            DispatchQueue.main.async() {
-                                                                                let imagePlantData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
-                                                                                imagePlantData?.image = image.pngData()
-                                                                                imagePlantData?.date = Date()
-                                                                                plantData?.addToImages(imagePlantData!)
-                                                                                print("Descargada foto planta")
-                                                                                (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                                                                            }
-                                                                        }.resume()
-                                                                    }
+                                                                    listImagePlants.append(nameFolder + "/" + namePlantImage)
                                                                 }
+                                                                imagesPlantsToDownload[plantData!] = listImagePlants
                                                                 
                                                                 if let questions = plant["preguntas"] as? [[String:Any]] {
                                                                     for question in questions {
@@ -135,7 +123,6 @@ class JSONRequest {
                                                                             answerData?.title = splitAnswer
                                                                             questionData?.addToAnswers(answerData!)
                                                                         }
-                                                                        
                                                                     }
                                                                 }
                                                             }
@@ -147,7 +134,22 @@ class JSONRequest {
                                                         print(error)
                                                     }
                                                 } else {
+                                                    downloadRoutes += 1
+                                                    if downloadRoutes >= splitFolders.count - 1{
+                                                        removeSpinner(view: view)
+                                                    }
                                                     print(route + " already exist")
+                                                }
+                                                if downloadRoutes >= splitFolders.count - 1 && removedSpinner == false {
+                                                    for (_, values) in imagesPlantsToDownload {
+                                                        for _ in values {
+                                                            totalImagesDownload += 1
+                                                        }
+                                                    }
+                                                    print(imagesLocalizationToDownload.count)
+//                                                    view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                                                    downloadImagesLocalization(miContexto: miContexto, view: view)
+                                                    downloadImagesPlants(miContexto: miContexto, view: view)
                                                 }
                                             }
                                             catch let error {
@@ -161,6 +163,81 @@ class JSONRequest {
                     }
                 }
             }.resume()
+        }
+    }
+    
+    static func downloadImagesLocalization(miContexto: NSManagedObjectContext, view: UIViewController) {
+        for (activityData, urlImage) in imagesLocalizationToDownload {
+            if let urlImage: URL = URL(string: self.url + urlImage) {
+                URLSession.shared.dataTask(with: urlImage) { data, response, error in
+                    guard
+                        let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                        let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                        let data = data, error == nil,
+                        let image = UIImage(data: data)
+                        else {
+                            downloadedImges += 1
+                            view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                            removeSpinner(view: view)
+                            return
+                        }
+                    DispatchQueue.main.async() {
+                        let imageActivityData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
+                        imageActivityData?.image = image.pngData()
+                        imageActivityData?.date = Date()
+                        activityData.image = imageActivityData
+                        downloadedImges += 1
+                        view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                        removeSpinner(view: view)
+                        print("Descargada foto actividad")
+                        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                    }
+                }.resume()
+            }
+        }
+    }
+    
+    static func downloadImagesPlants(miContexto: NSManagedObjectContext, view: UIViewController) {
+        for (plantData, urlsImages) in imagesPlantsToDownload {
+            for urlImage in urlsImages {
+                if let urlImage: URL = URL(string: self.url + urlImage) {
+                    URLSession.shared.dataTask(with: urlImage) { data, response, error in
+                        guard
+                            let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                            let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                            let data = data, error == nil,
+                            let image = UIImage(data: data)
+                            else {
+                                downloadedImges += 1
+                                view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                                removeSpinner(view: view)
+                                return
+                            }
+                        DispatchQueue.main.async() {
+                            let imagePlantData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
+                            imagePlantData?.image = image.pngData()
+                            imagePlantData?.date = Date()
+                            plantData.addToImages(imagePlantData!)
+                            print("Descargada foto planta")
+                            downloadedImges += 1
+                            view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                            removeSpinner(view: view)
+                            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                        }
+                    }.resume()
+                }
+            }
+        }
+    }
+    
+    static func removeSpinner(view: UIViewController) {
+        if downloadedImges >= (totalImagesDownload + imagesLocalizationToDownload.count){
+            view.removeSpinner()
+            removedSpinner = true
+            if let tableView = view as? RouteTableViewController {
+                tableView.updateData()
+                tableView.endRefreshing()
+            }
         }
     }
 }

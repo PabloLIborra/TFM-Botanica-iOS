@@ -253,7 +253,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
     }
     
     @objc func reportActionButton() {
-        CustomReportAlertViewController.showReportAlertViewController(view: self)
+        CustomReportAlertViewController.shared.showReportAlertViewController(view: self)
     }
 
     @objc func informationActionButton() {

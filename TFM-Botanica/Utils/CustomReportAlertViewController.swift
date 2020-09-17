@@ -9,21 +9,28 @@
 import UIKit
 import MessageUI
 
-class CustomReportAlertViewController: UIViewController {
+
+class CustomReportAlertViewController: UIViewController, MFMailComposeViewControllerDelegate {
+
+    static let shared = CustomReportAlertViewController()
+    
+    private convenience init() {
+        self.init(nibName:nil, bundle:nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    static func showReportAlertViewController(view: UIViewController) {
+    func showReportAlertViewController(view: UIViewController) {
         let recipientEmail = "uaplant.app@gmail.com"
         let nameController = NSStringFromClass(view.classForCoder)
         let subject = "Reportar error en " + nameController
         let body = ""
 
-        // Show default mail composer
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self
             mail.setToRecipients([recipientEmail])
             mail.setSubject(subject)
             mail.setMessageBody(body, isHTML: false)
@@ -35,7 +42,7 @@ class CustomReportAlertViewController: UIViewController {
         }
     }
     
-    static func createEmailUrl(to: String, subject: String, body: String) -> URL? {
+    func createEmailUrl(to: String, subject: String, body: String) -> URL? {
         let subjectEncoded = subject.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         let bodyEncoded = body.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
 
@@ -59,6 +66,6 @@ class CustomReportAlertViewController: UIViewController {
     }
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        controller.dismiss(animated: true)
+        controller.dismiss(animated: true, completion: nil)
     }
 }

@@ -60,7 +60,7 @@ class PlantsViewController: UIViewController {
     }
     
     @objc func reportActionButton() {
-        CustomReportAlertViewController.showReportAlertViewController(view: self)
+        CustomReportAlertViewController.shared.showReportAlertViewController(view: self)
     }
 }
 
