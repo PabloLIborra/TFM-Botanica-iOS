@@ -49,6 +49,7 @@
 		1ADA5CB425128B17006CF1B5 /* CreditsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA5CB325128B17006CF1B5 /* CreditsTableViewCell.swift */; };
 		1ADA5CB725128E62006CF1B5 /* CustomHeaderCreditsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA5CB525128E62006CF1B5 /* CustomHeaderCreditsTableViewCell.swift */; };
 		1ADA5CB825128E62006CF1B5 /* CustomHeaderCreditsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1ADA5CB625128E62006CF1B5 /* CustomHeaderCreditsTableViewCell.xib */; };
+		1ADA5CBC2514C813006CF1B5 /* CustomDownloadImagesAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ADA5CBB2514C813006CF1B5 /* CustomDownloadImagesAlertViewController.swift */; };
 		BD375F031EF417E5784B1CF9 /* Pods_TFM_Botanica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096AA9B0A70D68542C996141 /* Pods_TFM_Botanica.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +99,7 @@
 		1ADA5CB325128B17006CF1B5 /* CreditsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsTableViewCell.swift; sourceTree = "<group>"; };
 		1ADA5CB525128E62006CF1B5 /* CustomHeaderCreditsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderCreditsTableViewCell.swift; sourceTree = "<group>"; };
 		1ADA5CB625128E62006CF1B5 /* CustomHeaderCreditsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderCreditsTableViewCell.xib; sourceTree = "<group>"; };
+		1ADA5CBB2514C813006CF1B5 /* CustomDownloadImagesAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDownloadImagesAlertViewController.swift; sourceTree = "<group>"; };
 		49B57BB4BC93C8C5A404B45C /* Pods-TFM-Botanica.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.debug.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.debug.xcconfig"; sourceTree = "<group>"; };
 		C0A4CA91A12F1BF741A538B5 /* Pods-TFM-Botanica.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TFM-Botanica.release.xcconfig"; path = "Target Support Files/Pods-TFM-Botanica/Pods-TFM-Botanica.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +132,7 @@
 				1A186E8D24F7C1FE00AFE0C6 /* CustomDeleteAlertViewController.swift */,
 				1A60E48924EA82AA001FC516 /* ZoomPhotoViewController.swift */,
 				1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */,
+				1ADA5CBB2514C813006CF1B5 /* CustomDownloadImagesAlertViewController.swift */,
 				1A5E217E24F567F200A88E64 /* JSONRequest.swift */,
 			);
 			path = Utils;
@@ -374,6 +377,7 @@
 				1A57239C243204B000ADDEBB /* RouteTableViewController.swift in Sources */,
 				1A5723B22433419E00ADDEBB /* ActivityViewController.swift in Sources */,
 				1A60E48A24EA82AA001FC516 /* ZoomPhotoViewController.swift in Sources */,
+				1ADA5CBC2514C813006CF1B5 /* CustomDownloadImagesAlertViewController.swift in Sources */,
 				1A5723892432008B00ADDEBB /* ViewController.swift in Sources */,
 				1A5723B62433522C00ADDEBB /* CameraViewController.swift in Sources */,
 				1A186E8E24F7C1FE00AFE0C6 /* CustomDeleteAlertViewController.swift in Sources */,

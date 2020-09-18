@@ -18,6 +18,8 @@ class RouteTableViewController: UITableViewController {
     
     private let customRefreshControl = UIRefreshControl()
     
+    private var downloadAlert: CustomDownloadImagesAlertViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -184,10 +186,6 @@ class RouteTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func endRefreshing() {
-        self.customRefreshControl.endRefreshing()
-    }
-    
     @objc func reportActionButton() {
         CustomReportAlertViewController.shared.showReportAlertViewController(view: self)
     }
@@ -257,5 +255,35 @@ class RouteTableViewController: UITableViewController {
         deleteRouteAlert.routeTableView = self
         
         self.present(deleteRouteAlert, animated: true, completion: nil)
+    }
+    
+    // MARK: Functions Download Alert
+    func showDownloadAlert(textLabel: String) {
+        if self.downloadAlert == nil {
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                self.downloadAlert = storyboard.instantiateViewController(withIdentifier: "downloadImagesController") as? CustomDownloadImagesAlertViewController
+                self.downloadAlert!.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                self.downloadAlert!.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                
+                self.downloadAlert!.listRoutes = self
+                self.downloadAlert!.textLabel = textLabel
+                
+                self.tabBarController?.present(self.downloadAlert!, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func changeDownloadLabel(textLabel: String){
+        if self.downloadAlert != nil {
+            self.downloadAlert?.changeLabel(text: textLabel)
+        }
+    }
+    
+    func dismissDownloadAlert() {
+        if self.downloadAlert != nil {
+            self.downloadAlert?.dismissAlert()
+            self.downloadAlert = nil
+            self.customRefreshControl.endRefreshing()
+        }
     }
 }

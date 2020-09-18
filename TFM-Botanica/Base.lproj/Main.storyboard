@@ -972,7 +972,7 @@ Ya puedes ver con detalle la planta oculta.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bro-ib-S4H">
-                                <rect key="frame" x="20.666666666666657" y="101.33333333333331" width="373" height="315"/>
+                                <rect key="frame" x="20.666666666666657" y="101.33333333333331" width="373" height="315.00000000000006"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gtR-Ng-Res">
                                     <size key="itemSize" width="373" height="317"/>
@@ -1201,6 +1201,52 @@ Ya puedes ver con detalle la planta oculta.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8jH-PQ-gQX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2373.913043478261" y="1044.6428571428571"/>
+        </scene>
+        <!--Custom Download Images Alert View Controller-->
+        <scene sceneID="hLs-1P-cXz">
+            <objects>
+                <viewController storyboardIdentifier="downloadImagesController" modalPresentationStyle="fullScreen" id="y4a-Qk-07Q" customClass="CustomDownloadImagesAlertViewController" customModule="UAPlant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NZG-hn-GFD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DDI-Hh-xrL">
+                                <rect key="frame" x="0.0" y="797.33333333333337" width="414" height="98.666666666666629"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descargando archivos 999/999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eC-yt-eSQ">
+                                        <rect key="frame" x="8" y="8" width="398" height="49"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="8eC-yt-eSQ" firstAttribute="top" secondItem="DDI-Hh-xrL" secondAttribute="top" constant="8" id="TvP-PC-jUU"/>
+                                    <constraint firstAttribute="trailing" secondItem="8eC-yt-eSQ" secondAttribute="trailing" constant="8" id="lug-ab-kto"/>
+                                    <constraint firstItem="8eC-yt-eSQ" firstAttribute="height" secondItem="DDI-Hh-xrL" secondAttribute="height" multiplier="0.496622" id="yMD-1T-aLd"/>
+                                    <constraint firstItem="8eC-yt-eSQ" firstAttribute="leading" secondItem="DDI-Hh-xrL" secondAttribute="leading" constant="8" id="zfI-xq-zcM"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63529411759999999" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="DDI-Hh-xrL" secondAttribute="bottom" id="0UT-C4-FMN"/>
+                            <constraint firstItem="DDI-Hh-xrL" firstAttribute="leading" secondItem="fWF-K7-Xhr" secondAttribute="leading" id="FMY-Jz-u1l"/>
+                            <constraint firstItem="DDI-Hh-xrL" firstAttribute="trailing" secondItem="fWF-K7-Xhr" secondAttribute="trailing" id="Fgg-lz-AmC"/>
+                            <constraint firstItem="DDI-Hh-xrL" firstAttribute="height" secondItem="NZG-hn-GFD" secondAttribute="height" multiplier="0.11" id="kCC-Yr-dpV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fWF-K7-Xhr"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="downloadLabel" destination="8eC-yt-eSQ" id="ddr-11-Kn2"/>
+                        <outlet property="downloadView" destination="DDI-Hh-xrL" id="sNv-Gx-ZE8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="chY-M0-p5R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="-796"/>
         </scene>
     </scenes>
     <resources>

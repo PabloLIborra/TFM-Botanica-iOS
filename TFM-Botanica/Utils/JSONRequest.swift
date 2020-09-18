@@ -16,7 +16,7 @@ class JSONRequest{
     static var downloadRoutes = 0
     
     static var totalImagesDownload = 0
-    static var downloadedImges = 0
+    static var downloadedImages = 0
     static var removedSpinner: Bool = false
     
     static var imagesLocalizationToDownload = [Activity: String]()
@@ -26,12 +26,18 @@ class JSONRequest{
 
         downloadRoutes = 0
         totalImagesDownload = 0
-        downloadedImges = 0
+        downloadedImages = 0
         removedSpinner = false
         imagesLocalizationToDownload.removeAll()
         imagesPlantsToDownload.removeAll()
-        
-        view.showSpinner(onView: view.view, textLabel: "Descargando archivos")
+
+        DispatchQueue.main.async {
+            if let tableView = view as? RouteTableViewController {
+                tableView.showDownloadAlert(textLabel: "Comprobando archivos")
+            } else {
+                view.showSpinner(onView: view.view, textLabel: "Comprobando archivos")
+            }
+        }
 
         guard let miDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -136,7 +142,7 @@ class JSONRequest{
                                                 } else {
                                                     downloadRoutes += 1
                                                     if downloadRoutes >= splitFolders.count - 1{
-                                                        removeSpinner(view: view)
+                                                        self.dismissDownloadAlert(view: view)
                                                     }
                                                     print(route + " already exist")
                                                 }
@@ -147,7 +153,7 @@ class JSONRequest{
                                                         }
                                                     }
                                                     print(imagesLocalizationToDownload.count)
-//                                                    view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+//                                                  self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
                                                     downloadImagesLocalization(miContexto: miContexto, view: view)
                                                     downloadImagesPlants(miContexto: miContexto, view: view)
                                                 }
@@ -176,9 +182,9 @@ class JSONRequest{
                         let data = data, error == nil,
                         let image = UIImage(data: data)
                         else {
-                            downloadedImges += 1
-                            view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
-                            removeSpinner(view: view)
+                            downloadedImages += 1
+                            self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImages) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                            self.dismissDownloadAlert(view: view)
                             return
                         }
                     DispatchQueue.main.async() {
@@ -186,9 +192,9 @@ class JSONRequest{
                         imageActivityData?.image = image.pngData()
                         imageActivityData?.date = Date()
                         activityData.image = imageActivityData
-                        downloadedImges += 1
-                        view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
-                        removeSpinner(view: view)
+                        downloadedImages += 1
+                        self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImages) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                        self.dismissDownloadAlert(view: view)
                         print("Descargada foto actividad")
                         (UIApplication.shared.delegate as! AppDelegate).saveContext()
                     }
@@ -208,9 +214,9 @@ class JSONRequest{
                             let data = data, error == nil,
                             let image = UIImage(data: data)
                             else {
-                                downloadedImges += 1
-                                view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
-                                removeSpinner(view: view)
+                                downloadedImages += 1
+                                self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImages) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                                self.dismissDownloadAlert(view: view)
                                 return
                             }
                         DispatchQueue.main.async() {
@@ -219,9 +225,9 @@ class JSONRequest{
                             imagePlantData?.date = Date()
                             plantData.addToImages(imagePlantData!)
                             print("Descargada foto planta")
-                            downloadedImges += 1
-                            view.changeLabelSpinner(text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
-                            removeSpinner(view: view)
+                            downloadedImages += 1
+                            self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImages) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
+                            self.dismissDownloadAlert(view: view)
                             (UIApplication.shared.delegate as! AppDelegate).saveContext()
                         }
                     }.resume()
@@ -230,14 +236,27 @@ class JSONRequest{
         }
     }
     
-    static func removeSpinner(view: UIViewController) {
-        if downloadedImges >= (totalImagesDownload + imagesLocalizationToDownload.count){
-            view.removeSpinner()
-            removedSpinner = true
-            if let tableView = view as? RouteTableViewController {
-                tableView.updateData()
-                tableView.endRefreshing()
+    static func dismissDownloadAlert(view: UIViewController) {
+        if downloadedImages >= (totalImagesDownload + imagesLocalizationToDownload.count){
+            DispatchQueue.main.async {
+                if let tableView = view as? RouteTableViewController {
+                    tableView.dismissDownloadAlert()
+                    if downloadedImages > 0 {
+                        tableView.updateData()
+                    }
+                } else {
+                    view.removeSpinner()
+                }
+                removedSpinner = true
             }
+        }
+    }
+    
+    static func changeLabelDownloadAlert(view: UIViewController, text: String) {
+        if let tableView = view as? RouteTableViewController {
+            tableView.changeDownloadLabel(textLabel: text)
+        } else {
+            view.changeLabelSpinner(text: text)
         }
     }
 }
