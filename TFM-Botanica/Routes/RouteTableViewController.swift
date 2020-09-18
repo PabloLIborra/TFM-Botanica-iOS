@@ -50,9 +50,8 @@ class RouteTableViewController: UITableViewController {
     
     @objc private func refreshTableData() {
         DispatchQueue.main.async {
-            JSONRequest.readJSONFromServer(view: self)
-            //self.updateData()
-            //self.customRefreshControl.endRefreshing()
+            self.updateData()
+            self.customRefreshControl.endRefreshing()
         }
     }
 
@@ -174,7 +173,11 @@ class RouteTableViewController: UITableViewController {
         //Create report button
         let reportButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(reportActionButton))
         reportButton.image = UIImage(systemName: "exclamationmark.triangle")
-        self.navigationItem.rightBarButtonItems = [reportButton]
+        //Create button download new routes from server
+        let downloadButton = UIBarButtonItem(title: "", style: .plain, target: self, action: #selector(downloadNewRoutes))
+        downloadButton.image = UIImage(systemName: "icloud.and.arrow.down")
+        
+        self.navigationItem.rightBarButtonItems = [reportButton, downloadButton]
     }
     
     func updateData() {
@@ -188,6 +191,10 @@ class RouteTableViewController: UITableViewController {
     
     @objc func reportActionButton() {
         CustomReportAlertViewController.shared.showReportAlertViewController(view: self)
+    }
+    
+    @objc func downloadNewRoutes() {
+        JSONRequest.readJSONFromServer(view: self)
     }
     
     func addRefreshControl() {
@@ -257,19 +264,18 @@ class RouteTableViewController: UITableViewController {
         self.present(deleteRouteAlert, animated: true, completion: nil)
     }
     
-    // MARK: Functions Download Alert
+    // MARK: Functions Download Routes From Server Alert
     func showDownloadAlert(textLabel: String) {
         if self.downloadAlert == nil {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                self.downloadAlert = storyboard.instantiateViewController(withIdentifier: "downloadImagesController") as? CustomDownloadImagesAlertViewController
-                self.downloadAlert!.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                self.downloadAlert!.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                
-                self.downloadAlert!.listRoutes = self
-                self.downloadAlert!.textLabel = textLabel
-                
-                self.tabBarController?.present(self.downloadAlert!, animated: true, completion: nil)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            self.downloadAlert = storyboard.instantiateViewController(withIdentifier: "downloadImagesController") as? CustomDownloadImagesAlertViewController
+            self.downloadAlert!.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+            self.downloadAlert!.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
             
+            self.downloadAlert!.listRoutes = self
+            self.downloadAlert!.textLabel = textLabel
+            
+            self.tabBarController?.present(self.downloadAlert!, animated: true, completion: nil)
         }
     }
     
@@ -283,7 +289,6 @@ class RouteTableViewController: UITableViewController {
         if self.downloadAlert != nil {
             self.downloadAlert?.dismissAlert()
             self.downloadAlert = nil
-            self.customRefreshControl.endRefreshing()
         }
     }
 }

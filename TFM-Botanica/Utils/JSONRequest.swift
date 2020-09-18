@@ -228,10 +228,9 @@ class JSONRequest{
     static func dismissDownloadAlert(view: UIViewController) {
         if downloadedImages >= (totalImagesDownload + imagesLocalizationToDownload.count){
             DispatchQueue.main.async {
-                if downloadedImages > 0 {
                     (UIApplication.shared.delegate as! AppDelegate).saveContext()
                     print("New routes have been saved")
-                }
+                
                 if let tableView = view as? RouteTableViewController {
                     tableView.dismissDownloadAlert()
                     if downloadedImages > 0 {
