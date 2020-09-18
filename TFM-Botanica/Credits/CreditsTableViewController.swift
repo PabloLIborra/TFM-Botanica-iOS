@@ -54,7 +54,7 @@ class CreditsTableViewController: UITableViewController {
         case 0:
             text = "Pablo López Iborra\np.lopez.iborra@gmail.com"
         case 1:
-            text = "Sergio Cabañero García\n19sergio98@gmail.com\n\nMiguel Ángel Lozano Ortega\nmalozano@ua.es\n\nMaría Ángeles Alonso Vargas\nma.alonso@gcloud.ua.es\n\nManuel Benito Crespo Villalba\ncrespo@mscloud.ua.es\n\nUniversidad de Alicante"
+            text = "Sergio Cabañero García\n19sergio98@gmail.com\n\nMiguel Ángel Lozano Ortega\nmalozano@ua.es\nDpto. Ciencia de la Computacion e Inteligencia Artificial\n\nMaría Ángeles Alonso Vargas\nma.alonso@gcloud.ua.es\nDpto. Ciencias Ambientales y Recursos Naturales\n\nManuel Benito Crespo Villalba\ncrespo@mscloud.ua.es\nDpto. Ciencias Ambientales y Recursos Naturales\n\nUniversidad de Alicante"
         case 2:
             text = "Máster en Desarrollo de Software para Dispositivos Móviles\nPropuesta realizada como\nTrabajo de Final de Máster (TFM)"
         case 3:
