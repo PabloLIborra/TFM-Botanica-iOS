@@ -68,76 +68,69 @@ class JSONRequest{
                                                 let results = try miContexto.fetch(fetchRequest)
                                                 if results.count == 0 {
                                                     downloadRoutes += 1
-                                                    do {
-                                                        let routeData = NSEntityDescription.insertNewObject(forEntityName: "Route", into: miContexto) as? Route
-                                                        routeData?.name = route
-                                                    
-                                                        if let information = json["informacion_itinerario"] as? String {
-                                                            routeData?.information = information
-                                                        }
-                                                        routeData?.state = Int16(State.AVAILABLE)
+                                                    let routeData = NSEntityDescription.insertNewObject(forEntityName: "Route", into: miContexto) as? Route
+                                                    routeData?.name = route
+                                                
+                                                    if let information = json["informacion_itinerario"] as? String {
+                                                        routeData?.information = information
+                                                    }
+                                                    routeData?.state = Int16(State.AVAILABLE)
 
-                                                        if let plants = json["plantas"] as? [[String:Any]] {
-                                                            for plant in plants {
-                                                                let activityData = NSEntityDescription.insertNewObject(forEntityName: "Activity", into: miContexto) as? Activity
-                                                                activityData?.title = plant["titulo_actividad"] as? String
-                                                                activityData?.subtitle = plant["subtitulo_actividad"] as? String
-                                                                activityData?.state = Int16(State.INACTIVE)
-                                                                activityData?.information = plant["informacion_actividad"] as? String
-                                                                activityData?.date = Date()
-                                                                activityData?.longitude = (plant["lng"] as! NSString).doubleValue
-                                                                activityData?.latitude = (plant["lat"] as! NSString).doubleValue
-                                                                activityData?.route = routeData
-                                                                routeData?.addToActivities(activityData!)
-                                                                
-                                                                let nameLocationImage = plant["foto_localizacion"] as? String
-                                                                imagesLocalizationToDownload[activityData!] = nameFolder + "/" + nameLocationImage!
-                                                                
-                                                                let plantData = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: miContexto) as? Plant
-                                                                plantData?.scientific_name = plant["nombre_cientifico"] as? String
-                                                                plantData?.family = plant["familia"] as? String
-                                                                plantData?.information = plant["descripcion_planta"] as? String
-                                                                plantData?.unlock = false
-                                                                plantData?.activity = activityData
-                                                                activityData?.plant = plantData
-                                                                
-                                                                let images = plant["fotos_carrusel"] as? String
-                                                                let splitImages = images!.components(separatedBy: ";")
+                                                    if let plants = json["plantas"] as? [[String:Any]] {
+                                                        for plant in plants {
+                                                            let activityData = NSEntityDescription.insertNewObject(forEntityName: "Activity", into: miContexto) as? Activity
+                                                            activityData?.title = plant["titulo_actividad"] as? String
+                                                            activityData?.subtitle = plant["subtitulo_actividad"] as? String
+                                                            activityData?.state = Int16(State.INACTIVE)
+                                                            activityData?.information = plant["informacion_actividad"] as? String
+                                                            activityData?.date = Date()
+                                                            activityData?.longitude = (plant["lng"] as! NSString).doubleValue
+                                                            activityData?.latitude = (plant["lat"] as! NSString).doubleValue
+                                                            activityData?.route = routeData
+                                                            routeData?.addToActivities(activityData!)
+                                                            
+                                                            let nameLocationImage = plant["foto_localizacion"] as? String
+                                                            imagesLocalizationToDownload[activityData!] = nameFolder + "/" + nameLocationImage!
+                                                            
+                                                            let plantData = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: miContexto) as? Plant
+                                                            plantData?.scientific_name = plant["nombre_cientifico"] as? String
+                                                            plantData?.family = plant["familia"] as? String
+                                                            plantData?.information = plant["descripcion_planta"] as? String
+                                                            plantData?.unlock = false
+                                                            plantData?.activity = activityData
+                                                            activityData?.plant = plantData
+                                                            
+                                                            let images = plant["fotos_carrusel"] as? String
+                                                            let splitImages = images!.components(separatedBy: ";")
 
-                                                                var listImagePlants = imagesPlantsToDownload[plantData!] ?? []
-                                                                for namePlantImage in splitImages {
-                                                                    listImagePlants.append(nameFolder + "/" + namePlantImage)
-                                                                }
-                                                                imagesPlantsToDownload[plantData!] = listImagePlants
-                                                                
-                                                                if let questions = plant["preguntas"] as? [[String:Any]] {
-                                                                    for question in questions {
-                                                                        let questionData = NSEntityDescription.insertNewObject(forEntityName: "Question", into: miContexto) as? Question
-                                                                        questionData?.title = question["titulo_pregunta"] as? String
-                                                                        questionData?.date = Date()
-                                                                        plantData?.addToQuestions(questionData!)
-                                                                        
-                                                                        let trueAnswerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
-                                                                        trueAnswerData?.title = question["respuestac"] as? String
-                                                                        questionData?.true_answer = trueAnswerData
-                                                                        questionData?.addToAnswers(trueAnswerData!)
-                                                                        
-                                                                        let answers = question["respuestas"] as? String
-                                                                        let splitAnswers = answers?.components(separatedBy: ";")
-                                                                        for splitAnswer in splitAnswers! {
-                                                                            let answerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
-                                                                            answerData?.title = splitAnswer
-                                                                            questionData?.addToAnswers(answerData!)
-                                                                        }
+                                                            var listImagePlants = imagesPlantsToDownload[plantData!] ?? []
+                                                            for namePlantImage in splitImages {
+                                                                listImagePlants.append(nameFolder + "/" + namePlantImage)
+                                                            }
+                                                            imagesPlantsToDownload[plantData!] = listImagePlants
+                                                            
+                                                            if let questions = plant["preguntas"] as? [[String:Any]] {
+                                                                for question in questions {
+                                                                    let questionData = NSEntityDescription.insertNewObject(forEntityName: "Question", into: miContexto) as? Question
+                                                                    questionData?.title = question["titulo_pregunta"] as? String
+                                                                    questionData?.date = Date()
+                                                                    plantData?.addToQuestions(questionData!)
+                                                                    
+                                                                    let trueAnswerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
+                                                                    trueAnswerData?.title = question["respuestac"] as? String
+                                                                    questionData?.true_answer = trueAnswerData
+                                                                    questionData?.addToAnswers(trueAnswerData!)
+                                                                    
+                                                                    let answers = question["respuestas"] as? String
+                                                                    let splitAnswers = answers?.components(separatedBy: ";")
+                                                                    for splitAnswer in splitAnswers! {
+                                                                        let answerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
+                                                                        answerData?.title = splitAnswer
+                                                                        questionData?.addToAnswers(answerData!)
                                                                     }
                                                                 }
                                                             }
                                                         }
-                                                        
-                                                        try miContexto.save()
-                                                        print(route + " has been saved")
-                                                    } catch {
-                                                        print(error)
                                                     }
                                                 } else {
                                                     downloadRoutes += 1
@@ -152,8 +145,6 @@ class JSONRequest{
                                                             totalImagesDownload += 1
                                                         }
                                                     }
-                                                    print(imagesLocalizationToDownload.count)
-//                                                  self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImges) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
                                                     downloadImagesLocalization(miContexto: miContexto, view: view)
                                                     downloadImagesPlants(miContexto: miContexto, view: view)
                                                 }
@@ -195,8 +186,7 @@ class JSONRequest{
                         downloadedImages += 1
                         self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImages) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
                         self.dismissDownloadAlert(view: view)
-                        print("Descargada foto actividad")
-                        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                        print("Descargada foto localizacion")
                     }
                 }.resume()
             }
@@ -228,7 +218,6 @@ class JSONRequest{
                             downloadedImages += 1
                             self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImages) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
                             self.dismissDownloadAlert(view: view)
-                            (UIApplication.shared.delegate as! AppDelegate).saveContext()
                         }
                     }.resume()
                 }
@@ -239,6 +228,10 @@ class JSONRequest{
     static func dismissDownloadAlert(view: UIViewController) {
         if downloadedImages >= (totalImagesDownload + imagesLocalizationToDownload.count){
             DispatchQueue.main.async {
+                if downloadedImages > 0 {
+                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                    print("New routes have been saved")
+                }
                 if let tableView = view as? RouteTableViewController {
                     tableView.dismissDownloadAlert()
                     if downloadedImages > 0 {

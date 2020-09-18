@@ -65,58 +65,7 @@ class CustomDeleteAlertViewController: UIViewController {
             
             for route in routes {
                 if route == self.route {
-                    
-                    print("---------Antiguas---------")
-                    var fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-                    var objects = try miContexto.fetch(fetchRequest) as! [Activity]
-                    print(objects.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Answer")
-                    var objects2 = try miContexto.fetch(fetchRequest) as! [Answer]
-                    print(objects2.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
-                    var objects3 = try miContexto.fetch(fetchRequest) as! [Image]
-                    print(objects3.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Plant")
-                    var objects4 = try miContexto.fetch(fetchRequest) as! [Plant]
-                    print(objects4.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Question")
-                    var objects5 = try miContexto.fetch(fetchRequest) as! [Question]
-                    print(objects5.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Route")
-                    var objects6 = try miContexto.fetch(fetchRequest) as! [Route]
-                    print(objects6.count)
-                    
                     miContexto.delete(route)
-                    
-                    print("---------Nuevas---------")
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Activity")
-                    objects = try miContexto.fetch(fetchRequest) as! [Activity]
-                    print(objects.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Answer")
-                    objects2 = try miContexto.fetch(fetchRequest) as! [Answer]
-                    print(objects2.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Image")
-                    objects3 = try miContexto.fetch(fetchRequest) as! [Image]
-                    print(objects3.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Plant")
-                    objects4 = try miContexto.fetch(fetchRequest) as! [Plant]
-                    print(objects4.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Question")
-                    objects5 = try miContexto.fetch(fetchRequest) as! [Question]
-                    print(objects5.count)
-
-                    fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Route")
-                    objects6 = try miContexto.fetch(fetchRequest) as! [Route]
-                    print(objects6.count)
                 }
             }
 
