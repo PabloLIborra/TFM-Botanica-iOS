@@ -228,9 +228,8 @@ class JSONRequest{
     static func dismissDownloadAlert(view: UIViewController) {
         if downloadedImages >= (totalImagesDownload + imagesLocalizationToDownload.count){
             DispatchQueue.main.async {
-                    (UIApplication.shared.delegate as! AppDelegate).saveContext()
-                    print("New routes have been saved")
-                
+                (UIApplication.shared.delegate as! AppDelegate).saveContext()
+                print("New routes have been saved")
                 if let tableView = view as? RouteTableViewController {
                     tableView.dismissDownloadAlert()
                     if downloadedImages > 0 {
@@ -245,10 +244,14 @@ class JSONRequest{
     }
     
     static func changeLabelDownloadAlert(view: UIViewController, text: String) {
-        if let tableView = view as? RouteTableViewController {
-            tableView.changeDownloadLabel(textLabel: text)
-        } else {
-            view.changeLabelSpinner(text: text)
+        DispatchQueue.main.async {
+            if downloadedImages < (totalImagesDownload + imagesLocalizationToDownload.count){
+                if let tableView = view as? RouteTableViewController {
+                    tableView.changeDownloadLabel(textLabel: text)
+                } else {
+                    view.changeLabelSpinner(text: text)
+                }
+            }
         }
     }
 }

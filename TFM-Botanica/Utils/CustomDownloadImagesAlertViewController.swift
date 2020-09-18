@@ -23,8 +23,10 @@ class CustomDownloadImagesAlertViewController: UIViewController {
     }
 
     func changeLabel(text: String) {
-        self.textLabel = text
-        self.downloadLabel.text = self.textLabel
+        if self.downloadLabel != nil {
+            self.textLabel = text
+            self.downloadLabel.text = self.textLabel
+        }
     }
     
     func dismissAlert() {
