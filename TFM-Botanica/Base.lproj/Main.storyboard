@@ -972,7 +972,7 @@ Ya puedes ver con detalle la planta oculta.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Bro-ib-S4H">
-                                <rect key="frame" x="20.666666666666657" y="101.33333333333331" width="373" height="315.00000000000006"/>
+                                <rect key="frame" x="20.666666666666657" y="101.33333333333331" width="373" height="315"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gtR-Ng-Res">
                                     <size key="itemSize" width="373" height="317"/>
@@ -1216,11 +1216,11 @@ Ya puedes ver con detalle la planta oculta.
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descargando archivos 999/999" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eC-yt-eSQ">
                                         <rect key="frame" x="8" y="8" width="398" height="49"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" red="0.13606637429999999" green="0.35603165720000002" blue="0.43319623509999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="8eC-yt-eSQ" firstAttribute="top" secondItem="DDI-Hh-xrL" secondAttribute="top" constant="8" id="TvP-PC-jUU"/>
                                     <constraint firstAttribute="trailing" secondItem="8eC-yt-eSQ" secondAttribute="trailing" constant="8" id="lug-ab-kto"/>
