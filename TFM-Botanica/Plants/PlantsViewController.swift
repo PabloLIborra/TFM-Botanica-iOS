@@ -40,7 +40,7 @@ class PlantsViewController: UIViewController {
             self.pageControl.numberOfPages = 1
         }
         self.pageControl.pageIndicatorTintColor = UIColor.black
-        self.pageControl.currentPageIndicatorTintColor = UIColor.greenCell
+        self.pageControl.currentPageIndicatorTintColor = UIColor.green
         self.viewPageControl.addSubview(self.pageControl)
         
         //self.photoImage.image = UIImage(named: photoName)?.withRoundedCorners(radius: 30)

@@ -10,6 +10,104 @@ import UIKit
 import GoogleMaps
 import CoreData
 
+let kMapStyle = "[" +
+"  {" +
+"    \"featureType\": \"administrative\"," +
+"    \"elementType\": \"labels.icon\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"administrative\"," +
+"    \"elementType\": \"labels.text.stroke\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"landscape\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"landscape\"," +
+"    \"elementType\": \"labels.icon\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"landscape.man_made\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"poi\"," +
+"    \"elementType\": \"labels.icon\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"poi.business\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"poi.park\"," +
+"    \"elementType\": \"labels.text\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"road\"," +
+"    \"elementType\": \"labels.icon\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"transit\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }," +
+"  {" +
+"    \"featureType\": \"transit\"," +
+"    \"elementType\": \"labels.icon\"," +
+"    \"stylers\": [" +
+"      {" +
+"        \"visibility\": \"off\"" +
+"      }" +
+"    ]" +
+"  }" +
+"]"
+
 class MapViewController: UIViewController, GMSMapViewDelegate {
     
     var route: Route?
@@ -34,6 +132,13 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.mapView.delegate = self
         self.tappedMarker = CustomMarker(state: 0)
         self.customInfoWindow = CustomInfoWindow().loadView()
+        
+        do {
+          // Set the map style by passing a valid JSON string.
+          mapView.mapStyle = try GMSMapStyle(jsonString: kMapStyle)
+        } catch {
+          NSLog("One or more of the map styles failed to load. \(error)")
+        }
         
         self.updateInterface()
         self.updateRouteData()

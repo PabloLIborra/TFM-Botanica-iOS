@@ -149,6 +149,10 @@ class QuestionTableViewController: UITableViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 self.showCompletedTestAlertView()
             }
+        } else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                self.showFailedTestAlertView()
+            }
         }
     }
     
@@ -163,5 +167,17 @@ class QuestionTableViewController: UITableViewController {
         completedTestController.plant = self.plant
         
         self.present(completedTestController, animated: true, completion: nil)
+    }
+    
+    func showFailedTestAlertView() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let failedTestController = storyboard.instantiateViewController(withIdentifier: "failedTestController") as! CustomFailedTestAlertViewController
+        failedTestController.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        failedTestController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        
+        failedTestController.textTitle = "Test Fallido"
+        failedTestController.textInformation = "Has fallado en alguna pregunta del test, corrige las respuestas que esten en rojo."
+        
+        self.present(failedTestController, animated: true, completion: nil)
     }
 }
