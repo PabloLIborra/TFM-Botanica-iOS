@@ -370,7 +370,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         informationAlert.nameText = self.name
         informationAlert.informationText = self.information
         informationAlert.imageInactive = GMSMarker.markerImage(with: UIColor.gray)
-        informationAlert.textInactive = "Actividad Bloqueada, se desbloqueara completando la anterior"
+        informationAlert.textInactive = "Actividad Bloqueada, se desbloqueará completando la anterior"
         informationAlert.imageAvailable = GMSMarker.markerImage(with: UIColor.cyan)
         informationAlert.textAvailable = "Actividad disponible"
         informationAlert.imageOnProgress = GMSMarker.markerImage(with: UIColor.red)

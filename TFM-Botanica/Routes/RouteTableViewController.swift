@@ -11,7 +11,7 @@ import CoreData
 
 class RouteTableViewController: UITableViewController {
 
-    let sections = ["En proceso", "Nuevas", "Completadas"]
+    let sections = ["En proceso", "Nuevos", "Completados"]
     var routesAvailables: [Route] = []
     var routesInProgress: [Route] = []
     var routesComplete: [Route] = []
@@ -257,7 +257,7 @@ class RouteTableViewController: UITableViewController {
         deleteRouteAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
         
         deleteRouteAlert.textTitle = "Eliminar"
-        deleteRouteAlert.textInformation = "¿Desea eliminar el itinerario" + "\n \"" + route.name! + "\"?\n\nSi realiza esta acción perderá todo su progreso, pero podrá volver a descargarla deslizando hacia abajo la lista."
+        deleteRouteAlert.textInformation = "¿Desea eliminar el itinerario" + "\n \"" + route.name! + "\"?\n\nSi realiza esta acción perderá todo su progreso, pero podrá volver a descargarlo pulsando en el botón de descarga de la barra de navegación."
         deleteRouteAlert.route = route
         deleteRouteAlert.routeTableView = self
         
