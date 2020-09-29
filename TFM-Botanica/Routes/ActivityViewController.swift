@@ -20,10 +20,8 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBOutlet weak var stateImageColor: UIImageView!
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var questionButton: UIButton!
-    @IBOutlet weak var captureButton: UIButton!
     
     var imagePicker: UIImagePickerController! = UIImagePickerController()
-    var cameraImage: UIImage? = nil
     
     var imageLoaded = false
     
@@ -55,12 +53,6 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         self.questionButton.layer.borderColor = UIColor.black.cgColor
         self.questionButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
         self.questionButton.setTitleColor(UIColor.black, for: .normal)
-        
-        self.captureButton.layer.cornerRadius = 8
-        self.captureButton.layer.borderWidth = 1
-        self.captureButton.layer.borderColor = UIColor.black.cgColor
-        self.captureButton.layer.backgroundColor = UIColor.init(red: 190/255, green: 255/255, blue: 208/255, alpha: 1.0).cgColor
-        self.captureButton.setTitleColor(UIColor.black, for: .normal)
         
         self.titleLabel.adjustsFontSizeToFitWidth = true
         
@@ -97,22 +89,16 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
             case Int16(State.IN_PROGRESS):
                 self.startButton.isEnabled = false
                 self.startButton.alpha = 0.3
-                self.captureButton.isEnabled = false
-                self.captureButton.alpha = 0.3
                 self.questionButton.isEnabled = true
                 self.questionButton.alpha = 1.0
             case Int16(State.COMPLETE):
                 self.startButton.isEnabled = false
                 self.startButton.alpha = 0.3
-                self.captureButton.isEnabled = false
-                self.captureButton.alpha = 0.3
                 self.questionButton.isEnabled = true
                 self.questionButton.alpha = 1.0
             case Int16(State.AVAILABLE):
                 self.startButton.isEnabled = true
                 self.startButton.alpha = 1.0
-                self.captureButton.isEnabled = false
-                self.captureButton.alpha = 0.3
                 self.questionButton.isEnabled = false
                 self.questionButton.alpha = 0.3
             default:
@@ -214,21 +200,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
         self.updateInterface()
     }
     
-    @IBAction func captureAction(_ sender: Any) {
-        self.imagePicker.sourceType = .camera
-        self.imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(self.cameraImage != nil) {
-            if(segue.destination is CameraViewController) {
-                if(self.cameraImage != nil) {
-                    let vc = segue.destination as? CameraViewController
-                    vc?.imageFromCamera = self.cameraImage
-                }
-            }
-        }
         if segue.identifier == "questionSegue" {
             let destiny = segue.destination as! QuestionTableViewController
             destiny.activityViewController = self
@@ -237,18 +209,7 @@ class ActivityViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if(identifier == "cameraSegue") {
-            return false
-        }
         return true
-    }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        self.imagePicker.dismiss(animated: true, completion: nil)
-        self.cameraImage = info[.originalImage] as? UIImage
-        if(self.cameraImage != nil) {
-            self.performSegue(withIdentifier: "cameraSegue", sender: nil)
-        }
     }
     
 }
