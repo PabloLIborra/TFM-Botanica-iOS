@@ -138,11 +138,13 @@ class QuestionTableViewController: UITableViewController {
         var result = true
         for i in 0..<tableSize-1 {
             let indexPath = IndexPath(row: i, section: 0)
-            let cell = tableView.cellForRow(at: indexPath) as! QuestionTableViewCell
-            if result == true && cell.isCorrected == false {
-                result = cell.isCorrected
+            let cell = tableView.cellForRow(at: indexPath) as? QuestionTableViewCell
+            if cell != nil {
+                if result == true && cell!.isCorrected == false {
+                    result = cell!.isCorrected
+                }
+                cell!.changeColor()
             }
-            cell.changeColor()
         }
         if result == true {
             self.activityViewController?.completedRoute()

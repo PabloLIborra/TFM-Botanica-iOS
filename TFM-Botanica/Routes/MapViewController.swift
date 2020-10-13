@@ -169,6 +169,7 @@ class MapViewController: UIViewController, GMSMapViewDelegate {
         self.mapView.animate(with: camera)
         
         self.customInfoWindow?.titleLabel.text = self.tappedMarker?.title
+        self.customInfoWindow?.titleLabel.adjustsFontSizeToFitWidth = true
         self.customInfoWindow?.subtitleText.text = self.tappedMarker?.snippet
         self.customInfoWindow?.subtitleText.layer.backgroundColor = UIColor.barColor.cgColor
         self.customInfoWindow?.subtitleText.textContainerInset = UIEdgeInsets.zero

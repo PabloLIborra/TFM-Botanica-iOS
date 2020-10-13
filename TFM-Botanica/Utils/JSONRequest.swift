@@ -45,7 +45,8 @@ class JSONRequest{
         let miContexto = miDelegate.persistentContainer.viewContext
         
         if let urlIndex: URL = URL(string: self.url + "index.txt") {
-            URLSession.shared.dataTask(with: urlIndex) { data, response, error in
+            let urlSession = URLSession(configuration: .ephemeral)
+            urlSession.dataTask(with: urlIndex) { data, response, error in
                 if error != nil {
                    print(error!)
                 }
@@ -54,7 +55,7 @@ class JSONRequest{
                         let splitFolders = textFile.components(separatedBy: "\n")
                         for nameFolder in splitFolders {
                             if let urlJSON: URL = URL(string: self.url + nameFolder + "/" + nameFolder + ".json") {
-                                URLSession.shared.dataTask(with: urlJSON) { data, response, error in
+                                urlSession.dataTask(with: urlJSON) { data, response, error in
                                     if let data = data {
                                         guard let jsonSerialize = try? JSONSerialization.jsonObject(with: data, options: .allowFragments) else { return }
                                         guard let json = jsonSerialize as? [String: Any] else { return }
@@ -84,13 +85,16 @@ class JSONRequest{
                                                             activityData?.state = Int16(State.INACTIVE)
                                                             activityData?.information = plant["informacion_actividad"] as? String
                                                             activityData?.date = Date()
-                                                            activityData?.longitude = (plant["lng"] as! NSString).doubleValue
-                                                            activityData?.latitude = (plant["lat"] as! NSString).doubleValue
+                                                            activityData?.longitude = (plant["lng"] as! NSNumber).doubleValue
+                                                            activityData?.latitude = (plant["lat"] as! NSNumber).doubleValue
                                                             activityData?.route = routeData
                                                             routeData?.addToActivities(activityData!)
                                                             
-                                                            let nameLocationImage = plant["foto_localizacion"] as? String
-                                                            imagesLocalizationToDownload[activityData!] = nameFolder + "/" + nameLocationImage!
+                                                            var nameLocationImage = plant["foto_localizacion"] as? String
+                                                            nameLocationImage = nameLocationImage!.replacingOccurrences(of: " ", with: "_")
+                                                            var namePlant = plant["nombre_cientifico"] as? String
+                                                            namePlant = namePlant!.replacingOccurrences(of: " ", with: "_")
+                                                            imagesLocalizationToDownload[activityData!] = nameFolder + "/" + namePlant! + "/" + nameLocationImage!
                                                             
                                                             let plantData = NSEntityDescription.insertNewObject(forEntityName: "Plant", into: miContexto) as? Plant
                                                             plantData?.scientific_name = plant["nombre_cientifico"] as? String
@@ -105,7 +109,8 @@ class JSONRequest{
 
                                                             var listImagePlants = imagesPlantsToDownload[plantData!] ?? []
                                                             for namePlantImage in splitImages {
-                                                                listImagePlants.append(nameFolder + "/" + namePlantImage)
+                                                                let nameImage = namePlantImage.replacingOccurrences(of: " ", with: "_")
+                                                                listImagePlants.append(nameFolder + "/" + namePlant! + "/" + nameImage)
                                                             }
                                                             imagesPlantsToDownload[plantData!] = listImagePlants
                                                             
@@ -166,7 +171,8 @@ class JSONRequest{
     static func downloadImagesLocalization(miContexto: NSManagedObjectContext, view: UIViewController) {
         for (activityData, urlImage) in imagesLocalizationToDownload {
             if let urlImage: URL = URL(string: self.url + urlImage) {
-                URLSession.shared.dataTask(with: urlImage) { data, response, error in
+                let urlSession = URLSession(configuration: .ephemeral)
+                urlSession.dataTask(with: urlImage) { data, response, error in
                     guard
                         let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                         let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
@@ -197,7 +203,8 @@ class JSONRequest{
         for (plantData, urlsImages) in imagesPlantsToDownload {
             for urlImage in urlsImages {
                 if let urlImage: URL = URL(string: self.url + urlImage) {
-                    URLSession.shared.dataTask(with: urlImage) { data, response, error in
+                    let urlSession = URLSession(configuration: .ephemeral)
+                    urlSession.dataTask(with: urlImage) { data, response, error in
                         guard
                             let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                             let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
