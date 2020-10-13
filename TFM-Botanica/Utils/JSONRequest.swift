@@ -124,7 +124,6 @@ class JSONRequest{
                                                                     let trueAnswerData = NSEntityDescription.insertNewObject(forEntityName: "Answer", into: miContexto) as? Answer
                                                                     trueAnswerData?.title = question["respuestac"] as? String
                                                                     questionData?.true_answer = trueAnswerData
-                                                                    questionData?.addToAnswers(trueAnswerData!)
                                                                     
                                                                     let answers = question["respuestas"] as? String
                                                                     let splitAnswers = answers?.components(separatedBy: ";")
