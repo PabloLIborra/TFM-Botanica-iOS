@@ -43,6 +43,7 @@ class PlantsTableViewController: UITableViewController {
         DispatchQueue.main.async {
             self.updateData()
             self.customRefreshControl.endRefreshing()
+            self.imagesPlant.removeAll()
         }
     }
 
