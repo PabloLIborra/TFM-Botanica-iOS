@@ -16,13 +16,22 @@ class QuestionTableViewController: UITableViewController {
     
     var questions: [Question] = []
     
+    var responseDictionary = [Question:ResponseQuestion]()
+    
     var selectedCellIndexPath: IndexPath = IndexPath(row: 0, section: 1)
     
-    let questionCellHeight: CGFloat = 99.0
+    let questionCellHeight: CGFloat = 120.0
     let answerCellHeight: CGFloat = 55.0
     let finishCellHeight: CGFloat = 55.0
     
     var tableSize = 0
+    
+    struct ResponseQuestion {
+        var toCorrect: Bool
+        var correct: Bool
+        var answers: [String]
+        var answerResponse: String
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,28 +71,39 @@ class QuestionTableViewController: UITableViewController {
         
         var cell: UITableViewCell!
         
-        if /*self.selectedCellIndexPath.row == indexPath.row &&*/ indexPath.row != self.tableSize - 1{
+        if indexPath.row != self.tableSize - 1{
             let questionCell = tableView.dequeueReusableCell(withIdentifier: "questionCell", for: indexPath) as! QuestionTableViewCell
 
             questionCell.titleLable.text = self.questions[indexPath.row].title
-            let answers = self.questions[indexPath.row].answers?.allObjects as! [Answer]
-            var answersString: [String] = []
-            for answer in answers {
-                answersString.append(answer.title!)
-            }
-            answersString.shuffle()
-            questionCell.answerDropDown.optionArray = answersString
+            questionCell.table = self
+            questionCell.question = self.questions[indexPath.row]
             questionCell.trueAnswer = self.questions[indexPath.row].true_answer!.title!
-            questionCell.checkTrueAnswer()
+            questionCell.answerDropDown.text = ""
+            questionCell.answerDropDown.selectedIndex = -1
             
-            cell = questionCell
-        } /*else if indexPath.row != self.tableSize - 1 {
-            let answerCell = tableView.dequeueReusableCell(withIdentifier: "answerCell", for: indexPath)
+            let keyExists = self.responseDictionary[self.questions[indexPath.row]] != nil
 
-            answerCell.textLabel!.text = self.questions[indexPath.row].title
-            
-            cell = answerCell
-        }*/ else {
+            if keyExists == true {
+                questionCell.answerDropDown.optionArray = self.responseDictionary[self.questions[indexPath.row]]!.answers
+                questionCell.changeResponse(response: self.responseDictionary[self.questions[indexPath.row]]!.answerResponse)
+                
+                let answer = self.responseDictionary[self.questions[indexPath.row]]?.correct
+                questionCell.changeColor(toCorrect: self.responseDictionary[self.questions[indexPath.row]]!.toCorrect, correct: answer!)
+            } else {
+                let answers = self.questions[indexPath.row].answers?.allObjects as! [Answer]
+                var answersString: [String] = []
+                for answer in answers {
+                    answersString.append(answer.title!)
+                }
+                answersString.shuffle()
+                questionCell.answerDropDown.optionArray = answersString
+                
+                self.responseDictionary[self.questions[indexPath.row]] = ResponseQuestion(toCorrect: false, correct: false, answers: answersString, answerResponse: "")
+            }
+            questionCell.checkTrueAnswer()
+                        
+            cell = questionCell
+        } else {
             let finishCell = tableView.dequeueReusableCell(withIdentifier: "finishCell", for: indexPath)
             
             cell = finishCell
@@ -95,9 +115,7 @@ class QuestionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if /*self.selectedCellIndexPath.row == indexPath.row &&*/ indexPath.row != self.tableSize - 1{
             return self.questionCellHeight
-        } /*else if indexPath.row != self.tableSize - 1 {
-            return self.answerCellHeight
-        }*/ else {
+        } else {
             return self.finishCellHeight
         }
     }
@@ -105,14 +123,6 @@ class QuestionTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != self.tableSize - 1 {
             self.selectedCellIndexPath = indexPath
-            /*
-            tableView.beginUpdates()
-            tableView.endUpdates()
-
-            // This ensures, that the cell is fully visible once expanded
-            tableView.scrollToRow(at: indexPath, at: .none, animated: true)
-            tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
-            */
         }
     }
     
@@ -136,26 +146,41 @@ class QuestionTableViewController: UITableViewController {
     
     @IBAction func finishAction(_ sender: Any) {
         var result = true
-        for i in 0..<tableSize-1 {
-            let indexPath = IndexPath(row: i, section: 0)
-            let cell = tableView.cellForRow(at: indexPath) as? QuestionTableViewCell
-            if cell != nil {
-                if result == true && cell!.isCorrected == false {
-                    result = cell!.isCorrected
-                }
-                cell!.changeColor()
+        
+        for (key, value) in self.responseDictionary {
+            let newValue = ResponseQuestion(toCorrect: true, correct: value.correct, answers: value.answers, answerResponse: value.answerResponse)
+            self.responseDictionary[key] = newValue
+            
+            if self.responseDictionary[key]?.correct == false {
+                result = false
             }
         }
-        if result == true {
+        
+        for visibleCell in self.tableView.visibleCells {
+            if let cell = visibleCell as? QuestionTableViewCell {
+                let answer = self.responseDictionary[cell.question!]?.correct
+                
+                cell.changeColor(toCorrect: self.responseDictionary[cell.question!]!.toCorrect, correct: answer!)
+            }
+        }
+
+        self.activityViewController?.completedRoute()
+        self.showCompletedTestAlertView()
+        /*if result == true {
             self.activityViewController?.completedRoute()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.showCompletedTestAlertView()
-            }
+            self.showCompletedTestAlertView()
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                self.showFailedTestAlertView()
-            }
+            self.showFailedTestAlertView()
+        }*/
+    }
+    
+    func changeStateResponse(toCorrect: Bool, question: Question, isCorrect: Bool, answerResponse: String) {
+        var correct = toCorrect
+        if self.responseDictionary[question]?.toCorrect == false {
+            correct = false
         }
+        let newValue = ResponseQuestion(toCorrect: correct, correct: isCorrect, answers: self.responseDictionary[question]!.answers, answerResponse: answerResponse)
+        self.responseDictionary[question] = newValue
     }
     
     func showCompletedTestAlertView() {

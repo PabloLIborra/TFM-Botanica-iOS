@@ -13,6 +13,7 @@ class PlantsTableViewController: UITableViewController {
 
     var plantsDictionary = [String: [Plant]]()
     var plantSectionTitles = [String]()
+    var imagesPlant = [Plant:UIImage]()
     
     private let customRefreshControl = UIRefreshControl()
     
@@ -59,7 +60,6 @@ class PlantsTableViewController: UITableViewController {
             if let plantValues = plantsDictionary[plantKey] {
                 return plantValues.count
             }
-              
         }
         return 0
     }
@@ -76,18 +76,37 @@ class PlantsTableViewController: UITableViewController {
         }
         
         let plantKey = plantSectionTitles[indexPath.section - 1]
+        let keyExists = self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]] != nil
+        var imagePlant: UIImage
         if let plantValues = plantsDictionary[plantKey] {
             cell.nameLabel.text = plantValues[indexPath.row].scientific_name
             if var image = plantValues[indexPath.row].images?.allObjects as? [Image] {
                 if image.count > 0 {
                     image.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
-                    cell.plantImage.image = UIImage(data: image.first!.image!)
+                    
+                    if keyExists == true {
+                        imagePlant = self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]]!
+                    } else {
+                        imagePlant = UIImage(data: image.first!.image!)!
+                        self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]] = imagePlant
+                    }
                 } else {
-                    cell.plantImage.image = UIImage(named: "notAvailable.png")
+                    if keyExists == true {
+                        imagePlant = self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]]!
+                    } else {
+                        imagePlant = UIImage(named: "notAvailable.png")!
+                        self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]] = imagePlant
+                    }
                 }
             } else {
-                cell.plantImage.image = UIImage(named: "notAvailable.png")
+                if keyExists == true {
+                    imagePlant = self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]]!
+                } else {
+                    imagePlant = UIImage(named: "notAvailable.png")!
+                    self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]] = imagePlant
+                }
             }
+            cell.plantImage.image = imagePlant
             
             if plantValues[indexPath.row].unlock == false{
                 cell.setInteractableCardView(interactable: false)

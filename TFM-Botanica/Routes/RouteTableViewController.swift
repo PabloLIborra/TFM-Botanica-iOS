@@ -36,7 +36,6 @@ class RouteTableViewController: UITableViewController {
         self.updateInterface()
         self.loadRoutesCoreData()
         
-        
         let longPressGesture:UILongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongPress))
         longPressGesture.minimumPressDuration = 1.0 // 1 second press
         self.tableView.addGestureRecognizer(longPressGesture)

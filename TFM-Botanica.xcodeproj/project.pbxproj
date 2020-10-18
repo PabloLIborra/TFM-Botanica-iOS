@@ -39,6 +39,7 @@
 		1A84BC842469915D00E92EE6 /* TFM_Botanica.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC822469915D00E92EE6 /* TFM_Botanica.xcdatamodeld */; };
 		1A84BC8A246AA9AC00E92EE6 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */; };
 		1A84BC8C246AB42A00E92EE6 /* iOSDropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A84BC8B246AB42A00E92EE6 /* iOSDropDown.framework */; };
+		1A913F2B2538A255002B3BFE /* CustomUITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A913F2A2538A255002B3BFE /* CustomUITextView.swift */; };
 		1AB2DB0324D593D800A2AB91 /* PlantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0224D593D800A2AB91 /* PlantsViewController.swift */; };
 		1AB2DB0824D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */; };
 		1AB2DB0924D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */; };
@@ -90,6 +91,7 @@
 		1A84BC832469915D00E92EE6 /* TFM_Botanica.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TFM_Botanica.xcdatamodel; sourceTree = "<group>"; };
 		1A84BC89246AA9AC00E92EE6 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 		1A84BC8B246AB42A00E92EE6 /* iOSDropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = iOSDropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A913F2A2538A255002B3BFE /* CustomUITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITextView.swift; sourceTree = "<group>"; };
 		1AB2DB0224D593D800A2AB91 /* PlantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantsViewController.swift; sourceTree = "<group>"; };
 		1AB2DB0624D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderViewRoutesTableViewCell.swift; sourceTree = "<group>"; };
 		1AB2DB0724D6001D00A2AB91 /* CustomHeaderViewRoutesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeaderViewRoutesTableViewCell.xib; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				1A60E48F24EBDAC3001FC516 /* ImageCollectionViewCell.swift */,
 				1ADA5CBB2514C813006CF1B5 /* CustomDownloadImagesAlertViewController.swift */,
 				1A5E217E24F567F200A88E64 /* JSONRequest.swift */,
+				1A913F2A2538A255002B3BFE /* CustomUITextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				1A5723B02432570700ADDEBB /* PlantsTableViewController.swift in Sources */,
 				1A5723852432008B00ADDEBB /* AppDelegate.swift in Sources */,
 				1A5E217F24F567F200A88E64 /* JSONRequest.swift in Sources */,
+				1A913F2B2538A255002B3BFE /* CustomUITextView.swift in Sources */,
 				1A83BCC624DAB3BD00A69665 /* SendQuestionTableViewCell.swift in Sources */,
 				1A175D342445EE3D0073181C /* CustomMapAlertViewController.swift in Sources */,
 				1A60E48124E2ADF9001FC516 /* CustomTestAlertViewController.swift in Sources */,

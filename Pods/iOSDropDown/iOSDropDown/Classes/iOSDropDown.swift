@@ -18,7 +18,7 @@ open class DropDown : UITextField{
 
     //MARK: IBInspectable
 
-    @IBInspectable public var rowHeight: CGFloat = 30
+    @IBInspectable public var rowHeight: CGFloat = 50
     @IBInspectable public var rowBackgroundColor: UIColor = .white
     @IBInspectable public var selectedRowColor: UIColor = .cyan
     @IBInspectable public var hideOptionsWhenSelect = true
@@ -402,6 +402,9 @@ extension DropDown: UITableViewDataSource {
         cell?.textLabel?.font = self.font
         cell?.textLabel?.textAlignment = self.textAlignment
         cell?.textLabel?.adjustsFontSizeToFitWidth = true
+        cell?.textLabel?.numberOfLines = 2
+        cell?.textLabel?.lineBreakMode = NSLineBreakMode.byWordWrapping
+        cell?.textLabel?.sizeToFit()
         return cell!
     }
 }
@@ -542,3 +545,32 @@ extension UIView {
     }
 }
 
+extension CALayer {
+
+    func addBorder(edge: UIRectEdge, color: UIColor, thickness: CGFloat) {
+
+        let border = CALayer()
+
+        switch edge {
+        case UIRectEdge.top:
+            border.frame = CGRect(x: 0, y: 0, width: self.frame.height, height: thickness)
+            break
+        case UIRectEdge.bottom:
+            border.frame = CGRect(x: 0, y: self.frame.height - thickness, width: UIScreen.main.bounds.width, height: thickness)
+            break
+        case UIRectEdge.left:
+            border.frame = CGRect(x: 0, y: 0, width: thickness, height: self.frame.height)
+            break
+        case UIRectEdge.right:
+            border.frame = CGRect(x: self.frame.width - thickness, y: 0, width: thickness, height: self.frame.height)
+            break
+        default:
+            break
+        }
+
+        border.backgroundColor = color.cgColor;
+
+        self.addSublayer(border)
+    }
+
+}

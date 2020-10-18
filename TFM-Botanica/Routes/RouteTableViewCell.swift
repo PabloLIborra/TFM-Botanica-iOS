@@ -24,14 +24,14 @@ class RouteTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         self.cardView.layer.cornerRadius = 8
         
-        let shadowRect = CGRect(x: 0, y: 0, width: self.cardView.bounds.width, height: self.cardView.bounds.height)
+        /*let shadowRect = CGRect(x: 0, y: 0, width: self.cardView.bounds.width, height: self.cardView.bounds.height)
         self.cardView.layer.shadowPath = UIBezierPath(rect: shadowRect).cgPath
         self.cardView.layer.shadowRadius = 5
         self.cardView.layer.shadowOffset = .zero
         self.cardView.layer.shadowOpacity = 1
         self.cardView.layer.shadowColor = UIColor.black.cgColor
         self.cardView.layer.shouldRasterize = true
-        self.cardView.layer.rasterizationScale = UIScreen.main.scale
+        self.cardView.layer.rasterizationScale = UIScreen.main.scale*/
         
         self.nameLabel.adjustsFontSizeToFitWidth = true
     }

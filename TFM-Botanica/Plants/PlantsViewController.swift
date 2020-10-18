@@ -14,6 +14,7 @@ class PlantsViewController: UIViewController {
     @IBOutlet weak var imageCollectionView: UICollectionView!
     @IBOutlet weak var viewPageControl: UIView!
     var images: [Image] = []
+    var imagesLoaded: [UIImage] = []
     @IBOutlet weak var familyLabel: UILabel!
     var family: String = ""
     @IBOutlet weak var descriptionText: UITextView!
@@ -49,6 +50,23 @@ class PlantsViewController: UIViewController {
         self.descriptionText.text = textDescription
         
         self.updateInterface()
+        
+        if self.images[0].image != nil {
+            self.imagesLoaded.append(UIImage(data: self.images[0].image!)!.withRoundedCorners(radius: 40)!)
+        } else {
+            self.imagesLoaded.append(UIImage(named: "notAvailable.png")!)
+        }
+        
+        DispatchQueue.main.async {
+            for i in (1...self.images.count - 1) {
+                let image = self.images[i]
+                if image.image != nil {
+                    self.imagesLoaded.append(UIImage(data: image.image!)!.withRoundedCorners(radius: 40)!)
+                } else {
+                    self.imagesLoaded.append(UIImage(named: "notAvailable.png")!)
+                }
+            }
+        }
     }
     
     // MARK: Functions
@@ -78,8 +96,8 @@ extension PlantsViewController: UICollectionViewDelegate, UICollectionViewDataSo
         
         cell?.parentView = self
         
-        if self.images.count > 0 && self.images[indexPath.row].image != nil {
-            cell?.photoImage.image = UIImage(data: self.images[indexPath.row].image!)!.withRoundedCorners(radius: 40)
+        if self.imagesLoaded.count > 0 {
+            cell?.photoImage.image = self.imagesLoaded[indexPath.row]
             cell?.imageLoaded = true
         } else {
             cell?.photoImage.image = UIImage(named: "notAvailable.png")
