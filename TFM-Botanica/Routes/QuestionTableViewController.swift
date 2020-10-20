@@ -164,14 +164,12 @@ class QuestionTableViewController: UITableViewController {
             }
         }
 
-        self.activityViewController?.completedRoute()
-        self.showCompletedTestAlertView()
-        /*if result == true {
+        if result == true {
             self.activityViewController?.completedRoute()
             self.showCompletedTestAlertView()
         } else {
             self.showFailedTestAlertView()
-        }*/
+        }
     }
     
     func changeStateResponse(toCorrect: Bool, question: Question, isCorrect: Bool, answerResponse: String) {
