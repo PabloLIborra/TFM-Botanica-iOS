@@ -187,6 +187,9 @@ class JSONRequest{
                         let imageActivityData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
                         imageActivityData?.image = image.pngData()
                         imageActivityData?.date = Date()
+                        let splitName = urlImage.absoluteString.components(separatedBy: "/")
+                        let newName = splitName[6].components(separatedBy: ".")
+                        imageActivityData?.name = newName[0]
                         activityData.image = imageActivityData
                         downloadedImages += 1
                         self.changeLabelDownloadAlert(view: view, text: "Descargando archivos " + String(downloadedImages) + "/" + String(totalImagesDownload + imagesLocalizationToDownload.count))
@@ -219,6 +222,9 @@ class JSONRequest{
                             let imagePlantData = NSEntityDescription.insertNewObject(forEntityName: "Image", into: miContexto) as? Image
                             imagePlantData?.image = image.pngData()
                             imagePlantData?.date = Date()
+                            let splitName = urlImage.absoluteString.components(separatedBy: "/")
+                            let newName = splitName[6].components(separatedBy: ".")
+                            imagePlantData?.name = newName[0]
                             plantData.addToImages(imagePlantData!)
                             print("Descargada foto planta")
                             downloadedImages += 1

@@ -66,7 +66,7 @@ class CustomTestAlertViewController: UIViewController {
         plant.title = self.plant!.scientific_name
         plant.family = self.plant!.family!
         if var imagesPlant = self.plant!.images!.allObjects as? [Image] {
-            imagesPlant.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
+            imagesPlant.sort(by: { $0.name!.compare($1.name!) == .orderedAscending })
             for imagePlant in imagesPlant {
                 plant.images.append(imagePlant)
             }

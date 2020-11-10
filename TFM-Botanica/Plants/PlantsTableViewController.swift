@@ -81,10 +81,8 @@ class PlantsTableViewController: UITableViewController {
         var imagePlant: UIImage
         if let plantValues = plantsDictionary[plantKey] {
             cell.nameLabel.text = plantValues[indexPath.row].scientific_name
-            if var image = plantValues[indexPath.row].images?.allObjects as? [Image] {
+            if let image = plantValues[indexPath.row].images?.allObjects as? [Image] {
                 if image.count > 0 {
-                    image.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
-                    
                     if keyExists == true {
                         imagePlant = self.imagesPlant[plantsDictionary[plantKey]![indexPath.row]]!
                     } else {
@@ -182,8 +180,7 @@ class PlantsTableViewController: UITableViewController {
                                 plantController?.title = plantValues[indexPath.row].scientific_name
                                 plantController?.family = plantValues[indexPath.row].family!
                                 
-                                if var imagesPlant = plantValues[indexPath.row].images!.allObjects as? [Image] {
-                                    imagesPlant.sort(by: { $0.date!.compare($1.date!) == .orderedAscending })
+                                if let imagesPlant = plantValues[indexPath.row].images!.allObjects as? [Image] {
                                     for imagePlant in imagesPlant {
                                         plantController?.images.append(imagePlant)
                                     }
@@ -246,6 +243,9 @@ class PlantsTableViewController: UITableViewController {
         
         for plant in plants! {
             let plantKey = String(plant.scientific_name!.prefix(1))
+            var images = plant.images?.allObjects as? [Image]
+            images?.sort(by: { $0.name!.compare($1.name!) == .orderedAscending })
+            plant.images = NSSet(array: images!)
             if var plantValues = plantsDictionary[plantKey] {
                 plantValues.append(plant)
                 plantsDictionary[plantKey] = plantValues
